@@ -1,5 +1,5 @@
 import "./App.css";
-import ScreenNavigation from "./navigation/routes";
+import ScreenNavigation from "./navigation/Routes";
 
 const App = () => {
   return <ScreenNavigation />;

@@ -1,5 +1,3 @@
-// import PropTypes from "prop-types";
-
 const Loader = ({ isLoading }) => {
   if (!isLoading) return null;
 
@@ -26,9 +24,5 @@ const Loader = ({ isLoading }) => {
     </div>
   );
 };
-
-// Loader.propTypes = {
-//   isLoading: PropTypes.bool.isRequired,
-// };
 
 export default Loader;

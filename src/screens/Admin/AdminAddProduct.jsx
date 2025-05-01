@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { db } from "../../firebase/Firebase";
-import { doc, setDoc, getDocs, collection } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 import Toast from "../../components/CustomToast";
 import { auth } from "../../firebase/Firebase";
 
@@ -25,21 +25,18 @@ const AdminAddProduct = () => {
     discount: "",
   });
 
-  // Ref for file input to reset it after submit
   const fileInputRef = useRef(null);
 
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const settingsDoc = await getDocs(collection(db, "settings"));
-        const settingsData = settingsDoc.docs.find(
-          (doc) => doc.id === "general"
-        );
-        if (settingsData && settingsData.exists()) {
-          setCategories(settingsData.data().categories || []);
+        const settingsDoc = await getDoc(doc(db, "settings", "general"));
+        if (settingsDoc.exists()) {
+          const fetchedCategories = settingsDoc.data().categories || [];
+          setCategories(fetchedCategories);
           setNewProduct((prev) => ({
             ...prev,
-            category: settingsData.data().categories[0] || "",
+            category: fetchedCategories[0]?.label || "",
           }));
         }
       } catch (error) {
@@ -68,7 +65,6 @@ const AdminAddProduct = () => {
     }
   };
 
-  // Helper to check required fields and set toast for each missing one
   const checkRequiredFields = () => {
     if (!newProduct.id) {
       setToast({ message: "Product ID is required", type: "error" });
@@ -122,7 +118,7 @@ const AdminAddProduct = () => {
       setNewProduct({
         id: "",
         image: "placeholder://product-image-7",
-        category: categories[0] || "",
+        category: categories[0]?.label || "",
         name: "",
         price: "",
         description: "",
@@ -132,7 +128,6 @@ const AdminAddProduct = () => {
         material: "",
         discount: "",
       });
-      // Reset file input value so image preview is cleared
       if (fileInputRef.current) {
         fileInputRef.current.value = "";
       }
@@ -144,206 +139,212 @@ const AdminAddProduct = () => {
   if (loading) return null;
 
   return (
-    <div className="p-6 pt-20 bg-gray-50 min-h-screen">
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6 text-gray-800">
-          Add New Product
-        </h1>
-        <form
-          onSubmit={addProduct}
-          className="bg-white p-6 rounded-lg shadow-xl border border-blue-100"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-gray-700 text-sm font-semibold mb-2">
-                Product ID <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                name="id"
-                value={newProduct.id}
-                onChange={handleNewProductChange}
-                placeholder="e.g., DL08"
-                className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
-                required
-              />
-            </div>
-            <div>
-              <label className="block text-gray-700 text-sm font-semibold mb-2">
-                Product Name <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                name="name"
-                value={newProduct.name}
-                onChange={handleNewProductChange}
-                placeholder="Product Name"
-                className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
-                required
-              />
-            </div>
-            <div>
-              <label className="block text-gray-700 text-sm font-semibold mb-2">
-                Category <span className="text-red-500">*</span>
-              </label>
-              <select
-                name="category"
-                value={newProduct.category}
-                onChange={handleNewProductChange}
-                className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
-                required
-              >
-                {categories.map((category) => (
-                  <option key={category} value={category}>
-                    {category}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label className="block text-gray-700 text-sm font-semibold mb-2">
-                Price (INR) <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="number"
-                name="price"
-                value={newProduct.price}
-                onChange={handleNewProductChange}
-                placeholder="Price"
-                step="0.01"
-                className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
-                required
-              />
-            </div>
-            <div>
-              <label className="block text-gray-700 text-sm font-semibold mb-2">
-                Description
-              </label>
-              <input
-                type="text"
-                name="description"
-                value={newProduct.description}
-                onChange={handleNewProductChange}
-                placeholder="Description"
-                className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
-              />
-            </div>
-            <div>
-              <label className="block text-gray-700 text-sm font-semibold mb-2">
-                Stock <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="number"
-                name="stock"
-                value={newProduct.stock}
-                onChange={handleNewProductChange}
-                placeholder="Stock"
-                className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
-                required
-              />
-            </div>
-            <div>
-              <label className="block text-gray-700 text-sm font-semibold mb-2">
-                Rating (0-5)
-              </label>
-              <input
-                type="number"
-                name="rating"
-                value={newProduct.rating}
-                onChange={handleNewProductChange}
-                placeholder="Rating"
-                step="0.1"
-                max="5"
-                min="0"
-                className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
-              />
-            </div>
-            <div>
-              <label className="block text-gray-700 text-sm font-semibold mb-2">
-                Dimensions <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                name="dimensions"
-                value={newProduct.dimensions}
-                onChange={handleNewProductChange}
-                placeholder="e.g., 12 x 12 inches"
-                className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
-                required
-              />
-            </div>
-            <div>
-              <label className="block text-gray-700 text-sm font-semibold mb-2">
-                Material
-              </label>
-              <input
-                type="text"
-                name="material"
-                value={newProduct.material}
-                onChange={handleNewProductChange}
-                placeholder="Material"
-                className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
-              />
-            </div>
-            <div>
-              <label className="block text-gray-700 text-sm font-semibold mb-2">
-                Discount (%)
-              </label>
-              <input
-                type="number"
-                name="discount"
-                value={newProduct.discount}
-                onChange={handleNewProductChange}
-                placeholder="Discount"
-                max="100"
-                min="0"
-                className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
-              />
-            </div>
-            <div>
-              <label className="block text-gray-700 text-sm font-semibold mb-2">
-                Product Image <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleImageChange}
-                ref={fileInputRef}
-                className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
-                // required is not used for file input, validation is handled in JS
-              />
-              {newProduct.image && newProduct.image.startsWith("data:") && (
-                <img
-                  src={newProduct.image}
-                  alt="Preview"
-                  className="mt-2 h-20 w-20 object-cover rounded"
+    <div
+      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 py-12 px-4"
+      style={{ minHeight: "100vh" }}
+    >
+      <div className="w-full max-w-5xl">
+        <div className="bg-white rounded-2xl shadow-2xl border border-blue-200 p-10">
+          <h1 className="text-4xl font-extrabold mb-8 text-blue-700 tracking-tight text-center drop-shadow">
+            Add New Product
+          </h1>
+          <form onSubmit={addProduct}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <label className="block text-blue-900 text-base font-semibold mb-2">
+                  Product ID <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  name="id"
+                  value={newProduct.id}
+                  onChange={handleNewProductChange}
+                  placeholder="e.g., DL08"
+                  className="px-4 py-2 border-2 border-blue-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 w-full bg-blue-50 text-blue-900 font-medium"
+                  required
                 />
-              )}
+              </div>
+              <div>
+                <label className="block text-blue-900 text-base font-semibold mb-2">
+                  Product Name <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={newProduct.name}
+                  onChange={handleNewProductChange}
+                  placeholder="Product Name"
+                  className="px-4 py-2 border-2 border-blue-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 w-full bg-blue-50 text-blue-900 font-medium"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-blue-900 text-base font-semibold mb-2">
+                  Category <span className="text-red-500">*</span>
+                </label>
+                <select
+                  name="category"
+                  value={newProduct.category}
+                  onChange={handleNewProductChange}
+                  className="px-4 py-2 border-2 border-blue-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 w-full bg-blue-50 text-blue-900 font-medium"
+                  required
+                >
+                  {categories.map((category) => (
+                    <option key={category.label} value={category.label}>
+                      {category.label} ({category.type})
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="block text-blue-900 text-base font-semibold mb-2">
+                  Price (INR) <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="number"
+                  name="price"
+                  value={newProduct.price}
+                  onChange={handleNewProductChange}
+                  placeholder="Price"
+                  step="0.01"
+                  className="px-4 py-2 border-2 border-blue-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 w-full bg-blue-50 text-blue-900 font-medium"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-blue-900 text-base font-semibold mb-2">
+                  Description
+                </label>
+                <input
+                  type="text"
+                  name="description"
+                  value={newProduct.description}
+                  onChange={handleNewProductChange}
+                  placeholder="Description"
+                  className="px-4 py-2 border-2 border-blue-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 w-full bg-blue-50 text-blue-900 font-medium"
+                />
+              </div>
+              <div>
+                <label className="block text-blue-900 text-base font-semibold mb-2">
+                  Stock <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="number"
+                  name="stock"
+                  value={newProduct.stock}
+                  onChange={handleNewProductChange}
+                  placeholder="Stock"
+                  className="px-4 py-2 border-2 border-blue-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 w-full bg-blue-50 text-blue-900 font-medium"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-blue-900 text-base font-semibold mb-2">
+                  Rating (0-5)
+                </label>
+                <input
+                  type="number"
+                  name="rating"
+                  value={newProduct.rating}
+                  onChange={handleNewProductChange}
+                  placeholder="Rating"
+                  step="0.1"
+                  max="5"
+                  min="0"
+                  className="px-4 py-2 border-2 border-blue-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 w-full bg-blue-50 text-blue-900 font-medium"
+                />
+              </div>
+              <div>
+                <label className="block text-blue-900 text-base font-semibold mb-2">
+                  Dimensions <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  name="dimensions"
+                  value={newProduct.dimensions}
+                  onChange={handleNewProductChange}
+                  placeholder="e.g., 12 x 12 inches"
+                  className="px-4 py-2 border-2 border-blue-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 w-full bg-blue-50 text-blue-900 font-medium"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-blue-900 text-base font-semibold mb-2">
+                  Material
+                </label>
+                <input
+                  type="text"
+                  name="material"
+                  value={newProduct.material}
+                  onChange={handleNewProductChange}
+                  placeholder="Material"
+                  className="px-4 py-2 border-2 border-blue-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 w-full bg-blue-50 text-blue-900 font-medium"
+                />
+              </div>
+              <div>
+                <label className="block text-blue-900 text-base font-semibold mb-2">
+                  Discount (%)
+                </label>
+                <input
+                  type="number"
+                  name="discount"
+                  value={newProduct.discount}
+                  onChange={handleNewProductChange}
+                  placeholder="Discount"
+                  max="100"
+                  min="0"
+                  className="px-4 py-2 border-2 border-blue-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 w-full bg-blue-50 text-blue-900 font-medium"
+                />
+              </div>
+              <div>
+                <label className="block text-blue-900 text-base font-semibold mb-2">
+                  Product Image <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  ref={fileInputRef}
+                  className="block w-full text-sm text-blue-900 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-base file:font-semibold file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200"
+                />
+                {newProduct.image && newProduct.image.startsWith("data:") && (
+                  <div className="mt-2 flex items-center gap-2">
+                    <img
+                      src={newProduct.image}
+                      alt="Preview"
+                      className="h-20 w-20 object-cover rounded-xl border-2 border-blue-200 shadow"
+                    />
+                    <span className="text-xs text-blue-500">Preview</span>
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
-          <div className="mt-6 flex gap-4">
-            <button
-              type="submit"
-              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg"
-            >
-              Add Product
-            </button>
-            <button
-              type="button"
-              onClick={() => navigate("/Admin/adminstockmanagement")}
-              className="bg-gray-600 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-lg"
-            >
-              Cancel
-            </button>
-          </div>
-        </form>
-        {toast && (
-          <Toast
-            message={toast.message}
-            type={toast.type}
-            onClose={() => setToast(null)}
-          />
-        )}
+            <div className="mt-10 flex flex-col md:flex-row gap-4 justify-center">
+              <button
+                type="submit"
+                className="bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 text-white font-bold py-3 px-8 rounded-xl shadow-lg transition-all duration-200 text-lg"
+              >
+                Add Product
+              </button>
+              <button
+                type="button"
+                onClick={() => navigate("/Admin/adminstockmanagement")}
+                className="bg-gradient-to-r from-gray-500 to-gray-400 hover:from-gray-700 hover:to-gray-500 text-white font-bold py-3 px-8 rounded-xl shadow-lg transition-all duration-200 text-lg"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+          {toast && (
+            <div className="mt-6">
+              <Toast
+                message={toast.message}
+                type={toast.type}
+                onClose={() => setToast(null)}
+              />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

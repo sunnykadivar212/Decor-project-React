@@ -1,16 +1,46 @@
 import { useEffect, useState, useRef } from "react";
 import decor from "../assets/Decor.jpeg";
-import { ProductList, TypeList } from "../common/Data";
 import Items from "../components/Items";
+import { db } from "../firebase/Firebase";
+import { doc, getDoc, collection, getDocs } from "firebase/firestore";
 
 const HEADER_HEIGHT_PX = 96; // 24 * 4 (pt-24 = 6rem = 96px)
 
 const Home = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [categories2, setCategories2] = useState([]);
+  const [products, setProducts] = useState([]);
   const productsRef = useRef(null);
 
   useEffect(() => {
+    const fetchCategoriesAndProducts = async () => {
+      try {
+        // Fetch categories from settings/general
+        const settingsDoc = await getDoc(doc(db, "settings", "general"));
+        let allCategories = [];
+        let onlyCategories2 = [];
+        if (settingsDoc.exists()) {
+          allCategories = settingsDoc.data().categories || [];
+          onlyCategories2 = allCategories.filter(
+            (cat) => cat.type === "categories-2"
+          );
+          setCategories2(onlyCategories2);
+        }
+
+        // Fetch products from 'products' collection
+        const productsSnapshot = await getDocs(collection(db, "products"));
+        const productsData = [];
+        productsSnapshot.forEach((doc) => {
+          productsData.push({ id: doc.id, ...doc.data() });
+        });
+        setProducts(productsData);
+      } catch (error) {
+        console.error("Error fetching categories or products:", error);
+      }
+    };
+    fetchCategoriesAndProducts();
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
@@ -19,7 +49,6 @@ const Home = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Handle category click (including All Products)
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
     setTimeout(() => {
@@ -27,8 +56,7 @@ const Home = () => {
         const rect = productsRef.current.getBoundingClientRect();
         const scrollTop =
           window.pageYOffset || document.documentElement.scrollTop;
-        // Adjust scroll position by header height (pt-24 = 6rem = 96px)
-        const offset = HEADER_HEIGHT_PX + 16; // add a little extra for spacing
+        const offset = HEADER_HEIGHT_PX + 16;
         window.scrollTo({
           top: rect.top + scrollTop - offset,
           behavior: "smooth",
@@ -37,9 +65,18 @@ const Home = () => {
     }, 100);
   };
 
+  // Only show products whose category is in categories2
+  const categories2Labels = categories2.map((cat) => cat.label);
+
+  // Filter products to only those in categories-2
+  const productsInCategories2 = products.filter((item) =>
+    categories2Labels.includes(item.category)
+  );
+
+  // Filter products by selected category (from categories-2)
   const filteredItems = selectedCategory
-    ? ProductList.filter((item) => item.category === selectedCategory)
-    : ProductList;
+    ? productsInCategories2.filter((item) => item.category === selectedCategory)
+    : productsInCategories2;
 
   return (
     <div className="flex-1 flex flex-col min-h-screen pt-24 pb-16 box-border bg-white">
@@ -107,26 +144,34 @@ const Home = () => {
               All Products
             </span>
           </div>
-          {/* Category items */}
-          {TypeList.map((items, index) => (
+          {/* Only categories-2 items */}
+          {categories2.map((category) => (
             <div
-              key={index}
-              onClick={() => handleCategoryClick(items.label)}
+              key={category.label}
+              onClick={() => handleCategoryClick(category.label)}
               className={`flex gap-2 sm:gap-4 p-2 rounded-md items-center hover:bg-gray-50 transition-all duration-300 border-b-4 border-transparent hover:border-blue-500 shadow-sm cursor-pointer ${
                 isScrolled ? "bg-gray-100" : ""
               } ${
-                selectedCategory === items.label
+                selectedCategory === category.label
                   ? "border-blue-500 bg-blue-50"
                   : ""
               }`}
             >
-              <img
-                src={items.Image}
-                className="h-12 w-12 sm:h-20 sm:w-20 object-cover rounded-md"
-                alt="Decor Type Image"
-              />
+              {category.image ? (
+                <img
+                  src={category.image}
+                  className="h-12 w-12 sm:h-20 sm:w-20 object-cover rounded-md"
+                  alt={category.label}
+                />
+              ) : (
+                <div className="h-12 w-12 sm:h-20 sm:w-20 bg-gray-200 rounded-md flex items-center justify-center">
+                  <span className="text-xs sm:text-sm text-gray-600">
+                    No Image
+                  </span>
+                </div>
+              )}
               <span className="text-zinc-600 text-xs sm:text-lg md:text-xl font-medium">
-                {items.label}
+                {category.label}
               </span>
             </div>
           ))}

@@ -1,19 +1,12 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { auth, db } from "../firebase/Firebase";
-import { doc, updateDoc, serverTimestamp } from "firebase/firestore";
+import { doc, updateDoc, serverTimestamp, getDoc } from "firebase/firestore";
 import Toast from "../components/CustomToast";
 import Loader from "../components/loader";
 
-// Get admin credentials from environment variables
-const ADMIN_EMAIL = String(import.meta.env.VITE_ADMIN_EMAIL);
-const ADMIN_PASSWORD = String(import.meta.env.VITE_ADMIN_PASSWORD);
-console.log(ADMIN_EMAIL, ADMIN_PASSWORD);
-
-// Map Firebase error codes/messages to user-friendly messages
 const getFriendlyError = (error) => {
-  // Handle the specific API key error
   if (
     error?.message?.includes("auth/api-key-not-valid") ||
     error?.message?.toLowerCase().includes("api key") ||
@@ -21,7 +14,6 @@ const getFriendlyError = (error) => {
   ) {
     return "There is a problem with the server configuration. Please contact the administrator.";
   }
-  // You can add more error mappings here if needed
   return error.message || "An unknown error occurred. Please try again.";
 };
 
@@ -44,6 +36,32 @@ const Signin = () => {
     }
     return () => clearTimeout(timer);
   }, [toast]);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        try {
+          const userDoc = await getDoc(doc(db, "users", user.uid));
+          if (userDoc.exists() && userDoc.data().isAdmin) {
+            console.log(
+              "SignIn: Admin user, navigating to /Admin/admindashboard"
+            );
+            setMessage("Admin login successful!", "success");
+            navigation("/Admin/admindashboard");
+          } else {
+            console.log("SignIn: Non-admin user, navigating to /home");
+            setMessage("Login successful!", "success");
+            navigation("/home");
+          }
+        } catch (error) {
+          console.error("SignIn: Error fetching user doc:", error);
+          setMessage("Error verifying user status", "error");
+        }
+        setIsLoading(false);
+      }
+    });
+    return () => unsubscribe();
+  }, [navigation]);
 
   const setMessage = (message, type) => {
     setToast({ show: true, message, type });
@@ -68,40 +86,22 @@ const Signin = () => {
     }
     setIsLoading(true);
 
-    // Check for admin credentials
-    const normalizedAdminEmail = ADMIN_EMAIL?.trim()?.toLowerCase() || "";
-    const normalizedFormEmail = formData.email?.trim()?.toLowerCase() || "";
-
-    if (
-      normalizedAdminEmail === normalizedFormEmail &&
-      formData.password === ADMIN_PASSWORD
-    ) {
-      console.log("Admin login successful");
-      setMessage("Admin login successful!", "success");
-      setTimeout(() => {
-        navigation("/Admin/admindashboard");
-      }, 1000);
-      setIsLoading(false);
-      return;
-    }
-
     try {
+      console.log("Attempting sign-in with:", formData.email);
       const userCredential = await signInWithEmailAndPassword(
         auth,
         formData.email,
         formData.password
       );
+      console.log("Sign-in successful, user:", userCredential.user.uid);
 
       // Update lastLogin timestamp in Firestore
       await updateDoc(doc(db, "users", userCredential.user.uid), {
         lastLogin: serverTimestamp(),
       });
-
-      setMessage("Login successful!", "success");
-      navigation("/home");
     } catch (error) {
+      console.error("Sign-in error:", error);
       setMessage(getFriendlyError(error), "error");
-    } finally {
       setIsLoading(false);
     }
   };
@@ -126,7 +126,6 @@ const Signin = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 relative">
-      {/* Toast moved outside the main card and given a higher z-index */}
       {toast.show && (
         <div className="fixed top-10 left-1/2 transform -translate-x-1/2 z-[9999]">
           <Toast

@@ -14,7 +14,6 @@ const Dropdown = ({ triggerText, items, isMobile, isOpen, onToggle }) => {
 
   // Handler for "All product" button
   const handleAllProductsClick = () => {
-    // Navigate to /products and pass all items via state
     navigate("/products", { state: { items: items || [] } });
     if (isMobile && onToggle) {
       setIsDropdownOpen(false);
@@ -27,7 +26,7 @@ const Dropdown = ({ triggerText, items, isMobile, isOpen, onToggle }) => {
     navigate("/details", { state: { item } });
     if (isMobile && onToggle) {
       setIsDropdownOpen(false);
-      onToggle(); // Close the mobile menu
+      onToggle();
     }
   };
 

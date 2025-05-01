@@ -1,186 +1,369 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../../firebase/Firebase";
-import { db } from "../../firebase/Firebase";
-import { doc, setDoc, getDoc } from "firebase/firestore";
+import { auth, db } from "../../firebase/Firebase";
+import { doc, getDoc, setDoc, collection, getDocs } from "firebase/firestore";
 import Toast from "../../components/CustomToast";
-import { FaTrash } from "react-icons/fa";
+import { FaSave, FaUserShield, FaBell, FaCog } from "react-icons/fa";
 
 const AdminSettings = () => {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
+  const [settings, setSettings] = useState({
+    siteName: "Aangan Home",
+    shippingRate: 100,
+    lowStockThreshold: 10,
+    enableOrderNotifications: true,
+    enableLowStockNotifications: true,
+  });
+  const [userRoles, setUserRoles] = useState([]);
+  const [newUserRole, setNewUserRole] = useState({ email: "", role: "editor" });
   const [toast, setToast] = useState(null);
-  const [settings, setSettings] = useState(null);
-  const [newCategory, setNewCategory] = useState("");
-
-  // useEffect(() => {
-  //   const checkAdmin = async () => {
-  //     if (user) {
-  //       const userDoc = await getDoc(doc(db, "users", user.uid));
-  //       if (userDoc.exists() && userDoc.data().isAdmin) {
-  //         return;
-  //       }
-  //       setToast({
-  //         message: "Access denied: Admin only",
-  //         type: "error",
-  //       });
-  //       navigate("/home");
-  //     } else if (!loading && !user) {
-  //       setToast({
-  //         message: "Please sign in as admin",
-  //         type: "error",
-  //       });
-  //       navigate("/sign-in");
-  //     }
-  //   };
-  //   if (!loading) checkAdmin();
-  // }, [user, loading, navigate]);
 
   useEffect(() => {
+    if (!user || !user.email.endsWith("@gmail.com")) {
+      navigate("/Admin");
+      return;
+    }
+
     const fetchSettings = async () => {
       try {
+        // Fetch general settings
         const settingsDoc = await getDoc(doc(db, "settings", "general"));
         if (settingsDoc.exists()) {
-          setSettings(settingsDoc.data());
-        } else {
-          // If no settings exist, initialize with empty categories and default shippingRate
+          const data = settingsDoc.data();
           setSettings({
-            categories: [],
-            shippingRate: 100,
+            siteName: data.siteName || "Aangan Home",
+            shippingRate: data.shippingRate || 100,
+            lowStockThreshold: data.lowStockThreshold || 10,
+            enableOrderNotifications: data.enableOrderNotifications !== false,
+            enableLowStockNotifications:
+              data.enableLowStockNotifications !== false,
           });
         }
+
+        // Fetch user roles
+        const rolesSnapshot = await getDocs(
+          collection(db, "settings", "userRoles", "roles")
+        );
+        const roles = rolesSnapshot.docs.map((doc) => ({
+          userId: doc.id,
+          ...doc.data(),
+        }));
+        setUserRoles(roles);
       } catch (error) {
         setToast({ message: error.message, type: "error" });
       }
     };
-    fetchSettings();
-  }, []);
 
-  const addCategory = async () => {
-    if (!newCategory) {
-      setToast({ message: "Category name is required", type: "error" });
+    fetchSettings();
+  }, [user, navigate]);
+
+  const handleSettingsChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setSettings((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
+
+  const saveSettings = async (e) => {
+    e.preventDefault();
+    const parsedShippingRate = parseFloat(settings.shippingRate);
+    const parsedLowStockThreshold = parseInt(settings.lowStockThreshold);
+
+    if (isNaN(parsedShippingRate) || parsedShippingRate < 0) {
+      setToast({ message: "Invalid shipping rate", type: "error" });
       return;
     }
-    if (settings.categories.includes(newCategory)) {
-      setToast({ message: "Category already exists", type: "error" });
+    if (isNaN(parsedLowStockThreshold) || parsedLowStockThreshold < 0) {
+      setToast({ message: "Invalid low stock threshold", type: "error" });
       return;
     }
+    if (!settings.siteName.trim()) {
+      setToast({ message: "Site name is required", type: "error" });
+      return;
+    }
+
     try {
-      const updatedCategories = [...settings.categories, newCategory];
-      await setDoc(doc(db, "settings", "general"), {
-        ...settings,
-        categories: updatedCategories,
-      });
-      setSettings((prev) => ({ ...prev, categories: updatedCategories }));
-      setNewCategory("");
-      setToast({ message: `Added category ${newCategory}`, type: "success" });
+      await setDoc(
+        doc(db, "settings", "general"),
+        {
+          siteName: settings.siteName.trim(),
+          shippingRate: parsedShippingRate,
+          lowStockThreshold: parsedLowStockThreshold,
+          enableOrderNotifications: settings.enableOrderNotifications,
+          enableLowStockNotifications: settings.enableLowStockNotifications,
+        },
+        { merge: true }
+      );
+      setToast({ message: "Settings saved successfully", type: "success" });
     } catch (error) {
       setToast({ message: error.message, type: "error" });
     }
   };
 
-  const deleteCategory = async (category) => {
-    if (window.confirm(`Delete category ${category}?`)) {
+  const handleNewUserRoleChange = (e) => {
+    const { name, value } = e.target;
+    setNewUserRole((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const addUserRole = async (e) => {
+    e.preventDefault();
+    if (!newUserRole.email.trim()) {
+      setToast({ message: "Email is required", type: "error" });
+      return;
+    }
+    if (!newUserRole.email.includes("@")) {
+      setToast({ message: "Invalid email format", type: "error" });
+      return;
+    }
+    if (userRoles.some((role) => role.email === newUserRole.email)) {
+      setToast({ message: "User already has a role", type: "error" });
+      return;
+    }
+
+    try {
+      const userDoc = await getDocs(collection(db, "users"));
+      const user = userDoc.docs.find(
+        (doc) => doc.data().email === newUserRole.email
+      );
+      if (!user) {
+        setToast({ message: "User not found", type: "error" });
+        return;
+      }
+
+      const userId = user.id;
+      await setDoc(doc(db, "settings", "userRoles", "roles", userId), {
+        email: newUserRole.email,
+        role: newUserRole.role,
+      });
+      setUserRoles((prev) => [
+        ...prev,
+        { userId, email: newUserRole.email, role: newUserRole.role },
+      ]);
+      setNewUserRole({ email: "", role: "editor" });
+      setToast({
+        message: `Added role for ${newUserRole.email}`,
+        type: "success",
+      });
+    } catch (error) {
+      setToast({ message: error.message, type: "error" });
+    }
+  };
+
+  const removeUserRole = async (userId, email) => {
+    if (window.confirm(`Remove role for ${email}?`)) {
       try {
-        const updatedCategories = settings.categories.filter(
-          (c) => c !== category
-        );
-        await setDoc(doc(db, "settings", "general"), {
-          ...settings,
-          categories: updatedCategories,
-        });
-        setSettings((prev) => ({ ...prev, categories: updatedCategories }));
-        setToast({ message: `Deleted category ${category}`, type: "success" });
+        await deleteDoc(doc(db, "settings", "userRoles", "roles", userId));
+        setUserRoles((prev) => prev.filter((role) => role.userId !== userId));
+        setToast({ message: `Removed role for ${email}`, type: "success" });
       } catch (error) {
         setToast({ message: error.message, type: "error" });
       }
     }
   };
 
-  const updateShippingRate = async () => {
-    if (settings.shippingRate < 0) {
-      setToast({ message: "Shipping rate cannot be negative", type: "error" });
-      return;
-    }
-    try {
-      await setDoc(doc(db, "settings", "general"), settings);
-      setToast({ message: "Shipping rate updated", type: "success" });
-    } catch (error) {
-      setToast({ message: error.message, type: "error" });
-    }
-  };
-
-  if (loading || !settings) return null;
+  if (loading) return null;
 
   return (
     <div className="p-6 pt-20 bg-gray-50 min-h-screen">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6 text-gray-800">Site Settings</h1>
-        <div className="bg-white/90 backdrop-blur-2xl p-6 rounded-2xl shadow-xl border border-blue-100 mb-6">
-          <h2 className="text-xl font-semibold mb-4">Manage Categories</h2>
-          <div className="flex flex-col md:flex-row gap-4 mb-4">
-            <input
-              type="text"
-              value={newCategory}
-              onChange={(e) => setNewCategory(e.target.value)}
-              placeholder="Enter new category"
-              className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full md:w-1/2"
-            />
+        <h1 className="text-3xl font-bold mb-6 text-gray-800 flex items-center gap-2">
+          <FaCog className="text-blue-600" />
+          System Settings
+        </h1>
+
+        {/* General Settings */}
+        <div className="bg-white rounded-lg shadow p-6 mb-6">
+          <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+            <FaCog className="text-blue-500" />
+            General Settings
+          </h2>
+          <form onSubmit={saveSettings} className="grid gap-4">
+            <div>
+              <label className="block text-gray-700 text-sm font-semibold mb-2">
+                Site Name <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                name="siteName"
+                value={settings.siteName}
+                onChange={handleSettingsChange}
+                placeholder="e.g., Aangan Home"
+                className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700 text-sm font-semibold mb-2">
+                Shipping Rate (INR) <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="number"
+                name="shippingRate"
+                value={settings.shippingRate}
+                onChange={handleSettingsChange}
+                placeholder="e.g., 100"
+                step="0.01"
+                min="0"
+                className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700 text-sm font-semibold mb-2">
+                Low Stock Threshold <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="number"
+                name="lowStockThreshold"
+                value={settings.lowStockThreshold}
+                onChange={handleSettingsChange}
+                placeholder="e.g., 10"
+                min="0"
+                className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
+                required
+              />
+            </div>
             <button
-              onClick={addCategory}
+              type="submit"
+              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg flex items-center gap-2"
+            >
+              <FaSave />
+              Save General Settings
+            </button>
+          </form>
+        </div>
+
+        {/* Notification Preferences */}
+        <div className="bg-white rounded-lg shadow p-6 mb-6">
+          <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+            <FaBell className="text-yellow-500" />
+            Notification Preferences
+          </h2>
+          <form onSubmit={saveSettings} className="grid gap-4">
+            <div className="flex items-center gap-2">
+              <input
+                type="checkbox"
+                name="enableOrderNotifications"
+                checked={settings.enableOrderNotifications}
+                onChange={handleSettingsChange}
+                className="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+              />
+              <label className="text-gray-700 text-sm font-semibold">
+                Enable Order Notifications
+              </label>
+            </div>
+            <div className="flex items-center gap-2">
+              <input
+                type="checkbox"
+                name="enableLowStockNotifications"
+                checked={settings.enableLowStockNotifications}
+                onChange={handleSettingsChange}
+                className="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+              />
+              <label className="text-gray-700 text-sm font-semibold">
+                Enable Low Stock Notifications
+              </label>
+            </div>
+            <button
+              type="submit"
+              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg flex items-center gap-2"
+            >
+              <FaSave />
+              Save Notification Preferences
+            </button>
+          </form>
+        </div>
+
+        {/* User Role Management */}
+        <div className="bg-white rounded-lg shadow p-6">
+          <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+            <FaUserShield className="text-green-500" />
+            User Role Management
+          </h2>
+          <form
+            onSubmit={addUserRole}
+            className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6"
+          >
+            <input
+              type="email"
+              name="email"
+              value={newUserRole.email}
+              onChange={handleNewUserRoleChange}
+              placeholder="User Email"
+              className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <select
+              name="role"
+              value={newUserRole.role}
+              onChange={handleNewUserRoleChange}
+              className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="editor">Editor</option>
+              <option value="admin">Admin</option>
+            </select>
+            <button
+              type="submit"
               className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg"
             >
-              Add Category
+              Add Role
             </button>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {settings.categories.length === 0 ? (
-              <div className="col-span-full text-gray-500">
-                No categories found.
-              </div>
-            ) : (
-              settings.categories.map((category) => (
-                <div
-                  key={category}
-                  className="flex items-center justify-between bg-blue-50/80 p-3 rounded-lg border border-blue-100"
-                >
-                  <span className="text-gray-700 font-medium">{category}</span>
-                  <button
-                    onClick={() => deleteCategory(category)}
-                    className="text-red-600 hover:text-red-800"
-                  >
-                    <FaTrash />
-                  </button>
-                </div>
-              ))
-            )}
+          </form>
+
+          <div className="overflow-hidden rounded-lg">
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Email
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Role
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Actions
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                {userRoles.length === 0 ? (
+                  <tr>
+                    <td
+                      colSpan={3}
+                      className="px-6 py-4 text-center text-sm text-gray-500"
+                    >
+                      No user roles assigned.
+                    </td>
+                  </tr>
+                ) : (
+                  userRoles.map((role) => (
+                    <tr key={role.userId} className="hover:bg-gray-50">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {role.email}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {role.role.charAt(0).toUpperCase() + role.role.slice(1)}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <button
+                          onClick={() =>
+                            removeUserRole(role.userId, role.email)
+                          }
+                          className="inline-flex items-center justify-center px-4 py-1 rounded-md bg-red-600 text-white font-semibold shadow hover:bg-red-700 transition-all duration-150"
+                        >
+                          Remove
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
           </div>
         </div>
-        <div className="bg-white/90 backdrop-blur-2xl p-6 rounded-2xl shadow-xl border border-blue-100">
-          <h2 className="text-xl font-semibold mb-4">Shipping Settings</h2>
-          <div className="flex flex-col md:flex-row gap-4">
-            <input
-              type="number"
-              value={settings.shippingRate}
-              onChange={(e) =>
-                setSettings((prev) => ({
-                  ...prev,
-                  shippingRate: parseFloat(e.target.value) || 0,
-                }))
-              }
-              placeholder="Shipping rate (INR)"
-              className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full md:w-1/4"
-              min="0"
-            />
-            <button
-              onClick={updateShippingRate}
-              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg"
-            >
-              Update Shipping Rate
-            </button>
-          </div>
-        </div>
+
         {toast && (
           <Toast
             message={toast.message}

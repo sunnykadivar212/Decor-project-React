@@ -5,11 +5,29 @@ import {
   FaTimesCircle,
   FaStar,
   FaRegStar,
+  FaArrowLeft,
 } from "react-icons/fa";
+import { useState, useEffect } from "react";
+import Loader from "../components/loader";
 
 const Details = () => {
   const location = useLocation();
-  const item = location.state?.item;
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
+  const [item, setItem] = useState(location.state?.item);
+
+  console.log("item", item);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <Loader isLoading={true} />;
+  }
 
   if (!item) {
     return (
@@ -19,6 +37,13 @@ const Details = () => {
             <FaTimesCircle className="text-2xl" />
             No item data found.
           </span>
+          <button
+            onClick={() => navigate(-1)}
+            className="mt-4 flex items-center gap-2 text-blue-600 hover:text-blue-800"
+          >
+            <FaArrowLeft />
+            Go Back
+          </button>
         </div>
       </div>
     );
@@ -42,7 +67,9 @@ const Details = () => {
           )
         )}
         <span className="ml-2 text-gray-500 text-sm font-medium">
-          {rating.toFixed(1)}
+          {typeof rating === "number" && !isNaN(rating)
+            ? rating.toFixed(1)
+            : "N/A"}
         </span>
       </span>
     );
@@ -67,6 +94,15 @@ const Details = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-indigo-100 via-blue-50 to-cyan-100 p-4">
       <div className="bg-white/90 backdrop-blur-2xl rounded-3xl shadow-2xl p-10 flex flex-col md:flex-row items-center max-w-4xl w-full transition-all duration-300 border border-blue-100">
+        {/* Back button */}
+        <button
+          onClick={() => navigate(-1)}
+          className="absolute top-4 left-4 flex items-center gap-2 text-blue-600 hover:text-blue-800"
+        >
+          <FaArrowLeft />
+          Back
+        </button>
+
         {/* Product image */}
         <div className="flex-shrink-0 flex flex-col items-center w-full md:w-1/2 mb-8 md:mb-0 md:mr-10">
           <div className="relative group">
@@ -82,6 +118,7 @@ const Details = () => {
             )}
           </div>
         </div>
+
         {/* Product details */}
         <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
           <h2 className="text-3xl sm:text-4xl font-extrabold mb-3 text-gray-800 tracking-tight drop-shadow">
@@ -90,9 +127,11 @@ const Details = () => {
           <div className="flex items-center gap-3 mb-4">
             <span className="text-blue-700 font-bold text-2xl sm:text-3xl drop-shadow">
               ₹
-              {discountedPrice.toLocaleString("en-IN", {
-                minimumFractionDigits: 2,
-              })}
+              {typeof discountedPrice === "number"
+                ? discountedPrice.toLocaleString("en-IN", {
+                    minimumFractionDigits: 2,
+                  })
+                : "N/A"}
             </span>
             {item.discount > 0 && (
               <span className="text-gray-400 line-through text-lg sm:text-xl font-medium">
