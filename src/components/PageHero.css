@@ -1,0 +1,81 @@
+.page-hero {
+  padding: var(--spacing-3xl) 0 var(--spacing-2xl);
+  background: var(--color-bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(135deg, rgba(26, 77, 46, 0.03) 0%, transparent 50%),
+    linear-gradient(-45deg, rgba(201, 169, 97, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.page-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+}
+
+.page-hero h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: var(--spacing-md);
+  color: var(--color-primary);
+}
+
+.page-hero .breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-lg);
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  font-family: var(--font-accent);
+}
+
+.page-hero .breadcrumb a {
+  color: var(--color-primary);
+  transition: color var(--transition-fast);
+}
+
+.page-hero .breadcrumb a:hover {
+  color: var(--color-primary-light);
+}
+
+.page-hero .breadcrumb svg {
+  font-size: 0.7rem;
+}
+
+.page-hero .hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Colored variants */
+.page-hero.primary-hero {
+  background: linear-gradient(135deg, rgba(26, 77, 46, 0.08), rgba(79, 157, 105, 0.05));
+}
+
+.page-hero.secondary-hero {
+  background: linear-gradient(135deg, rgba(201, 169, 97, 0.08), rgba(229, 200, 138, 0.05));
+}
+
+.page-hero.secondary-hero h1 {
+  color: var(--color-secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-hero {
+    padding: var(--spacing-2xl) 0 var(--spacing-xl);
+  }
+}

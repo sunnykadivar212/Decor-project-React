@@ -1,0 +1,153 @@
+// Product data configuration
+export const INTERIOR_PRODUCTS = [
+  {
+    id: 'plywood',
+    title: 'Premium Plywood',
+    description: 'High-quality plywood for durable and elegant furniture',
+    image: 'https://images.unsplash.com/photo-1615873968403-89e068629265?w=600&q=80',
+    features: ['Waterproof', 'Termite Resistant', 'Multiple Thickness'],
+    link: '/aangan-plywood',
+  },
+  {
+    id: 'plain-laminate',
+    title: 'Plain Laminates',
+    description: 'Smooth, elegant laminates in various colors',
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80',
+    features: ['Scratch Resistant', 'Easy Maintenance', 'Wide Color Range'],
+    link: '/aangan-plain-laminate',
+  },
+  {
+    id: 'mocco-laminate',
+    title: 'Mocco Laminates',
+    description: 'Textured laminates with sophisticated patterns',
+    image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80',
+    features: ['Unique Textures', 'Premium Finish', 'Durable Surface'],
+    link: '/aangan-mocco-laminate',
+  },
+  {
+    id: 'acrylic',
+    title: 'Acrylic Sheets',
+    description: 'Versatile acrylic for modern interior applications',
+    image: 'https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=600&q=80',
+    features: ['High Gloss', 'UV Resistant', 'Multiple Colors'],
+    link: '/aangan-acrylic',
+  },
+  {
+    id: 'louvers',
+    title: 'Louvers',
+    description: 'Stylish louvers for ventilation and aesthetics',
+    image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=600&q=80',
+    features: ['Ventilation', 'Privacy', 'Modern Design'],
+    link: '/louvers',
+  },
+  {
+    id: 'a-fab',
+    title: 'A-Fab Materials',
+    description: 'Premium fabric-based decorative materials',
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80',
+    features: ['Soft Touch', 'Elegant Look', 'Easy Installation'],
+    link: '/a-fab',
+  },
+];
+
+export const DECORATIVE_PRODUCTS = [
+  {
+    id: 'mandala-art',
+    title: 'Mandala Art',
+    description: 'Intricate handcrafted mandala designs for wall decoration',
+    image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600&q=80',
+    features: ['Handcrafted', 'Multiple Sizes', 'Custom Colors'],
+    link: '/mandala-art',
+  },
+  {
+    id: 'decorative-accents',
+    title: 'Decorative Accents',
+    description: 'Unique decorative pieces to enhance your space',
+    image: 'https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=600&q=80',
+    features: ['Unique Designs', 'Premium Materials', 'Easy Installation'],
+    link: '/aangan-decorative',
+  },
+  {
+    id: 'plants',
+    title: 'Indoor Plants',
+    description: 'Beautiful plants to bring life to your interiors',
+    image: 'https://images.unsplash.com/photo-1463320726281-696a485928c7?w=600&q=80',
+    features: ['Low Maintenance', 'Air Purifying', 'Various Sizes'],
+    link: '/plants',
+  },
+  {
+    id: 'wall-art',
+    title: 'Wall Art Collection',
+    description: 'Curated wall art pieces for modern spaces',
+    image: 'https://images.unsplash.com/photo-1582561833896-d1c6d3a3f1a8?w=600&q=80',
+    features: ['Modern Designs', 'Gallery Quality', 'Ready to Hang'],
+    link: '/aangan-vol-1',
+  },
+  {
+    id: 'decorative-panels',
+    title: 'Decorative Panels',
+    description: 'Elegant decorative panels for walls and partitions',
+    image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80',
+    features: ['3D Effects', 'Lightweight', 'Easy to Install'],
+    link: '/aangan-vol-2',
+  },
+  {
+    id: 'sculptures',
+    title: 'Artistic Sculptures',
+    description: 'Contemporary sculptures for sophisticated interiors',
+    image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=600&q=80',
+    features: ['Unique Pieces', 'Premium Finish', 'Statement Decor'],
+    link: '/aangan-vol-3',
+  },
+];
+
+export const SHOP_CATEGORIES = [
+  {
+    title: 'Plywood',
+    description: 'Premium quality plywood for all applications',
+    image: 'https://images.unsplash.com/photo-1615873968403-89e068629265?w=600&q=80',
+    link: '/plywood',
+  },
+  {
+    title: 'Laminates',
+    description: 'Wide range of decorative laminates',
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80',
+    link: '/laminate',
+  },
+  {
+    title: 'Acrylic',
+    description: 'High-quality acrylic sheets and panels',
+    image: 'https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=600&q=80',
+    link: '/aangan-acrylic',
+  },
+  {
+    title: 'Louvers',
+    description: 'Modern louver designs for ventilation',
+    image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=600&q=80',
+    link: '/louvers',
+  },
+  {
+    title: 'Mandala Art',
+    description: 'Intricate handcrafted mandala designs',
+    image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600&q=80',
+    link: '/mandala-art',
+  },
+  {
+    title: 'Decorative',
+    description: 'Unique decorative accents and pieces',
+    image: 'https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=600&q=80',
+    link: '/decorative',
+  },
+  {
+    title: 'Plants',
+    description: 'Beautiful indoor plants for your space',
+    image: 'https://images.unsplash.com/photo-1463320726281-696a485928c7?w=600&q=80',
+    link: '/plants',
+  },
+  {
+    title: 'A-Fab',
+    description: 'Premium fabric-based materials',
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80',
+    link: '/a-fab',
+  },
+];
