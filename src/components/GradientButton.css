@@ -1,0 +1,127 @@
+.gradient-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  font-family: var(--font-accent);
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: all var(--transition-normal);
+}
+
+/* Sizes */
+.gradient-btn-small {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.85rem;
+}
+
+.gradient-btn-medium {
+  padding: 1rem 2rem;
+  font-size: 0.95rem;
+}
+
+.gradient-btn-large {
+  padding: 1.25rem 2.5rem;
+  font-size: 1.05rem;
+}
+
+/* Variants */
+.gradient-btn-primary {
+  background: var(--gradient-primary);
+  color: var(--color-text-white);
+  box-shadow: var(--shadow-md);
+}
+
+.gradient-btn-primary:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.gradient-btn-secondary {
+  background: var(--gradient-secondary);
+  color: var(--color-text-white);
+  box-shadow: var(--shadow-md);
+}
+
+.gradient-btn-secondary:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.gradient-btn-accent {
+  background: var(--gradient-accent);
+  color: var(--color-text-white);
+  box-shadow: var(--shadow-md);
+}
+
+.gradient-btn-accent:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.gradient-btn-gold {
+  background: var(--gradient-secondary);
+  color: var(--color-text-white);
+  box-shadow: var(--shadow-md);
+}
+
+.gradient-btn-gold:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.gradient-btn-outline {
+  background: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  box-shadow: none;
+}
+
+.gradient-btn-outline:hover {
+  background: var(--color-primary);
+  color: var(--color-text-white);
+  box-shadow: var(--shadow-md);
+}
+
+/* Loading State */
+.btn-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  margin-right: var(--spacing-xs);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.btn-content {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  transition: opacity var(--transition-fast);
+}
+
+.btn-content.loading {
+  opacity: 0.7;
+}
+
+/* Disabled State */
+.gradient-btn.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.gradient-btn.disabled:hover {
+  box-shadow: var(--shadow-md);
+  transform: none;
+}

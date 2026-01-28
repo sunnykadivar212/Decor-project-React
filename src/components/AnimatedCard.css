@@ -1,0 +1,23 @@
+.animated-card {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition-smooth);
+  border: 1px solid var(--color-border);
+  transform-style: preserve-3d;
+}
+
+.animated-card.hover-lift {
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.animated-card.hover-lift:hover {
+  box-shadow: var(--shadow-2xl);
+}
+
+/* Ensure content is above pseudo-elements */
+.animated-card > * {
+  position: relative;
+  z-index: 1;
+}

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebook, FaInstagram, FaWhatsapp, FaLinkedin } from 'react-icons/fa';
 import Newsletter from './Newsletter';
+import logoDark from '../assets/logo-dark.svg';
 import './Footer.css';
 
 function Footer() {
@@ -27,7 +28,7 @@ function Footer() {
   return (
     <footer className="footer">
       {/* Newsletter Section */}
-      <Newsletter />
+      {/*<Newsletter />*/}
 
       <div className="footer-main">
         <div className="container">
@@ -41,8 +42,7 @@ function Footer() {
               transition={{ duration: 0.5 }}
             >
               <div className="footer-logo">
-                <span className="logo-text">Aangan</span>
-                <span className="logo-subtitle">Decor</span>
+                <img src={logoDark} alt="Aangan Decor" className="logo-image" />
               </div>
               <p className="footer-description">
                 Transforming spaces with premium interior and decorative solutions. 

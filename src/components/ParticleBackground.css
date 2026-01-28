@@ -1,0 +1,16 @@
+.particle-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: auto;
+}
+
+/* Ensure particles don't interfere with scrolling on mobile */
+@media (max-width: 768px) {
+  .particle-background {
+    pointer-events: none;
+  }
+}

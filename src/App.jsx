@@ -3,6 +3,8 @@ import { HelmetProvider } from 'react-helmet-async';
 import MainLayout from './layouts/MainLayout';
 import AppRoutes from './routes/AppRoutes';
 import './App.css';
+import './product-card-fixes.css';
+import './simple-ui.css';
 
 function App() {
   return (

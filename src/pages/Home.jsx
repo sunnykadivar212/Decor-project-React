@@ -1,7 +1,12 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FaArrowRight, FaStar, FaCheckCircle } from 'react-icons/fa';
+import ScrollReveal from '../components/ScrollReveal';
+import AnimatedCard from '../components/AnimatedCard';
+import GradientButton from '../components/GradientButton';
+import ParticlesBackground from '../components/ParticlesBackground';
 import './Home.css';
+import Newsletter from '../components/Newsletter';
 
 function Home() {
   const categories = [
@@ -31,7 +36,7 @@ function Home() {
   return (
     <div className="home">
       {/* Hero Section */}
-      <section className="hero">
+      <section className="hero bg-mesh">
         <div className="hero-background">
           <motion.div
             className="hero-overlay"
@@ -50,7 +55,7 @@ function Home() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <motion.div
-                className="hero-badge"
+                className="hero-badge glass-card-light"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
@@ -60,7 +65,7 @@ function Home() {
               
               <h1 className="hero-title">
                 Transform Your Space with
-                <span className="gradient-text"> Elegant Design</span>
+                <span className="gradient-text-gold"> Elegant Design</span>
               </h1>
               
               <p className="hero-description">
@@ -69,12 +74,16 @@ function Home() {
               </p>
               
               <div className="hero-actions">
-                <Link to="/interior" className="btn btn-primary">
-                  Explore Interior Items
-                  <FaArrowRight />
+                <Link to="/interior">
+                  <GradientButton variant="primary" size="large">
+                    Explore Interior Items
+                    <FaArrowRight />
+                  </GradientButton>
                 </Link>
-                <Link to="/decorative" className="btn btn-outline">
-                  View Decorative Items
+                <Link to="/decorative">
+                  <GradientButton variant="outline" size="large">
+                    View Decorative Items
+                  </GradientButton>
                 </Link>
               </div>
             </motion.div>
@@ -85,12 +94,12 @@ function Home() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <div className="hero-image-wrapper">
+              <div className="hero-image-wrapper gold-shine">
                 <img 
                   src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80" 
                   alt="Elegant Interior Design"
                 />
-                <div className="hero-image-decoration"></div>
+                <div className="hero-image-decoration glow-gold"></div>
               </div>
             </motion.div>
           </div>
@@ -98,12 +107,12 @@ function Home() {
 
         {/* Floating Elements */}
         <motion.div
-          className="floating-element floating-1"
+          className="floating-element floating-1 glow-primary"
           animate={{ y: [0, -20, 0] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="floating-element floating-2"
+          className="floating-element floating-2 glow-gold"
           animate={{ y: [0, 20, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -112,63 +121,52 @@ function Home() {
       {/* Categories Section */}
       <section className="categories-section section">
         <div className="container">
-          <motion.div
-            className="section-header"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2>Our Collections</h2>
-            <p>Explore our two main categories of premium products</p>
-          </motion.div>
+          <ScrollReveal direction="up">
+            <div className="section-header">
+              <h2 className="gradient-text-animated">Our Collections</h2>
+              <p>Explore our two main categories of premium products</p>
+            </div>
+          </ScrollReveal>
 
           <div className="categories-grid">
             {categories.map((category, index) => (
-              <motion.div
-                key={category.title}
-                className="category-card"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                whileHover={{ y: -10 }}
-              >
-                <div className="category-image">
-                  <img src={category.image} alt={category.title} />
-                  <div className="category-overlay" style={{ background: `linear-gradient(135deg, ${category.color}dd, ${category.color}99)` }}></div>
-                </div>
-                <div className="category-content">
-                  <h3>{category.title}</h3>
-                  <p>{category.description}</p>
-                  <Link to={category.link} className="category-link">
-                    Explore Collection
-                    <FaArrowRight />
-                  </Link>
-                </div>
-              </motion.div>
+              <ScrollReveal key={category.title} direction="up" delay={index * 0.2}>
+                <AnimatedCard 
+                  tiltEnabled={true}
+                  gradientBorder={true}
+                  className="category-card"
+                >
+                  <div className="category-image">
+                    <img src={category.image} alt={category.title} />
+                    <div className="category-overlay" style={{ background: `linear-gradient(135deg, ${category.color}dd, ${category.color}99)` }}></div>
+                  </div>
+                  <div className="category-content">
+                    <h3>{category.title}</h3>
+                    <p>{category.description}</p>
+                    <Link to={category.link} className="category-link magnetic">
+                      Explore Collection
+                      <FaArrowRight />
+                    </Link>
+                  </div>
+                </AnimatedCard>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="features-section section-sm">
+      <section className="features-section section-sm bg-mesh-intense">
         <div className="container">
           <div className="features-grid">
             {features.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                className="feature-item"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <div className="feature-icon">{feature.icon}</div>
-                <h4>{feature.title}</h4>
-                <p>{feature.text}</p>
-              </motion.div>
+              <ScrollReveal key={feature.title} direction="scale" delay={index * 0.1}>
+                <div className="feature-item glass-card hover-scale-glow">
+                  <div className="feature-icon glow-primary">{feature.icon}</div>
+                  <h4>{feature.title}</h4>
+                  <p>{feature.text}</p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -176,27 +174,31 @@ function Home() {
 
       {/* CTA Section */}
       <section className="cta-section">
+        <ParticlesBackground id="home-cta-particles" />
         <div className="container">
-          <motion.div
-            className="cta-content"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2>Ready to Transform Your Space?</h2>
-            <p>Get in touch with our experts for personalized design solutions</p>
-            <div className="cta-actions">
-              <Link to="/contact" className="btn btn-primary">
-                Contact Us Today
-              </Link>
-              <a href="http://wa.me/917069630777" target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
-                WhatsApp Us
-              </a>
+          <ScrollReveal direction="up">
+            <div className="cta-content glass-card-dark">
+              <h2 className="gradient-text-gold">Ready to Transform Your Space?</h2>
+              <p>Get in touch with our experts for personalized design solutions</p>
+              <div className="cta-actions">
+                <Link to="/contact">
+                  <GradientButton variant="gold" size="large">
+                    Contact Us Today
+                  </GradientButton>
+                </Link>
+                <a href="http://wa.me/917069630777" target="_blank" rel="noopener noreferrer">
+                  <GradientButton variant="secondary" size="large">
+                    WhatsApp Us
+                  </GradientButton>
+                </a>
+              </div>
             </div>
-          </motion.div>
+          </ScrollReveal>
         </div>
       </section>
+      
+      <Newsletter />
+      
     </div>
   );
 }

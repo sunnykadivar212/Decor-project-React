@@ -1,3 +1,7 @@
+.decorative {
+  position: relative;
+}
+
 .interior {
   padding-top: 80px;
 }
@@ -23,6 +27,11 @@
 }
 
 /* Products Section */
+.products-section {
+  position: relative;
+  z-index: 1;
+}
+
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -257,6 +266,8 @@
 .category-cta {
   background: var(--color-bg-secondary);
   padding: var(--spacing-3xl) 0;
+  position: relative;
+  z-index: 1;
 }
 
 .cta-box {

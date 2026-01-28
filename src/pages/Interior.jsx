@@ -1,8 +1,11 @@
-import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FaArrowRight, FaWhatsapp, FaDownload } from 'react-icons/fa';
 import PageHero from '../components/PageHero';
+import ScrollReveal from '../components/ScrollReveal';
+import AnimatedCard from '../components/AnimatedCard';
+import ParticlesBackground from '../components/ParticlesBackground';
 import './Interior.css';
+import Newsletter from '../components/Newsletter';
 
 function Interior() {
   const products = [
@@ -61,80 +64,79 @@ function Interior() {
       />
 
       {/* Products Section */}
-      <section className="products-section section">
+      <section className="products-section section bg-mesh">
         <div className="container">
           <div className="products-grid">
             {products.map((product, index) => (
-              <motion.div
-                key={product.title}
-                className="product-card"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -8 }}
-              >
-                <div className="product-image">
-                  <img src={product.image} alt={product.title} />
-                  <div className="product-overlay">
-                    <Link to={product.link} className="view-details-btn">
-                      View Details
-                      <FaArrowRight />
-                    </Link>
+              <ScrollReveal key={product.title} direction="up" delay={index * 0.1}>
+                <AnimatedCard 
+                  tiltEnabled={true}
+                  className="product-card"
+                >
+                  <div className="product-image">
+                    <img src={product.image} alt={product.title} />
+                    <div className="product-overlay">
+                      <Link to={product.link} className="view-details-btn magnetic">
+                        View Details
+                        <FaArrowRight />
+                      </Link>
+                    </div>
                   </div>
-                </div>
-                <div className="product-content">
-                  <h3>{product.title}</h3>
-                  <p>{product.description}</p>
-                  <ul className="product-features">
-                    {product.features.map((feature) => (
-                      <li key={feature}>{feature}</li>
-                    ))}
-                  </ul>
-                  <div className="product-actions">
-                    <a 
-                      href={`http://wa.me/917069630777?text=Hi, I'm interested in ${product.title}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="whatsapp-btn"
-                    >
-                      <FaWhatsapp /> WhatsApp
-                    </a>
-                    <a 
-                      href="/catalogs/placeholder.pdf"
-                      download
-                      className="pdf-btn"
-                    >
-                      <FaDownload /> Catalog
-                    </a>
+                  <div className="product-content">
+                    <h3>{product.title}</h3>
+                    <p>{product.description}</p>
+                    <ul className="product-features">
+                      {product.features.map((feature) => (
+                        <li key={feature}>{feature}</li>
+                      ))}
+                    </ul>
+                    <div className="product-actions">
+                      <a 
+                        href={`http://wa.me/917069630777?text=Hi, I'm interested in ${product.title}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="whatsapp-btn"
+                      >
+                        <FaWhatsapp /> Inquire
+                      </a>
+                      <a 
+                        href="/catalogs/interior-catalog.pdf"
+                        download
+                        className="download-btn"
+                      >
+                        <FaDownload /> Catalog
+                      </a>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
+                </AnimatedCard>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="category-cta">
+      <section className="cta-section section-sm">
+        <ParticlesBackground id="interior-cta-particles" />
         <div className="container">
-          <motion.div
-            className="cta-box"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2>Need Help Choosing?</h2>
-            <p>Our experts are here to guide you in selecting the perfect materials for your project</p>
-            <div className="cta-actions">
-              <a href="http://wa.me/917069630777" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-                Contact Our Experts
-              </a>
+          <ScrollReveal direction="up">
+            <div className="cta-content glass-card">
+              <h2>Need Help Choosing?</h2>
+              <p>Our experts are here to guide you in selecting the perfect materials for your project</p>
+              <div className="cta-actions">
+                <a href="http://wa.me/917069630777" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                  Contact Our Experts
+                </a>
+                <Link to="/contact" className="btn btn-outline">
+                  Request Samples
+                </Link>
+              </div>
             </div>
-          </motion.div>
+          </ScrollReveal>
         </div>
       </section>
+      
+      <Newsletter />
     </div>
   );
 }

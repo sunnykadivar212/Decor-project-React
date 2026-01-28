@@ -1,45 +1,48 @@
-import { motion } from 'framer-motion';
-import { FaCheckCircle, FaPaintBrush, FaRuler, FaTools } from 'react-icons/fa';
+import { FaPaintBrush, FaRulerCombined, FaTruck, FaTools, FaLightbulb, FaHandshake } from 'react-icons/fa';
 import PageHero from '../components/PageHero';
+import ScrollReveal from '../components/ScrollReveal';
+import AnimatedCard from '../components/AnimatedCard';
+import GradientButton from '../components/GradientButton';
+import ParticlesBackground from '../components/ParticlesBackground';
 import './Services.css';
 
 function Services() {
   const services = [
     {
-      id: 'service1',
       icon: <FaPaintBrush />,
-      title: 'Planning Design',
-      description: 'Expert planning and design services to bring your vision to life with precision and creativity.',
-      features: [
-        'Conceptual Design',
-        '3D Visualization',
-        'Material Selection',
-        'Budget Planning',
-      ],
+      title: 'Material Supply',
+      description: 'Premium quality plywood, laminates, acrylic, and decorative materials sourced from trusted manufacturers.',
+      features: ['Wide Selection', 'Quality Assured', 'Competitive Pricing'],
     },
     {
-      id: 'service2',
-      icon: <FaRuler />,
-      title: 'Interior Design',
-      description: 'Complete interior design solutions tailored to your style, space, and requirements.',
-      features: [
-        'Space Planning',
-        'Color Consultation',
-        'Furniture Selection',
-        'Lighting Design',
-      ],
+      icon: <FaRulerCombined />,
+      title: 'Custom Design',
+      description: 'Personalized design solutions tailored to your unique style and space requirements.',
+      features: ['Expert Consultation', 'Custom Solutions', '3D Visualization'],
     },
     {
-      id: 'service3',
+      icon: <FaTruck />,
+      title: 'Delivery Service',
+      description: 'Reliable and timely delivery of materials to your doorstep with proper handling and care.',
+      features: ['Fast Delivery', 'Safe Handling', 'Tracking Available'],
+    },
+    {
       icon: <FaTools />,
-      title: 'Turnkey Projects',
-      description: 'End-to-end project execution from concept to completion with full project management.',
-      features: [
-        'Complete Execution',
-        'Quality Assurance',
-        'Timely Delivery',
-        'Post-Installation Support',
-      ],
+      title: 'Installation Support',
+      description: 'Professional guidance and support for proper installation of materials and decorative items.',
+      features: ['Expert Guidance', 'Installation Tips', 'Technical Support'],
+    },
+    {
+      icon: <FaLightbulb />,
+      title: 'Design Consultation',
+      description: 'Free consultation to help you choose the perfect materials and designs for your project.',
+      features: ['Free Consultation', 'Expert Advice', 'Trend Insights'],
+    },
+    {
+      icon: <FaHandshake />,
+      title: 'After-Sales Support',
+      description: 'Dedicated support even after purchase to ensure your complete satisfaction.',
+      features: ['Warranty Support', 'Maintenance Tips', 'Customer Care'],
     },
   ];
 
@@ -48,61 +51,98 @@ function Services() {
       {/* Hero Section */}
       <PageHero
         title="Our Services"
-        subtitle="Comprehensive design and execution services for your dream space"
+        subtitle="Comprehensive solutions for all your interior and decorative needs"
         breadcrumbs={[{ label: 'Services' }]}
         variant="primary"
       />
 
-      {/* Services Section */}
-      <section className="services-section section">
+      {/* Services Grid */}
+      <section className="services-section section bg-mesh">
         <div className="container">
+          <ScrollReveal direction="up">
+            <div className="section-header">
+              <h2 className="gradient-text-animated">What We Offer</h2>
+              <p>End-to-end services to bring your vision to life</p>
+            </div>
+          </ScrollReveal>
+
           <div className="services-grid">
             {services.map((service, index) => (
-              <motion.div
-                key={service.id}
-                id={service.id}
-                className="service-card"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -8 }}
-              >
-                <div className="service-icon">{service.icon}</div>
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
-                <ul className="service-features">
-                  {service.features.map((feature) => (
-                    <li key={feature}>
-                      <FaCheckCircle />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
+              <ScrollReveal key={service.title} direction="up" delay={index * 0.1}>
+                <AnimatedCard 
+                  tiltEnabled={true}
+                  className="service-card"
+                >
+                  <div className="service-icon glow-primary">{service.icon}</div>
+                  <h3>{service.title}</h3>
+                  <p>{service.description}</p>
+                  <ul className="service-features">
+                    {service.features.map((feature) => (
+                      <li key={feature}>{feature}</li>
+                    ))}
+                  </ul>
+                </AnimatedCard>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="process-section section bg-mesh-intense">
+        <div className="container">
+          <ScrollReveal direction="up">
+            <div className="section-header">
+              <h2>Our Process</h2>
+              <p>Simple steps to transform your space</p>
+            </div>
+          </ScrollReveal>
+
+          <div className="process-timeline">
+            {[
+              { step: '01', title: 'Consultation', description: 'Discuss your vision and requirements with our experts' },
+              { step: '02', title: 'Selection', description: 'Choose from our wide range of premium materials' },
+              { step: '03', title: 'Customization', description: 'Personalize designs to match your style' },
+              { step: '04', title: 'Delivery', description: 'Receive materials safely at your doorstep' },
+            ].map((item, index) => (
+              <ScrollReveal key={item.step} direction="right" delay={index * 0.15}>
+                <div className="process-item glass-card-light">
+                  <div className="process-step gradient-text-gold">{item.step}</div>
+                  <h4>{item.title}</h4>
+                  <p>{item.description}</p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="services-cta">
+      <section className="cta-section section-sm">
+        <ParticlesBackground id="services-cta-particles" />
         <div className="container">
-          <motion.div
-            className="cta-box"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2>Ready to Start Your Project?</h2>
-            <p>Let's discuss how we can help transform your space</p>
-            <div className="cta-actions">
-              <a href="http://wa.me/917069630777" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-                Get Started
-              </a>
+          <ScrollReveal direction="scale">
+            <div className="cta-content glass-card-dark">
+              <h2>Ready to Get Started?</h2>
+              <p>Let's discuss how we can help transform your space with our premium materials and services</p>
+              <div className="cta-actions">
+                <GradientButton 
+                  variant="secondary" 
+                  size="large"
+                  onClick={() => window.location.href = 'http://wa.me/917069630777'}
+                >
+                  Contact Us Now
+                </GradientButton>
+                <GradientButton 
+                  variant="outline" 
+                  size="large"
+                  onClick={() => window.location.href = '/contact'}
+                >
+                  Request a Quote
+                </GradientButton>
+              </div>
             </div>
-          </motion.div>
+          </ScrollReveal>
         </div>
       </section>
     </div>

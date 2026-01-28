@@ -340,7 +340,7 @@
 
 /* CTA Section - New Design */
 .cta-section {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  /*background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));*/
   padding: var(--spacing-4xl) 0;
   position: relative;
   overflow: hidden;

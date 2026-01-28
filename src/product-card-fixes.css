@@ -1,0 +1,148 @@
+/* PRODUCT CARD FIXES - Make text and buttons visible */
+
+/* Override gradient text to make it readable */
+.product-content h3 {
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  color: var(--color-text-primary) !important;
+  margin: 0 0 var(--spacing-sm) 0 !important;
+  line-height: 1.3 !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+  background-clip: unset !important;
+}
+
+.product-content p {
+  color: var(--color-text-secondary) !important;
+  line-height: 1.7 !important;
+  margin: 0 0 var(--spacing-md) 0 !important;
+  font-size: 1rem !important;
+}
+
+/* Product features - make visible */
+.product-features {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: var(--spacing-md) 0 !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: var(--spacing-xs) !important;
+}
+
+.product-features li {
+  background: var(--color-bg-secondary) !important;
+  padding: var(--spacing-xs) var(--spacing-md) !important;
+  border-radius: var(--radius-full) !important;
+  font-size: 0.875rem !important;
+  color: var(--color-text-primary) !important;
+  font-weight: 500 !important;
+  border: 1px solid var(--color-border) !important;
+}
+
+.product-features li:hover {
+  background: var(--color-primary) !important;
+  color: white !important;
+  border-color: var(--color-primary) !important;
+}
+
+/* Product actions - make buttons visible and functional */
+.product-actions {
+  display: flex !important;
+  gap: var(--spacing-sm) !important;
+  margin-top: var(--spacing-md) !important;
+  padding-top: var(--spacing-md) !important;
+  border-top: 1px solid var(--color-border) !important;
+}
+
+.product-actions a,
+.product-actions button {
+  flex: 1 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: var(--spacing-xs) !important;
+  padding: var(--spacing-md) var(--spacing-lg) !important;
+  border-radius: var(--radius-md) !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  transition: all var(--transition-normal) !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  font-family: var(--font-accent) !important;
+}
+
+/* WhatsApp button */
+.whatsapp-btn,
+.product-actions .whatsapp-btn {
+  background: #25D366 !important;
+  color: white !important;
+  border: 2px solid #25D366 !important;
+}
+
+.whatsapp-btn:hover,
+.product-actions .whatsapp-btn:hover {
+  background: #20BA5A !important;
+  border-color: #20BA5A !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3) !important;
+}
+
+/* Download/PDF button */
+.download-btn,
+.pdf-btn,
+.product-actions .download-btn,
+.product-actions .pdf-btn {
+  background: white !important;
+  color: var(--color-primary) !important;
+  border: 2px solid var(--color-primary) !important;
+}
+
+.download-btn:hover,
+.pdf-btn:hover,
+.product-actions .download-btn:hover,
+.product-actions .pdf-btn:hover {
+  background: var(--color-primary) !important;
+  color: white !important;
+  transform: translateY(-2px) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+/* View Details button in overlay */
+.view-details-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: var(--spacing-xs) !important;
+  padding: var(--spacing-md) var(--spacing-xl) !important;
+  background: white !important;
+  color: var(--color-primary) !important;
+  font-weight: 600 !important;
+  border-radius: var(--radius-full) !important;
+  text-decoration: none !important;
+  transition: all var(--transition-normal) !important;
+  box-shadow: var(--shadow-lg) !important;
+  font-family: var(--font-accent) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  font-size: 0.9rem !important;
+  border: 2px solid white !important;
+}
+
+.view-details-btn:hover {
+  background: var(--color-primary) !important;
+  color: white !important;
+  transform: scale(1.05) !important;
+  box-shadow: var(--shadow-xl) !important;
+  border-color: white !important;
+}
+
+.view-details-btn span {
+  position: relative !important;
+  z-index: 2 !important;
+  color: inherit !important;
+}
+
+.view-details-btn svg {
+  position: relative !important;
+  z-index: 2 !important;
+}

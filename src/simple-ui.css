@@ -1,0 +1,328 @@
+/* SIMPLE UI - Clean and straightforward design */
+
+/* Remove all complex animations and effects */
+.animated-card {
+  background: white !important;
+  border-radius: 12px !important;
+  padding: 0 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  transition: box-shadow 0.3s ease !important;
+  border: 1px solid #e0e0e0 !important;
+  transform: none !important;
+  height: auto !important;
+}
+
+.animated-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  transform: none !important;
+}
+
+/* Simple product cards */
+.product-card {
+  background: white !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  transition: box-shadow 0.3s ease !important;
+  border: 1px solid #e0e0e0 !important;
+  transform: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.product-card::before {
+  display: none !important;
+}
+
+.product-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  transform: none !important;
+  border-color: #c9a961 !important;
+}
+
+/* Simple product image */
+.product-image {
+  height: 280px !important;
+  overflow: hidden !important;
+  background: #f5f5f5 !important;
+}
+
+.product-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  transition: none !important;
+}
+
+.product-card:hover .product-image img {
+  transform: none !important;
+}
+
+/* Hide overlay */
+.product-overlay {
+  display: none !important;
+}
+
+/* Simple product content */
+.product-content {
+  padding: 24px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  background: white !important;
+  flex: 1 !important;
+}
+
+.product-content h3 {
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  color: #1a1a1a !important;
+  margin: 0 !important;
+  line-height: 1.3 !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+}
+
+.product-content p {
+  color: #666 !important;
+  line-height: 1.6 !important;
+  margin: 0 !important;
+  font-size: 1rem !important;
+}
+
+/* Simple features */
+.product-features {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+}
+
+.product-features li {
+  background: #f5f5f5 !important;
+  padding: 6px 14px !important;
+  border-radius: 20px !important;
+  font-size: 0.875rem !important;
+  color: #333 !important;
+  font-weight: 500 !important;
+  border: 1px solid #e0e0e0 !important;
+  transition: none !important;
+}
+
+.product-features li:hover {
+  background: #e8e8e8 !important;
+  color: #1a4d2e !important;
+}
+
+/* Simple buttons */
+.product-actions {
+  display: flex !important;
+  gap: 12px !important;
+  margin-top: auto !important;
+  padding-top: 16px !important;
+  border-top: 1px solid #e0e0e0 !important;
+}
+
+.product-actions a,
+.product-actions button {
+  flex: 1 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  padding: 12px 20px !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  transition: all 0.2s ease !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+
+/* WhatsApp button - simple green */
+.whatsapp-btn {
+  background: #25D366 !important;
+  color: white !important;
+  border: none !important;
+}
+
+.whatsapp-btn:hover {
+  background: #20BA5A !important;
+}
+
+/* Download button - simple outline */
+.download-btn,
+.pdf-btn {
+  background: white !important;
+  color: #1a4d2e !important;
+  border: 2px solid #1a4d2e !important;
+}
+
+.download-btn:hover,
+.pdf-btn:hover {
+  background: #1a4d2e !important;
+  color: white !important;
+}
+
+/* Simple grid */
+.products-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
+  gap: 24px !important;
+  margin-top: 32px !important;
+}
+
+/* Remove gradient backgrounds */
+.bg-mesh,
+.bg-mesh-intense {
+  background: #fafafa !important;
+}
+
+/* Simple glass cards */
+.glass-card,
+.glass-card-dark,
+.glass-card-light {
+  background: white !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid #e0e0e0 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  border-radius: 12px !important;
+}
+
+/* Simple section headers */
+.section-header h2 {
+  font-size: 2.5rem !important;
+  font-weight: 600 !important;
+  color: #1a1a1a !important;
+  margin-bottom: 12px !important;
+}
+
+.section-header p {
+  font-size: 1.1rem !important;
+  color: #666 !important;
+}
+
+/* Simple CTA */
+.cta-content {
+  /*background: white !important;*/
+  padding: 48px !important;
+  border-radius: 12px !important;
+  text-align: center !important;
+  /*border: 2px solid #1a4d2e !important;*/
+  position: relative;
+  z-index: 1;
+}
+
+.cta-content h2 {
+  color: #1a1a1a !important;
+  margin-bottom: 16px !important;
+}
+
+.cta-content p {
+  color: #666 !important;
+  margin-bottom: 24px !important;
+}
+
+/* Simple stats */
+.stat-item {
+  background: white !important;
+  padding: 32px !important;
+  border-radius: 12px !important;
+  border: 1px solid #e0e0e0 !important;
+}
+
+.stat-icon {
+  color: #1a4d2e !important;
+}
+
+.stat-number {
+  color: #1a4d2e !important;
+}
+
+/* Simple service cards */
+.service-card {
+  background: white !important;
+  padding: 32px !important;
+  border-radius: 12px !important;
+  border: 1px solid #e0e0e0 !important;
+}
+
+.service-icon {
+  color: #1a4d2e !important;
+  background: #f0f7f3 !important;
+}
+
+/* Simple value cards */
+.value-card {
+  background: white !important;
+  padding: 32px !important;
+  border-radius: 12px !important;
+  border: 1px solid #e0e0e0 !important;
+}
+
+/* Remove glow effects */
+.glow-primary,
+.hover-scale-glow,
+.gold-shine {
+  box-shadow: none !important;
+  animation: none !important;
+}
+
+/* Simple gradient text */
+.gradient-text-gold,
+.gradient-text-animated {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+  color: #1a4d2e !important;
+}
+
+/* Remove magnetic effects */
+.magnetic {
+  transition: none !important;
+}
+
+.magnetic:hover {
+  transform: none !important;
+}
+
+/* Disable scroll reveal animations for simplicity */
+.scroll-reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Simple contact form */
+.contact-form-section {
+  background: white !important;
+  padding: 32px !important;
+  border-radius: 12px !important;
+  border: 1px solid #e0e0e0 !important;
+}
+
+.contact-info-item {
+  background: white !important;
+  border: 1px solid #e0e0e0 !important;
+}
+
+/* Simple responsive */
+@media (max-width: 768px) {
+  .products-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .product-actions {
+    flex-direction: column !important;
+  }
+  
+  .product-actions a,
+  .product-actions button {
+    width: 100% !important;
+  }
+}

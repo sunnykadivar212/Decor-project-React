@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaBars, FaTimes, FaPhone, FaWhatsapp } from 'react-icons/fa';
+import logoDark from '../assets/logo-dark.svg';
 import './Header.css';
 
 function Header() {
@@ -45,8 +46,7 @@ function Header() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <span className="logo-text">Aangan</span>
-              <span className="logo-subtitle">Decor</span>
+              <img src={logoDark} alt="Aangan Decor" className="logo-image" />
             </motion.div>
           </Link>
 
