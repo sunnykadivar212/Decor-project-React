@@ -476,6 +476,14 @@ a:hover {
 }
 
 /* Responsive */
+@media (max-width: 1200px) {
+  .container,
+  .container-wide {
+    max-width: 100%;
+    padding: 0 var(--spacing-xl);
+  }
+}
+
 @media (max-width: 968px) {
   :root {
     font-size: 15px;
@@ -485,10 +493,45 @@ a:hover {
     padding: var(--spacing-3xl) 0;
   }
   
+  .section-lg {
+    padding: var(--spacing-2xl) 0;
+  }
+  
+  .section-sm {
+    padding: var(--spacing-xl) 0;
+  }
+  
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Improve touch targets on tablets */
+  .btn {
+    min-height: 48px;
+    padding: 0.875rem 1.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container,
+  .container-wide {
+    padding: 0 var(--spacing-md);
+  }
+  
   .grid-2,
   .grid-3,
   .grid-4 {
     grid-template-columns: 1fr;
+  }
+  
+  /* Stack layouts on mobile */
+  .hero-content,
+  .story-grid,
+  .contact-grid,
+  .product-grid {
+    grid-template-columns: 1fr !important;
   }
 }
 
@@ -504,6 +547,114 @@ a:hover {
   
   .section {
     padding: var(--spacing-2xl) 0;
+  }
+  
+  .section-lg {
+    padding: var(--spacing-xl) 0;
+  }
+  
+  .section-sm {
+    padding: var(--spacing-lg) 0;
+  }
+  
+  /* Ensure minimum touch target size */
+  .btn,
+  .action-btn,
+  .mobile-menu-toggle,
+  .social-icon,
+  a.btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Full width buttons on mobile */
+  .btn-primary,
+  .btn-secondary,
+  .btn-outline {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  /* Improve form inputs */
+  input,
+  textarea,
+  select {
+    font-size: 16px; /* Prevents zoom on iOS */
+    min-height: 44px;
+  }
+  
+  /* Better spacing on mobile */
+  h1 {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+  
+  h2 {
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
+  }
+  
+  h3 {
+    font-size: clamp(1.25rem, 4vw, 1.75rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .container,
+  .container-wide {
+    padding: 0 var(--spacing-sm);
+  }
+  
+  /* Extra small devices */
+  .section {
+    padding: var(--spacing-xl) 0;
+  }
+  
+  /* Reduce card padding on very small screens */
+  .card,
+  .product-card,
+  .service-card {
+    padding: var(--spacing-md);
+  }
+  
+  /* Stack action buttons */
+  .hero-actions,
+  .cta-actions,
+  .product-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .hero-actions .btn,
+  .cta-actions .btn,
+  .product-actions .btn,
+  .product-actions a {
+    width: 100%;
+  }
+}
+
+/* Landscape mobile devices */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    min-height: auto;
+    padding: var(--spacing-2xl) 0;
+  }
+  
+  .page-hero {
+    padding: var(--spacing-lg) 0;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Disable hover effects on touch devices */
+  .card-3d:hover {
+    transform: none;
+  }
+  
+  /* Increase tap targets */
+  .nav-link,
+  .footer-links a,
+  .social-links a {
+    padding: var(--spacing-sm);
   }
 }
 

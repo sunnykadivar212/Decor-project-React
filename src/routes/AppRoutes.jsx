@@ -28,12 +28,22 @@ import AanganVol1 from '../pages/products/AanganVol1';
 import AanganVol2 from '../pages/products/AanganVol2';
 import AanganVol3 from '../pages/products/AanganVol3';
 import AanganVol4 from '../pages/products/AanganVol4';
+import Clocks from '../pages/products/Clocks';
+import Artifacts from '../pages/products/Artifacts';
+import DesignerMirrors from '../pages/products/DesignerMirrors';
+import DesignerLights from '../pages/products/DesignerLights';
+import DesignerSofas from '../pages/products/DesignerSofas';
+import Curtains from '../pages/products/Curtains';
+import DesignerChairs from '../pages/products/DesignerChairs';
+import DiningTables from '../pages/products/DiningTables';
+import CenterTables from '../pages/products/CenterTables';
 
 // Category Pages
 import Laminate from '../pages/categories/Laminate';
 import Louvers from '../pages/categories/Louvers';
 import DecorativeCategory from '../pages/categories/DecorativeCategory';
 import PlywoodCategory from '../pages/categories/PlywoodCategory';
+import Hardware from '../pages/categories/Hardware';
 
 function AppRoutes() {
   return (
@@ -68,12 +78,22 @@ function AppRoutes() {
       <Route path="/aangan-vol-2" element={<AanganVol2 />} />
       <Route path="/aangan-vol-3" element={<AanganVol3 />} />
       <Route path="/aangan-vol-4" element={<AanganVol4 />} />
+      <Route path="/clocks" element={<Clocks />} />
+      <Route path="/artifacts" element={<Artifacts />} />
+      <Route path="/designer-mirrors" element={<DesignerMirrors />} />
+      <Route path="/designer-lights" element={<DesignerLights />} />
+      <Route path="/designer-sofas" element={<DesignerSofas />} />
+      <Route path="/curtains" element={<Curtains />} />
+      <Route path="/designer-chairs" element={<DesignerChairs />} />
+      <Route path="/dining-tables" element={<DiningTables />} />
+      <Route path="/center-tables" element={<CenterTables />} />
 
       {/* Category Pages */}
       <Route path="/laminate" element={<Laminate />} />
       <Route path="/louvers" element={<Louvers />} />
       <Route path="/decorative" element={<DecorativeCategory />} />
       <Route path="/plywood" element={<PlywoodCategory />} />
+      <Route path="/hardware" element={<Hardware />} />
 
       {/* 404 Not Found - Must be last */}
       <Route path="*" element={<NotFound />} />

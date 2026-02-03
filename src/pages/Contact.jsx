@@ -34,14 +34,14 @@ function Contact() {
     {
       icon: <FaPhone />,
       title: 'Phone',
-      details: '+91 70696 30777',
-      link: 'tel:917069630777',
+      details: '+91 70696 21777 / +91 70696 22777',
+      link: 'tel:917069621777',
     },
     {
       icon: <FaWhatsapp />,
       title: 'WhatsApp',
-      details: '+91 70696 30777',
-      link: 'http://wa.me/917069630777',
+      details: '+91 70696 21777',
+      link: 'http://wa.me/917069621777',
     },
     {
       icon: <FaEnvelope />,

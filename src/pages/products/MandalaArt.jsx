@@ -4,12 +4,12 @@ function MandalaArt() {
   return (
     <ProductPage
       title="Mandala Art"
-      description="Intricate handcrafted mandala designs for spiritual and aesthetic appeal"
-      image="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800&q=80"
+      description="Mandala art is a spiritual and geometric design form that symbolizes unity, balance and harmony. Featuring intricate patterns and symmetrical shapes."
+      image="https://images.unsplash.com/photo-1582201957340-a0c6feb8d203?w=800&q=80"
       features={[
-        'Handcrafted mandala designs',
-        'Spiritual significance',
-        'Unique patterns',
+        'Spiritual and geometric design form',
+        'Symbolizes unity, balance, and harmony',
+        'Intricate patterns and symmetrical shapes',
         'Various sizes available',
         'Perfect for meditation spaces',
         'Custom designs on request',

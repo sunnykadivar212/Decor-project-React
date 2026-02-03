@@ -75,16 +75,18 @@
 }
 
 .gradient-btn-outline {
-  background: transparent;
-  color: var(--color-primary);
-  border: 2px solid var(--color-primary);
-  box-shadow: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
 }
 
 .gradient-btn-outline:hover {
-  background: var(--color-primary);
-  color: var(--color-text-white);
-  box-shadow: var(--shadow-md);
+  background: white;
+  color: var(--color-primary);
+  border-color: white;
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
 }
 
 /* Loading State */

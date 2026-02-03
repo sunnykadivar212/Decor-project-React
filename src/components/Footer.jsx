@@ -22,7 +22,12 @@ function Footer() {
     'Acrylic',
     'Louvers',
     'Mandala Art',
-    'Decorative Accents',
+    'Clocks',
+    'Designer Mirrors',
+    'Designer Lights',
+    'Artifacts',
+    'Furniture',
+    'Hardware & Materials',
   ];
 
   return (
@@ -75,7 +80,7 @@ function Footer() {
 
               <div className="social-links">
                 <motion.a
-                  href="https://facebook.com"
+                  href="https://www.facebook.com/AanganDecor"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, y: -3 }}
@@ -161,7 +166,10 @@ function Footer() {
               <ul className="footer-contact">
                 <li>
                   <FaPhone />
-                  <a href="tel:917069630777">+91 70696 30777</a>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+                    <a href="tel:917069621777">+91 70696 21777</a>
+                    <a href="tel:917069622777">+91 70696 22777</a>
+                  </div>
                 </li>
                 <li>
                   <FaEnvelope />

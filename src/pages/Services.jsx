@@ -1,4 +1,4 @@
-import { FaPaintBrush, FaRulerCombined, FaTruck, FaTools, FaLightbulb, FaHandshake } from 'react-icons/fa';
+import { FaPaintBrush, FaRulerCombined, FaTruck, FaTools, FaLightbulb, FaHandshake, FaKey, FaDraftingCompass, FaCube } from 'react-icons/fa';
 import PageHero from '../components/PageHero';
 import ScrollReveal from '../components/ScrollReveal';
 import AnimatedCard from '../components/AnimatedCard';
@@ -8,6 +8,24 @@ import './Services.css';
 
 function Services() {
   const services = [
+    {
+      icon: <FaKey />,
+      title: 'Turn-Key Projects',
+      description: 'Fixed cost contract where you can "turn the key" to a fully operational facility when the project is completed. Complete end-to-end project execution with quality control.',
+      features: ['Fixed Cost Contract', 'Complete Project Delivery', 'Quality Assurance'],
+    },
+    {
+      icon: <FaDraftingCompass />,
+      title: '2D Planning',
+      description: 'Smart spaces start with smart plans - our 2D layouts bring your vision to life with clarity and precision.',
+      features: ['Detailed Layouts', 'Clear Visualization', 'Precise Measurements'],
+    },
+    {
+      icon: <FaCube />,
+      title: '3D Planning',
+      description: 'Experience your space before it\'s built - our 3D planning brings designs to life with stunning realism.',
+      features: ['Realistic Visualization', 'Virtual Walkthrough', 'Design Refinement'],
+    },
     {
       icon: <FaPaintBrush />,
       title: 'Material Supply',

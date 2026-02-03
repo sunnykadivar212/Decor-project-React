@@ -2,23 +2,32 @@
   padding-top: 80px;
 }
 
-/* Hero Section - Completely New Design */
-.hero {
+/* Hero Section - Simple & Elegant */
+.hero-simple {
   position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: center;
   overflow: hidden;
-  background: linear-gradient(135deg, #fdfcf8 0%, #f8f6f0 100%);
+  padding: 140px 0 80px;
 }
 
-.hero-background {
+/* Background Image */
+.hero-background-image {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 0;
+}
+
+.hero-background-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .hero-overlay {
@@ -27,139 +36,109 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(26, 77, 46, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(201, 169, 97, 0.08) 0%, transparent 50%);
+  background: linear-gradient(
+    135deg,
+    rgba(10, 15, 13, 0.85) 0%,
+    rgba(26, 46, 35, 0.75) 50%,
+    rgba(15, 22, 18, 0.85) 100%
+  );
 }
 
-.hero-content {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: var(--spacing-4xl);
-  align-items: center;
+/* Centered Content */
+.hero-content-center {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  color: white;
 }
 
-.hero-text {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xl);
-}
-
+/* Badge */
 .hero-badge {
   display: inline-flex;
   align-items: center;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-sm) var(--spacing-lg);
-  background: white;
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius-full);
-  font-size: 0.85rem;
+  gap: 10px;
+  padding: 12px 28px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 165, 116, 0.3);
+  border-radius: 50px;
+  font-size: 0.9rem;
   font-weight: 600;
-  font-family: var(--font-accent);
-  color: var(--color-primary);
-  width: fit-content;
-  box-shadow: var(--shadow-md);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  color: #D4A574;
+  margin-bottom: 32px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .hero-badge svg {
-  color: var(--color-secondary);
   font-size: 1.1rem;
+  color: #D4A574;
 }
 
+/* Title */
 .hero-title {
-  font-size: clamp(3rem, 6vw, 5.5rem);
-  line-height: 1.1;
-  margin: 0;
-  font-weight: 700;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 1.15;
+  margin: 0 0 28px 0;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: white;
 }
 
-.gradient-text {
+.title-highlight {
   display: block;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  background: linear-gradient(135deg, #D4A574 0%, #F4E4C1 50%, #C9A961 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  position: relative;
+  margin-top: 8px;
 }
 
+/* Description */
 .hero-description {
-  font-size: 1.25rem;
-  color: var(--color-text-secondary);
+  font-size: 1.2rem;
   line-height: 1.8;
-  max-width: 540px;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 40px 0;
+  font-style: italic;
+  font-weight: 400;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.hero-actions {
+/* Buttons */
+.hero-buttons {
   display: flex;
-  gap: var(--spacing-md);
+  gap: 16px;
+  justify-content: center;
   flex-wrap: wrap;
-  margin-top: var(--spacing-sm);
+  margin-bottom: 50px;
 }
 
-/* Hero Image - New Design */
-.hero-image-wrapper {
-  position: relative;
-  border-radius: var(--radius-2xl);
-  overflow: hidden;
-  box-shadow: var(--shadow-2xl);
-  transform: perspective(1000px) rotateY(-5deg);
-  transition: transform var(--transition-slow);
+/* Feature Badges */
+.hero-features {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.hero-image-wrapper:hover {
-  transform: perspective(1000px) rotateY(0deg);
+.feature-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
 }
 
-.hero-image-wrapper img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-}
-
-.hero-image-decoration {
-  position: absolute;
-  top: -100px;
-  right: -100px;
-  width: 300px;
-  height: 300px;
-  background: linear-gradient(135deg, var(--color-primary-light), var(--color-secondary-light));
-  border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.4;
-  z-index: -1;
-  animation: float 6s ease-in-out infinite;
-}
-
-/* Floating Elements - Enhanced */
-.floating-element {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.2;
-  z-index: 0;
-}
-
-.floating-1 {
-  width: 400px;
-  height: 400px;
-  background: var(--color-primary-light);
-  top: 5%;
-  left: -10%;
-  animation: float 8s ease-in-out infinite;
-}
-
-.floating-2 {
-  width: 350px;
-  height: 350px;
-  background: var(--color-secondary);
-  bottom: 5%;
-  right: -5%;
-  animation: float 10s ease-in-out infinite reverse;
+.feature-badge svg {
+  color: #D4A574;
+  font-size: 1.2rem;
 }
 
 /* Categories Section - New Design */
@@ -403,27 +382,26 @@
 }
 
 /* Responsive */
-@media (max-width: 968px) {
-  .hero-content {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-3xl);
+@media (max-width: 768px) {
+  .hero-simple {
+    padding: 120px 0 60px;
   }
 
-  .hero-image {
-    order: -1;
-  }
-
-  .hero-text {
-    text-align: center;
-    align-items: center;
+  .hero-title {
+    font-size: clamp(2rem, 7vw, 3.5rem);
   }
 
   .hero-description {
-    max-width: 100%;
+    font-size: 1.05rem;
+    margin-bottom: 32px;
   }
 
-  .hero-image-wrapper {
-    transform: none;
+  .hero-features {
+    gap: 20px;
+  }
+
+  .feature-badge {
+    font-size: 0.85rem;
   }
 
   .categories-grid {
@@ -436,13 +414,43 @@
 }
 
 @media (max-width: 640px) {
-  .hero-actions {
+  .hero-simple {
+    padding: 100px 0 50px;
+  }
+
+  .hero-badge {
+    font-size: 0.8rem;
+    padding: 10px 20px;
+    margin-bottom: 24px;
+  }
+
+  .hero-title {
+    margin-bottom: 20px;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+    margin-bottom: 28px;
+  }
+
+  .hero-buttons {
     flex-direction: column;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .hero-buttons a {
     width: 100%;
   }
 
-  .hero-actions .btn {
-    width: 100%;
+  .hero-features {
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 30px;
+  }
+
+  .feature-badge {
+    justify-content: center;
   }
 
   .features-grid {

@@ -35,87 +35,92 @@ function Home() {
 
   return (
     <div className="home">
-      {/* Hero Section */}
-      <section className="hero bg-mesh">
-        <div className="hero-background">
-          <motion.div
-            className="hero-overlay"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
+      {/* Hero Section - Simple & Elegant */}
+      <section className="hero-simple">
+        <div className="hero-background-image">
+          <img 
+            src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1600&q=80" 
+            alt="Elegant Interior"
           />
+          <div className="hero-overlay"></div>
         </div>
-        
-        <div className="container">
-          <div className="hero-content">
-            <motion.div
-              className="hero-text"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <motion.div
-                className="hero-badge glass-card-light"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-              >
-                <FaStar /> Premium Decor Solutions
-              </motion.div>
-              
-              <h1 className="hero-title">
-                Transform Your Space with
-                <span className="gradient-text-gold"> Elegant Design</span>
-              </h1>
-              
-              <p className="hero-description">
-                Discover premium interior materials and decorative accents that bring 
-                sophistication and style to every corner of your home or office.
-              </p>
-              
-              <div className="hero-actions">
-                <Link to="/interior">
-                  <GradientButton variant="primary" size="large">
-                    Explore Interior Items
-                    <FaArrowRight />
-                  </GradientButton>
-                </Link>
-                <Link to="/decorative">
-                  <GradientButton variant="outline" size="large">
-                    View Decorative Items
-                  </GradientButton>
-                </Link>
-              </div>
-            </motion.div>
 
-            <motion.div
-              className="hero-image"
+        <div className="container">
+          <motion.div 
+            className="hero-content-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.div 
+              className="hero-badge"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ delay: 0.2 }}
             >
-              <div className="hero-image-wrapper gold-shine">
-                <img 
-                  src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80" 
-                  alt="Elegant Interior Design"
-                />
-                <div className="hero-image-decoration glow-gold"></div>
+              <FaStar />
+              <span>Premium Decor Solutions</span>
+            </motion.div>
+
+            <motion.h1 
+              className="hero-title"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+            >
+              Transform Your Space with
+              <span className="title-highlight"> Elegant Design</span>
+            </motion.h1>
+
+            <motion.p 
+              className="hero-description"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+            >
+              "At Aangan, we don't just design interiors — we craft moods, and build timeless spaces"
+            </motion.p>
+
+            <motion.div 
+              className="hero-buttons"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+            >
+              <Link to="/interior">
+                <GradientButton variant="primary" size="large">
+                  Explore Collections
+                  <FaArrowRight />
+                </GradientButton>
+              </Link>
+              <Link to="/contact">
+                <GradientButton variant="outline" size="large">
+                  Get Consultation
+                </GradientButton>
+              </Link>
+            </motion.div>
+
+            <motion.div 
+              className="hero-features"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+            >
+              <div className="feature-badge">
+                <FaCheckCircle />
+                <span>15+ Years Experience</span>
+              </div>
+              <div className="feature-badge">
+                <FaCheckCircle />
+                <span>5000+ Projects</span>
+              </div>
+              <div className="feature-badge">
+                <FaCheckCircle />
+                <span>Premium Quality</span>
               </div>
             </motion.div>
-          </div>
+          </motion.div>
         </div>
-
-        {/* Floating Elements */}
-        <motion.div
-          className="floating-element floating-1 glow-primary"
-          animate={{ y: [0, -20, 0] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="floating-element floating-2 glow-gold"
-          animate={{ y: [0, 20, 0] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        />
       </section>
 
       {/* Categories Section */}
@@ -138,7 +143,6 @@ function Home() {
                 >
                   <div className="category-image">
                     <img src={category.image} alt={category.title} />
-                    <div className="category-overlay" style={{ background: `linear-gradient(135deg, ${category.color}dd, ${category.color}99)` }}></div>
                   </div>
                   <div className="category-content">
                     <h3>{category.title}</h3>

@@ -74,6 +74,56 @@ function About() {
         </div>
       </section>
 
+      {/* Mission & Vision Section */}
+      <section className="mission-vision-section section-sm bg-mesh-intense">
+        <div className="container">
+          <ScrollReveal direction="up">
+            <div className="section-header">
+              <h2 className="gradient-text-animated">Our Mission & Vision</h2>
+              <p>Guiding principles that drive our commitment to excellence</p>
+            </div>
+          </ScrollReveal>
+
+          <div className="mission-vision-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginTop: '3rem' }}>
+            <ScrollReveal direction="left">
+              <div className="glass-card" style={{ padding: '2rem' }}>
+                <h3 style={{ color: '#D4A574', marginBottom: '1rem' }}>Our Mission</h3>
+                <p>
+                  To create timeless designs that blend functionality with aesthetics, 
+                  delivering seamless execution and superior quality in every project. 
+                  We craft interiors that don't just look beautiful — they feel right, 
+                  transforming spaces into experiences.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal direction="right">
+              <div className="glass-card" style={{ padding: '2rem' }}>
+                <h3 style={{ color: '#D4A574', marginBottom: '1rem' }}>Our Vision</h3>
+                <p>
+                  To be recognized as a leader in interior design and decor, where quality 
+                  is not just a standard — it's a promise. Through attention to detail, 
+                  skilled craftsmanship, and carefully curated materials, we build interiors 
+                  that last in design, durability, and delight.
+                </p>
+              </div>
+            </ScrollReveal>
+          </div>
+
+          <ScrollReveal direction="up" delay={0.2}>
+            <div className="glass-card-dark" style={{ marginTop: '2rem', padding: '2rem', textAlign: 'center' }}>
+              <p style={{ fontSize: '1.2rem', fontStyle: 'italic', color: '#D4A574', marginBottom: '0.5rem' }}>
+                "Layered in Luxury"
+              </p>
+              <p style={{ fontSize: '0.95rem', opacity: 0.9 }}>
+                Every element is carefully curated to reflect seamless execution and deliver 
+                timeless interiors that blend functionality with longevity.
+              </p>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* Stats Section */}
       <section className="stats-section">
         <div className="container">

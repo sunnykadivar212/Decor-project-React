@@ -3,13 +3,13 @@ import Footer from '../components/Footer';
 import ScrollToTop from '../components/ScrollToTop';
 import BackToTop from '../components/BackToTop';
 import ChatWidget from '../components/ChatWidget';
-import ParticleBackground from '../components/ParticleBackground';
+import ParticlesBackground from '../components/ParticlesBackground';
 
 function MainLayout({ children }) {
   return (
     <>
       <ScrollToTop />
-      <ParticleBackground style="golden-luxury" />
+      <ParticlesBackground  />
       <div className="app">
         <Header />
         <main className="app-content">
