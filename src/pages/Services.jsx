@@ -13,6 +13,7 @@ function Services() {
       title: 'Turn-Key Projects',
       description: 'Fixed cost contract where you can "turn the key" to a fully operational facility when the project is completed. Complete end-to-end project execution with quality control.',
       features: ['Fixed Cost Contract', 'Complete Project Delivery', 'Quality Assurance'],
+      link: '/turnkey-projects',
     },
     {
       icon: <FaDraftingCompass />,
@@ -89,7 +90,8 @@ function Services() {
               <ScrollReveal key={service.title} direction="up" delay={index * 0.1}>
                 <AnimatedCard 
                   tiltEnabled={true}
-                  className="service-card"
+                  className={`service-card ${service.link ? 'service-card-clickable' : ''}`}
+                  onClick={service.link ? () => window.location.href = service.link : undefined}
                 >
                   <div className="service-icon glow-primary">{service.icon}</div>
                   <h3>{service.title}</h3>
@@ -99,6 +101,11 @@ function Services() {
                       <li key={feature}>{feature}</li>
                     ))}
                   </ul>
+                  {service.link && (
+                    <div className="service-link">
+                      Learn More →
+                    </div>
+                  )}
                 </AnimatedCard>
               </ScrollReveal>
             ))}

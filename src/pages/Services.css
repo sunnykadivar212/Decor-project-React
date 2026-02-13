@@ -53,9 +53,34 @@
   text-align: center;
 }
 
+.service-card-clickable {
+  cursor: pointer;
+  position: relative;
+}
+
+.service-card-clickable:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+}
+
 .service-card:hover {
   box-shadow: var(--shadow-2xl);
   border-color: var(--color-primary-light);
+}
+
+.service-link {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.service-card-clickable:hover .service-link {
+  color: var(--color-primary-light);
+  transform: translateX(5px);
 }
 
 .service-icon {

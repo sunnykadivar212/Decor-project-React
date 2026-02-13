@@ -6,6 +6,8 @@ import './App.css';
 import './product-card-fixes.css';
 import './simple-ui.css';
 
+import CustomCursor from './components/CustomCursor';
+
 function App() {
   return (
     <HelmetProvider>
@@ -13,6 +15,7 @@ function App() {
         <MainLayout>
           <AppRoutes />
         </MainLayout>
+        <CustomCursor />
       </Router>
     </HelmetProvider>
   );

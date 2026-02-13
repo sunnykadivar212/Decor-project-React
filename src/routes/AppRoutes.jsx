@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from '../pages/Home';
 import About from '../pages/About';
 import Services from '../pages/Services';
+import TurnkeyProjects from '../pages/TurnkeyProjects';
 import Shop from '../pages/Shop';
 import Interior from '../pages/Interior';
 import Decorative from '../pages/Decorative';
@@ -54,6 +55,7 @@ function AppRoutes() {
       <Route path="/about-us" element={<About />} />
       <Route path="/services" element={<Services />} />
       <Route path="/services-detail" element={<Services />} />
+      <Route path="/turnkey-projects" element={<TurnkeyProjects />} />
       <Route path="/shop" element={<Shop />} />
       <Route path="/interior" element={<Interior />} />
       <Route path="/decorative" element={<Decorative />} />

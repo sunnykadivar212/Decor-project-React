@@ -1,0 +1,72 @@
+/* Custom Cursor Styles */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease-out; /* Smooth follow for the container/ring */
+  mix-blend-mode: difference; /* Ensures visibility on light/dark backgrounds */
+}
+
+.custom-cursor.hidden {
+  opacity: 0;
+}
+
+/* Inner Dot */
+.cursor-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 50%;
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+/* Outer Ring */
+.cursor-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+}
+
+/* Hover State */
+.custom-cursor.hovering .cursor-dot {
+  width: 40px;
+  height: 40px;
+  opacity: 0.5;
+  background-color: var(--color-primary); /* Use brand color */
+}
+
+.custom-cursor.hovering .cursor-ring {
+  width: 60px;
+  height: 60px;
+  border-color: rgba(79, 157, 105, 0.5); /* Brand color alpha */
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Hide default cursor on devices that support hover */
+@media (pointer: fine) {
+  body, a, button, input {
+    cursor: none !important;
+  }
+}
+
+/* Hide custom cursor on touch devices */
+@media (pointer: coarse) {
+  .custom-cursor {
+    display: none;
+  }
+}
