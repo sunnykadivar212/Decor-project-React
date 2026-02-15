@@ -1,20 +1,12 @@
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+// Force update
+import { motion } from 'framer-motion';
 import { FaKey, FaClipboardCheck, FaUsers, FaClock, FaCheckCircle, FaTools, FaPaintBrush, FaHardHat, FaChartLine, FaHandshake, FaArrowRight } from 'react-icons/fa';
-import PageHero from '../components/PageHero';
 import ScrollReveal from '../components/ScrollReveal';
 import AnimatedCard from '../components/AnimatedCard';
 import GradientButton from '../components/GradientButton';
-import ParticlesBackground from '../components/ParticlesBackground';
 import './TurnkeyProjects.css';
 
 function TurnkeyProjects() {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
-
   const projectTypes = [
     {
       id: 'residential',
@@ -57,7 +49,7 @@ function TurnkeyProjects() {
   ];
 
   return (
-    <div className="turnkey-page" ref={containerRef}>
+    <div className="turnkey-page">
       {/* Immersive Hero Section */}
       <section className="turnkey-hero">
         <div className="hero-bg-overlay"></div>
@@ -181,8 +173,7 @@ function TurnkeyProjects() {
       </section>
 
       {/* CTA */}
-      <section className="section turnkey-cta">
-        <ParticlesBackground id="cta-particles" />
+      <section className="section turnkey-cta bg-mesh-dark">
         <div className="container cta-container">
            <h2>Ready to Build?</h2>
            <p>Let's discuss your upcoming project. Our experts are ready to guide you.</p>

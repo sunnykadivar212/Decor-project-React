@@ -55,11 +55,17 @@ function Footer() {
               </p>
               
               {/* Our Group Of Agency */}
-              <div className="group-companies">
-                <h5>Our Group Of Agency</h5>
-                <ul>
-                  <li>Aangan Decor</li>
-                  <li>Aangan Design Studio</li>
+              <div className="group-companies elevated-section">
+                <h5 className="accent-title">Our Group Of Agency</h5>
+                <ul className="group-list">
+                  <li>
+                    <span className="brand-dot"></span>
+                    <span className="brand-name">Aangan Decor</span>
+                  </li>
+                  <li>
+                    <span className="brand-dot"></span>
+                    <span className="brand-name">Aangan Design Studio</span>
+                  </li>
                 </ul>
               </div>
 
@@ -78,13 +84,13 @@ function Footer() {
                 </a>
               </div>
 
-              <div className="social-links">
+              <div className="social-links premium-socials">
                 <motion.a
                   href="https://www.facebook.com/AanganDecor"
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ scale: 1.1, y: -3 }}
-                  whileTap={{ scale: 0.9 }}
+                  whileHover={{ scale: 1.2, rotate: 5 }}
+                  className="social-icon-wrapper fb"
                 >
                   <FaFacebook />
                 </motion.a>
@@ -92,8 +98,8 @@ function Footer() {
                   href="https://www.instagram.com/aangan__decor"
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ scale: 1.1, y: -3 }}
-                  whileTap={{ scale: 0.9 }}
+                  whileHover={{ scale: 1.2, rotate: -5 }}
+                  className="social-icon-wrapper ig"
                 >
                   <FaInstagram />
                 </motion.a>
@@ -101,8 +107,8 @@ function Footer() {
                   href="http://wa.me/917069630777"
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ scale: 1.1, y: -3 }}
-                  whileTap={{ scale: 0.9 }}
+                  whileHover={{ scale: 1.2, rotate: 5 }}
+                  className="social-icon-wrapper wa"
                 >
                   <FaWhatsapp />
                 </motion.a>
@@ -110,8 +116,8 @@ function Footer() {
                   href="https://linkedin.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ scale: 1.1, y: -3 }}
-                  whileTap={{ scale: 0.9 }}
+                  whileHover={{ scale: 1.2, rotate: -5 }}
+                  className="social-icon-wrapper li"
                 >
                   <FaLinkedin />
                 </motion.a>

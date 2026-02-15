@@ -17,60 +17,90 @@ function ProductPage({ title, description, image, features, pdfLink, color = 'pr
         variant={color}
       />
 
-      {/* Product Details */}
-      <section className="product-details section">
+      {/* Product Details - Editorial Layout */}
+      <section className="product-details section bg-mesh">
         <div className="container">
-          <div className="product-grid">
+          <div className="editorial-grid">
             <motion.div
-              className="product-image-section"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              className="editorial-image-side"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.8 }}
             >
-              <div className="product-image-wrapper">
+              <div className="editorial-image-wrapper glass-shine">
                 <img src={image} alt={title} />
               </div>
             </motion.div>
-
+ 
             <motion.div
-              className="product-info-section"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              className="editorial-info-side"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h2>Features & Benefits</h2>
-              <ul className="product-features">
-                {features.map((feature, index) => (
-                  <li key={index}>
-                    <FaCheckCircle />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
+              <span className="info-overline">Product Overview</span>
+              <h2 className="editorial-heading">{title}</h2>
+              <p className="editorial-description">{description}</p>
+              
+              <div className="features-editorial">
+                <h3>Key Features</h3>
+                <ul className="product-features-list">
+                  {features.map((feature, index) => (
+                    <li key={index}>
+                      <FaCheckCircle className="icon-accent" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-              {pdfLink && (
+              <div className="editorial-actions">
+                {pdfLink && (
+                  <a
+                    href={pdfLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="editorial-btn primary"
+                  >
+                    <FaDownload />
+                    Download Catalog
+                  </a>
+                )}
+
                 <a
-                  href={pdfLink}
+                  href="http://wa.me/917069621777"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-primary download-btn"
+                  className="editorial-btn secondary"
                 >
-                  <FaDownload />
-                  Download Catalog
+                  Request a Quote
                 </a>
-              )}
-
-              <a
-                href="http://wa.me/917069621777"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-secondary"
-              >
-                Get Quote
-              </a>
+              </div>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Section */}
+      <section className="trust-section section-sm">
+        <div className="container">
+          <div className="trust-banner glass-card">
+            <div className="trust-item">
+              <span className="trust-num">15+</span>
+              <span className="trust-label">Years of Expertise</span>
+            </div>
+            <div className="trust-divider"></div>
+            <div className="trust-item">
+              <span className="trust-num">100%</span>
+              <span className="trust-label">Premium Quality</span>
+            </div>
+            <div className="trust-divider"></div>
+            <div className="trust-item">
+              <span className="trust-num">5k+</span>
+              <span className="trust-label">Happy Spaces</span>
+            </div>
           </div>
         </div>
       </section>

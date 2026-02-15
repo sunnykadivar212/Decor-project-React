@@ -3,9 +3,16 @@ import { Link } from 'react-router-dom';
 import { FaChevronRight } from 'react-icons/fa';
 import './PageHero.css';
 
-function PageHero({ title, subtitle, breadcrumbs, variant = 'primary' }) {
+function PageHero({ title, subtitle, breadcrumbs, variant = 'primary', backgroundImage }) {
+  const heroStyle = backgroundImage ? { 
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center'
+  } : {};
+
   return (
-    <section className={`page-hero ${variant}-hero`}>
+    <section className={`page-hero ${variant}-hero ${backgroundImage ? 'has-bg-image' : ''}`} style={heroStyle}>
+      {backgroundImage && <div className="page-hero-overlay"></div>}
       <div className="container">
         <motion.div
           className="page-hero-content"

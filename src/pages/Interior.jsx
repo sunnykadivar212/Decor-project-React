@@ -1,13 +1,21 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaArrowRight, FaWhatsapp, FaDownload } from 'react-icons/fa';
+import { FaArrowRight, FaWhatsapp, FaQuoteRight } from 'react-icons/fa';
 import PageHero from '../components/PageHero';
 import ScrollReveal from '../components/ScrollReveal';
 import AnimatedCard from '../components/AnimatedCard';
-import ParticlesBackground from '../components/ParticlesBackground';
+import QuoteModal from '../components/QuoteModal';
 import './Interior.css';
 import Newsletter from '../components/Newsletter';
 
 function Interior() {
+  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState('');
+  
+  const openQuoteModal = (productTitle) => {
+    setSelectedProduct(productTitle);
+    setIsQuoteModalOpen(true);
+  };
   const products = [
     {
       title: 'Premium Plywood',
@@ -61,54 +69,55 @@ function Interior() {
         subtitle="Premium materials for stunning interiors - plywood, laminates, acrylic, and more"
         breadcrumbs={[{ label: 'Interior Items' }]}
         variant="primary"
+        backgroundImage="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1920"
       />
 
-      {/* Products Section */}
+      {/* Products Section - Gallery Editorial Grid */}
       <section className="products-section section bg-mesh">
         <div className="container">
-          <div className="products-grid">
+          <div className="gallery-grid">
             {products.map((product, index) => (
               <ScrollReveal key={product.title} direction="up" delay={index * 0.1}>
-                <AnimatedCard 
-                  tiltEnabled={true}
-                  className="product-card"
-                >
-                  <div className="product-image">
-                    <img src={product.image} alt={product.title} />
-                    <div className="product-overlay">
-                      <Link to={product.link} className="view-details-btn magnetic">
-                        View Details
-                        <FaArrowRight />
-                      </Link>
+                <div className="gallery-item group">
+                  <div className="gallery-image-wrapper">
+                    <img src={product.image} alt={product.title} className="gallery-image" />
+                    
+                    {/* Hover Content */}
+                    <div className="gallery-overlay">
+                      <div className="gallery-info">
+                        <span className="gallery-category">Premium Quality</span>
+                        <h3 className="gallery-title">{product.title}</h3>
+                        <p className="gallery-desc">{product.description}</p>
+                        
+                        <div className="gallery-actions">
+                          <button 
+                            className="action-pill quote-btn"
+                            onClick={() => openQuoteModal(product.title)}
+                          >
+                            <FaQuoteRight /> Quote
+                          </button>
+                          <Link to={product.link} className="action-pill primary">
+                            Details <FaArrowRight />
+                          </Link>
+                          <a 
+                            href={`http://wa.me/917069630777?text=Hi, I'm interested in ${product.title}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="action-pill whatsapp"
+                          >
+                            <FaWhatsapp />
+                          </a>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div className="product-content">
-                    <h3>{product.title}</h3>
-                    <p>{product.description}</p>
-                    <ul className="product-features">
-                      {product.features.map((feature) => (
-                        <li key={feature}>{feature}</li>
-                      ))}
-                    </ul>
-                    <div className="product-actions">
-                      <a 
-                        href={`http://wa.me/917069630777?text=Hi, I'm interested in ${product.title}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="whatsapp-btn"
-                      >
-                        <FaWhatsapp /> Inquire
-                      </a>
-                      <a 
-                        href="/catalogs/interior-catalog.pdf"
-                        download
-                        className="download-btn"
-                      >
-                        <FaDownload /> Catalog
-                      </a>
-                    </div>
+                  
+                  {/* Static Info (Visible on Mobile or as Minimal Label) */}
+                  <div className="gallery-footer">
+                    <h4 className="footer-title">{product.title}</h4>
+                    <div className="footer-line"></div>
                   </div>
-                </AnimatedCard>
+                </div>
               </ScrollReveal>
             ))}
           </div>
@@ -117,7 +126,7 @@ function Interior() {
 
       {/* CTA Section */}
       <section className="cta-section section-sm">
-        <ParticlesBackground id="interior-cta-particles" />
+        {/* Particles Removed */}
         <div className="container">
           <ScrollReveal direction="up">
             <div className="cta-content glass-card">
@@ -137,6 +146,12 @@ function Interior() {
       </section>
       
       <Newsletter />
+
+      <QuoteModal 
+        isOpen={isQuoteModalOpen} 
+        onClose={() => setIsQuoteModalOpen(false)} 
+        productTitle={selectedProduct}
+      />
     </div>
   );
 }

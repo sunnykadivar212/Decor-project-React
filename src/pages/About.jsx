@@ -40,6 +40,7 @@ function About() {
         subtitle="Transforming spaces with premium materials and exceptional craftsmanship since 2009"
         breadcrumbs={[{ label: 'About' }]}
         variant="primary"
+        backgroundImage="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1920"
       />
 
       {/* Story Section */}

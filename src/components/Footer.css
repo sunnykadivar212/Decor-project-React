@@ -83,44 +83,80 @@
   border-color: #4f9d69;
 }
 
-/* Group Companies */
-.group-companies {
-  margin: 28px 0;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+/* Group Companies - Elevated */
+.elevated-section {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
 }
 
-.group-companies h5 {
-  font-size: 13px;
-  font-weight: 600;
-  color: #6bc98d;
-  margin-bottom: 16px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+.accent-title {
+  color: var(--color-secondary) !important;
+  font-size: 0.9rem !important;
+  letter-spacing: 0.2em !important;
+  margin-bottom: 20px !important;
 }
 
-.group-companies ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.group-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
 }
 
-.group-companies li {
-  color: rgba(255, 255, 255, 0.6);
-  padding: 6px 0;
-  font-size: 14px;
-  padding-left: 18px;
-  position: relative;
+.group-list li {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 0 !important;
 }
 
-.group-companies li::before {
-  content: '•';
-  position: absolute;
-  left: 0;
-  color: #4f9d69;
+.group-list li::before {
+  display: none !important;
 }
+
+.brand-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--color-secondary);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--color-secondary);
+}
+
+.brand-name {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Premium Socials */
+.premium-socials {
+  gap: 16px !important;
+}
+
+.social-icon-wrapper {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 20px !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.social-icon-wrapper:hover {
+  background: white !important;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3) !important;
+}
+
+.social-icon-wrapper.fb:hover { color: #1877F2; }
+.social-icon-wrapper.ig:hover { color: #E4405F; }
+.social-icon-wrapper.wa:hover { color: #25D366; }
+.social-icon-wrapper.li:hover { color: #0A66C2; }
 
 /* Instagram Section */
 .instagram-section {

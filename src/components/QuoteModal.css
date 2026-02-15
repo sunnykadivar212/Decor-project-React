@@ -1,0 +1,191 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85); /* Slightly darker for better focus */
+  backdrop-filter: blur(10px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md);
+  margin-top: var(--spacing-3xl); /* Viewport safety padding */
+}
+
+.quote-modal {
+  position: relative; /* Changed from fixed since parent overlay is now flex */
+  width: 100%;
+  max-width: 650px;
+  max-height: 85vh; /* Reduced slightly for more safety margin */
+  background: white;
+  z-index: 2001;
+  padding: var(--spacing-3xl);
+  border-radius: var(--radius-2xl);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) transparent;
+  display: flex;
+  flex-direction: column;
+}
+
+.quote-modal::-webkit-scrollbar {
+  width: 6px;
+}
+
+.quote-modal::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
+}
+
+.close-modal {
+  position: absolute;
+  top: var(--spacing-lg);
+  right: var(--spacing-lg);
+  background: var(--color-bg-secondary);
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s;
+  color: var(--color-primary);
+}
+
+.close-modal:hover {
+  background: var(--color-primary);
+  color: white;
+  transform: rotate(90deg);
+}
+
+.modal-header {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.modal-tag {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: var(--color-bg-secondary);
+  color: var(--color-primary);
+  font-family: var(--font-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--spacing-sm);
+}
+
+.modal-header h2 {
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.modal-header p {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.modal-form .form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-primary);
+}
+
+.modal-form input,
+.modal-form textarea {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  font-family: inherit;
+  transition: all 0.3s;
+  background: var(--color-bg-secondary);
+}
+
+.modal-form input:focus,
+.modal-form textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(79, 157, 105, 0.1);
+}
+
+.modal-submit-btn {
+  margin-top: var(--spacing-md);
+  padding: 1.25rem;
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-full);
+  font-family: var(--font-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.modal-submit-btn:hover:not(:disabled) {
+  background: var(--color-secondary);
+  color: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(201, 169, 97, 0.3);
+}
+
+.modal-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.modal-success {
+  text-align: center;
+  padding: var(--spacing-2xl) 0;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.modal-success h2 {
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.modal-success p {
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 600px) {
+  .quote-modal {
+    padding: var(--spacing-xl);
+    width: 90%;
+    max-height: 95vh;
+  }
+  
+  .modal-form .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .modal-header h2 {
+    font-size: 1.8rem;
+  }
+}

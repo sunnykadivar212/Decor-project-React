@@ -3,7 +3,6 @@ import PageHero from '../components/PageHero';
 import ScrollReveal from '../components/ScrollReveal';
 import AnimatedCard from '../components/AnimatedCard';
 import GradientButton from '../components/GradientButton';
-import ParticlesBackground from '../components/ParticlesBackground';
 import './Services.css';
 
 function Services() {
@@ -73,6 +72,7 @@ function Services() {
         subtitle="Comprehensive solutions for all your interior and decorative needs"
         breadcrumbs={[{ label: 'Services' }]}
         variant="primary"
+        backgroundImage="https://images.unsplash.com/photo-1581094794329-cd1096d52d95?auto=format&fit=crop&q=80&w=1920"
       />
 
       {/* Services Grid */}
@@ -144,7 +144,7 @@ function Services() {
 
       {/* CTA Section */}
       <section className="cta-section section-sm">
-        <ParticlesBackground id="services-cta-particles" />
+        {/* Particles Removed */}
         <div className="container">
           <ScrollReveal direction="scale">
             <div className="cta-content glass-card-dark">

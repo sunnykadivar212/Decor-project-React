@@ -1,61 +1,13 @@
-import { useState, useEffect } from 'react';
-import { FaPaperPlane, FaCheckCircle } from 'react-icons/fa';
+import { useState } from 'react';
+import { FaPaperPlane, FaCheckCircle, FaEnvelope } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
+import { WEB3FORMS_ACCESS_KEY } from '../config';
 import './Newsletter.css';
 
 function Newsletter() {
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    // Load particles.js script
-    const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js';
-    script.async = true;
-    script.onload = () => {
-      if (window.particlesJS) {
-        window.particlesJS("newsletter-particles", {
-          particles: {
-            number: { value: 100 },
-            color: { value: "#011822" },
-            shape: { type: "circle" },
-            opacity: { value: 0.3 },
-            size: { value: 3 },
-            line_linked: {
-              enable: true,
-              distance: 200,
-              color: "#011822",
-              opacity: 0.2,
-              width: 1,
-            },
-            move: {
-              enable: true,
-              speed: 2,
-            },
-          },
-          interactivity: {
-            detect_on: "window",
-            events: {
-              onhover: { enable: true, mode: "repulse" },
-              onclick: { enable: true, mode: "push" },
-            },
-            modes: {
-              repulse: { distance: 100, duration: 0.4 },
-              push: { particles_nb: 4 },
-            },
-          },
-        });
-      }
-    };
-    document.body.appendChild(script);
-
-    return () => {
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
-      }
-    };
-  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -66,76 +18,122 @@ function Newsletter() {
 
     setIsLoading(true);
     
-    // Simulate API call
-    setTimeout(() => {
-      setIsLoading(false);
-      setIsSubmitted(true);
-      setEmail('');
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          email: email,
+          subject: 'New Newsletter Subscription',
+          from_name: 'Aangan Decor Website'
+        })
+      });
+
+      const result = await response.json();
       
-      // Reset after 5 seconds
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 5000);
-    }, 1000);
+      if (result.success) {
+        setIsSubmitted(true);
+        setEmail('');
+        
+        // Reset after 5 seconds
+        setTimeout(() => {
+          setIsSubmitted(false);
+        }, 5000);
+      } else {
+        console.error('Submission failed:', result);
+        alert('Something went wrong. Please try again later.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Error submitting form. Please check your connection.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
-    <div className="newsletter">
-      <div id="newsletter-particles" className="particles-container"></div>
-      <div className="newsletter-content">
-        <div className="newsletter-text">
-          <h3>Stay Updated</h3>
-          <p>Subscribe to our newsletter for latest products and offers</p>
-        </div>
+    <section className="newsletter-section section-lg">
+      <div className="container">
+        <motion.div 
+          className="newsletter-glass-card"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="newsletter-decor-icon">
+            <FaEnvelope />
+          </div>
+          
+          <div className="newsletter-header">
+            <h2 className="gradient-text-animated">Stay Updated</h2>
+            <p>Join our exclusive community for the latest interior trends, premium releases, and special offers.</p>
+          </div>
 
-        <AnimatePresence mode="wait">
-          {!isSubmitted ? (
-            <motion.form
-              key="form"
-              className="newsletter-form"
-              onSubmit={handleSubmit}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-            >
-              <input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="newsletter-input"
-              />
-              <button
-                type="submit"
-                className="newsletter-btn"
-                disabled={isLoading}
+          <AnimatePresence mode="wait">
+            {!isSubmitted ? (
+              <motion.form
+                key="form"
+                className="newsletter-premium-form"
+                onSubmit={handleSubmit}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
               >
-                {isLoading ? (
-                  <div className="spinner-inline"></div>
-                ) : (
-                  <>
-                    <span>Subscribe</span>
-                    <FaPaperPlane />
-                  </>
-                )}
-              </button>
-            </motion.form>
-          ) : (
-            <motion.div
-              key="success"
-              className="newsletter-success"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-            >
-              <FaCheckCircle />
-              <span>Thank you for subscribing!</span>
-            </motion.div>
-          )}
-        </AnimatePresence>
+                <div className="input-field-wrapper">
+                  <input
+                    type="email"
+                    placeholder="your@email.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="premium-input"
+                  />
+                  <button
+                    type="submit"
+                    className="premium-submit-btn"
+                    disabled={isLoading}
+                  >
+                    {isLoading ? (
+                      <div className="loading-dots">
+                        <span></span><span></span><span></span>
+                      </div>
+                    ) : (
+                      <>
+                        <span className="btn-text">Inspire Me</span>
+                        <FaPaperPlane className="icon-slant" />
+                      </>
+                    )}
+                  </button>
+                </div>
+              </motion.form>
+            ) : (
+              <motion.div
+                key="success"
+                className="newsletter-premium-success"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+              >
+                <div className="success-icon-wrap">
+                  <FaCheckCircle />
+                </div>
+                <h3>Welcome to the Aangan Circle!</h3>
+                <p>You'll be the first to know about our premium collections.</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+          
+          <div className="newsletter-footer">
+            <p>We respect your privacy. Unsubscribe at any time.</p>
+          </div>
+        </motion.div>
       </div>
-    </div>
+    </section>
   );
 }
 

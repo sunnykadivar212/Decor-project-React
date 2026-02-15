@@ -4,7 +4,6 @@ import { FaArrowRight, FaStar, FaCheckCircle } from 'react-icons/fa';
 import ScrollReveal from '../components/ScrollReveal';
 import AnimatedCard from '../components/AnimatedCard';
 import GradientButton from '../components/GradientButton';
-import ParticlesBackground from '../components/ParticlesBackground';
 import './Home.css';
 import Newsletter from '../components/Newsletter';
 
@@ -44,7 +43,7 @@ function Home() {
           />
           <div className="hero-overlay"></div>
         </div>
-
+        
         <div className="container">
           <motion.div 
             className="hero-content-center"
@@ -68,7 +67,7 @@ function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              Transform Your Space with
+              Transform Your Space with <br className="hidden-mobile"/>
               <span className="title-highlight"> Elegant Design</span>
             </motion.h1>
 
@@ -178,7 +177,7 @@ function Home() {
 
       {/* CTA Section */}
       <section className="cta-section">
-        <ParticlesBackground id="home-cta-particles" />
+        {/* Particles Removed */}
         <div className="container">
           <ScrollReveal direction="up">
             <div className="cta-content glass-card-dark">

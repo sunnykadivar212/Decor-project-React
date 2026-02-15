@@ -146,6 +146,41 @@
   margin-top: var(--spacing-md);
 }
 
+/* Success Message */
+.contact-success-message {
+  padding: var(--spacing-4xl) var(--spacing-2xl);
+  text-align: center;
+  animation: scaleIn 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.success-icon-wrap {
+  width: 100px;
+  height: 100px;
+  background: var(--color-bg-secondary);
+  color: var(--color-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  margin: 0 auto var(--spacing-2xl);
+  box-shadow: var(--shadow-xl);
+  border: 2px solid var(--color-primary-light);
+}
+
+.contact-success-message h2 {
+  font-size: 3rem;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.contact-success-message p {
+  font-size: 1.25rem;
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 /* Responsive */
 @media (max-width: 968px) {
   .contact-grid {
