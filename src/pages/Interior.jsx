@@ -22,28 +22,28 @@ function Interior() {
       description: 'High-quality plywood for durable and elegant furniture',
       image: 'https://images.unsplash.com/photo-1615873968403-89e068629265?w=600&q=80',
       features: ['Waterproof', 'Termite Resistant', 'Multiple Thickness'],
-      link: '/aangan-plywood',
+      link: '/interior/aangan-plywood',
     },
     {
       title: 'Plain Laminates',
       description: 'Smooth, elegant laminates in various colors',
       image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80',
       features: ['Scratch Resistant', 'Easy Maintenance', 'Wide Color Range'],
-      link: '/aangan-plain-laminate',
+      link: '/interior/aangan-plain-laminate',
     },
     {
       title: 'Mocco Laminates',
       description: 'Textured laminates with sophisticated patterns',
       image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80',
       features: ['Unique Textures', 'Premium Finish', 'Durable Surface'],
-      link: '/aangan-mocco-laminate',
+      link: '/interior/aangan-mocco-laminate',
     },
     {
       title: 'Acrylic Sheets',
       description: 'Versatile acrylic for modern interior applications',
       image: 'https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=600&q=80',
       features: ['High Gloss', 'UV Resistant', 'Multiple Colors'],
-      link: '/aangan-acrylic',
+      link: '/interior/aangan-acrylic',
     },
     {
       title: 'Louvers',
@@ -57,7 +57,7 @@ function Interior() {
       description: 'Premium fabric-based decorative materials',
       image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80',
       features: ['Soft Touch', 'Elegant Look', 'Easy Installation'],
-      link: '/a-fab',
+      link: '/interior/a-fab',
     },
   ];
 

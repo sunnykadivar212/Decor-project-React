@@ -173,8 +173,8 @@ function TurnkeyProjects() {
       </section>
 
       {/* CTA */}
-      <section className="section turnkey-cta bg-mesh-dark">
-        <div className="container cta-container">
+      <section className="section turnkey-cta">
+        <div className="container cta-container bg-mesh-dark">
            <h2>Ready to Build?</h2>
            <p>Let's discuss your upcoming project. Our experts are ready to guide you.</p>
            <div className="cta-btn-group">

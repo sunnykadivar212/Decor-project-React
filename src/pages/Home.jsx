@@ -4,6 +4,7 @@ import { FaArrowRight, FaStar, FaCheckCircle } from 'react-icons/fa';
 import ScrollReveal from '../components/ScrollReveal';
 import AnimatedCard from '../components/AnimatedCard';
 import GradientButton from '../components/GradientButton';
+import TestimonialsCarousel from '../components/TestimonialsCarousel';
 import './Home.css';
 import Newsletter from '../components/Newsletter';
 
@@ -199,6 +200,9 @@ function Home() {
           </ScrollReveal>
         </div>
       </section>
+      
+      {/* Testimonials Section */}
+      <TestimonialsCarousel />
       
       <Newsletter />
       

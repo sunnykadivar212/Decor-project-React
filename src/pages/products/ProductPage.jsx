@@ -1,9 +1,35 @@
-import { motion } from 'framer-motion';
-import { FaCheckCircle, FaDownload } from 'react-icons/fa';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaCheckCircle, FaDownload, FaExpand } from 'react-icons/fa';
 import PageHero from '../../components/PageHero';
+import ImageGallery from '../../components/ImageGallery';
 import './ProductPage.css';
 
-function ProductPage({ title, description, image, features, pdfLink, color = 'primary' }) {
+function ProductPage({ title, description, image, gallery, features, pdfLink, color = 'primary', options = [], heroImage }) {
+  const [showGallery, setShowGallery] = useState(false);
+  const [activeImage, setActiveImage] = useState(image);
+  const [activeOption, setActiveOption] = useState(null);
+  
+  const finalHeroImage = heroImage;
+  
+  // If gallery is provided, use it; otherwise create a single-image gallery
+  const galleryImages = gallery || [{ url: image, alt: title }];
+
+  const handleOptionClick = (option) => {
+    setActiveImage(option.image);
+    setActiveOption(option.name);
+  };
+
+  // Derive the correct category breadcrumb from the color/theme prop
+  const categoryMap = {
+    plywood:    { label: 'Interior',    link: '/interior' },
+    laminate:   { label: 'Interior',    link: '/interior' },
+    primary:    { label: 'Interior',    link: '/interior' },
+    decorative: { label: 'Decorative', link: '/decorative' },
+    furniture:  { label: 'Decorative', link: '/decorative' },
+  };
+  const category = categoryMap[color] || { label: 'Interior', link: '/interior' };
+
   return (
     <div className={`product-page page-transition ${color}`}>
       {/* Hero Section */}
@@ -11,10 +37,11 @@ function ProductPage({ title, description, image, features, pdfLink, color = 'pr
         title={title}
         subtitle={description}
         breadcrumbs={[
-          { label: 'Shop', link: '/shop' },
+          category,
           { label: title }
         ]}
         variant={color}
+        backgroundImage={finalHeroImage}
       />
 
       {/* Product Details - Editorial Layout */}
@@ -28,8 +55,33 @@ function ProductPage({ title, description, image, features, pdfLink, color = 'pr
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <div className="editorial-image-wrapper glass-shine">
-                <img src={image} alt={title} />
+              <div 
+                className="editorial-image-wrapper glass-shine" 
+                style={{ position: 'relative', overflow: 'hidden' }}
+              >
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={activeImage}
+                    src={activeImage}
+                    alt={activeOption || title}
+                    initial={{ opacity: 0, scale: 1.04 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.4, ease: 'easeInOut' }}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  />
+                </AnimatePresence>
+                {activeOption && (
+                  <div className="active-option-badge">
+                    <span>{activeOption}</span>
+                  </div>
+                )}
+                {gallery && gallery.length > 1 && (
+                  <div className="gallery-overlay-hint" onClick={() => setShowGallery(true)} style={{ cursor: 'pointer' }}>
+                    <FaExpand />
+                    <span>{gallery.length} Images</span>
+                  </div>
+                )}
               </div>
             </motion.div>
  
@@ -80,6 +132,40 @@ function ProductPage({ title, description, image, features, pdfLink, color = 'pr
               </div>
             </motion.div>
           </div>
+
+          {/* New Options Section */}
+          {options && options.length > 0 && (
+            <div className="product-options-section">
+              <div className="section-header text-center">
+                <span className="info-overline">Variety & Customization</span>
+                <h2 className="editorial-heading">Available Options</h2>
+              </div>
+              
+              <div className="options-grid">
+                {options.map((option, index) => (
+                  <motion.div 
+                    key={index}
+                    className={`option-card glass-card ${activeOption === option.name ? 'option-active' : ''}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    onClick={() => handleOptionClick(option)}
+                    style={{ cursor: 'pointer' }}
+                    whileHover={{ y: -4 }}
+                  >
+                    <div className="option-image">
+                      <img src={option.image} alt={option.name} loading="lazy" />
+                    </div>
+                    <div className="option-info">
+                      <h4>{option.name}</h4>
+                      {option.description && <p>{option.description}</p>}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -104,6 +190,17 @@ function ProductPage({ title, description, image, features, pdfLink, color = 'pr
           </div>
         </div>
       </section>
+
+      {/* Image Gallery Modal */}
+      <AnimatePresence>
+        {showGallery && (
+          <ImageGallery
+            images={galleryImages}
+            initialIndex={0}
+            onClose={() => setShowGallery(false)}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

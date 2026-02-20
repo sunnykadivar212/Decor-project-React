@@ -4,18 +4,19 @@ function AanganVol1() {
   return (
     <ProductPage
       title="Aangan Vol 1"
-      description="First collection of premium decorative laminates and designs"
+      description="Our foundation collection featuring timeless wood grains and classic solid finishes. Perfectly balanced for versatile interior applications."
       image="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80"
       features={[
-        'Exclusive design collection',
-        'Premium quality laminates',
-        'Contemporary patterns',
-        'Durable and long-lasting',
-        'Easy maintenance',
-        'Wide variety of options',
+        'Classic wood grain textures',
+        'Balanced solid color palette',
+        'Superior scratch resistance',
+        'Universal design appeal',
+        'Long-lasting surface quality',
+        'A-grade material composition',
       ]}
       pdfLink="https://aangangroup.in/images/categories/aangan-vol-1.pdf"
-      color="secondary"
+      color="laminate"
+      heroImage="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=1600&q=80"
     />
   );
 }

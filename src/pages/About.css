@@ -120,7 +120,7 @@
 }
 
 .value-card {
-  padding: var(--spacing-2xl);
+  padding: var(--spacing-xl);
   background: white;
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-md);
@@ -128,6 +128,9 @@
   transition: all var(--transition-normal);
   border: 2px solid var(--color-border);
   border-top: 5px solid var(--color-primary);
+  overflow: hidden;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .value-card:hover {
@@ -140,12 +143,17 @@
 .value-card h3 {
   color: var(--color-primary);
   margin-bottom: var(--spacing-sm);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .value-card p {
   color: var(--color-text-secondary);
   line-height: 1.7;
   margin: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 /* Responsive */

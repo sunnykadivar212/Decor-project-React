@@ -3,7 +3,6 @@ export const NAV_LINKS = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
   { name: 'Services', path: '/services' },
-  { name: 'Shop', path: '/shop' },
   { name: 'Interior', path: '/interior' },
   { name: 'Decorative', path: '/decorative' },
   { name: 'Contact', path: '/contact' },
@@ -19,7 +18,6 @@ export const FOOTER_LINKS = {
   products: [
     { name: 'Interior Items', path: '/interior' },
     { name: 'Decorative Items', path: '/decorative' },
-    { name: 'Shop All', path: '/shop' },
   ],
 };
 

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaBars, FaTimes, FaPhone, FaWhatsapp } from 'react-icons/fa';
@@ -9,6 +9,7 @@ function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const headerRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,6 +36,23 @@ function Header() {
     };
   }, [isMobileMenuOpen]);
 
+  // Update header height CSS variable dynamically
+  useEffect(() => {
+    const updateHeaderHeight = () => {
+      if (headerRef.current) {
+        const height = headerRef.current.offsetHeight;
+        document.documentElement.style.setProperty('--header-total-height', `${height}px`);
+      }
+    };
+
+    // Update on mount and when scroll state changes
+    updateHeaderHeight();
+    
+    // Also update on resize
+    window.addEventListener('resize', updateHeaderHeight);
+    return () => window.removeEventListener('resize', updateHeaderHeight);
+  }, [isScrolled]); // Re-run when scroll state changes
+
   const navLinks = [
     { path: '/', label: 'Home' },
     { path: '/about', label: 'About' },
@@ -46,6 +64,7 @@ function Header() {
 
   return (
     <motion.header
+      ref={headerRef}
       className={`header ${isScrolled ? 'header-scrolled' : ''}`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -60,7 +79,7 @@ function Header() {
           <div className="top-bar-right">
             <a href="mailto:aangandecor7@gmail.com" className="top-bar-link">aangandecor7@gmail.com</a>
             <span className="top-bar-divider">|</span>
-            <a href="tel:+919876543210" className="top-bar-link">+91 98765 43210</a>
+            <a href="tel:+919876543210" className="top-bar-link">+91 70696 21777</a>
           </div>
         </div>
       </div>
@@ -89,7 +108,7 @@ function Header() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <FaBars />
+            {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
           </motion.button>
         </div>
       </div>
@@ -99,18 +118,18 @@ function Header() {
         {isMobileMenuOpen && (
           <motion.div
             className="fullscreen-menu"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
+            initial={{ y: '-100%', opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: '-100%', opacity: 0 }}
+            transition={{ duration: 0.4, ease: [0.6, 0.05, 0.01, 0.9] }}
           >
             {/* Left Panel - Decoration/Brand */}
             <motion.div 
               className="menu-left"
-              initial={{ x: '-100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '-100%' }}
-              transition={{ duration: 0.6, ease: [0.6, 0.05, -0.01, 0.9] }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
             >
               <div className="menu-brand-content">
                 <span className="menu-brand-subtitle">Premium Decor Solutions</span>
@@ -126,22 +145,11 @@ function Header() {
             {/* Right Panel - Navigation */}
             <motion.div 
               className="menu-right"
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ duration: 0.6, ease: [0.6, 0.05, -0.01, 0.9] }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
             >
-              {/* Close Button */}
-              <motion.button
-                className="menu-close-button"
-                onClick={() => setIsMobileMenuOpen(false)}
-                aria-label="Close menu"
-                whileHover={{ scale: 1.1, rotate: 90 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <FaTimes />
-              </motion.button>
-
               <nav className="fullscreen-nav">
                 {navLinks.map((link, index) => (
                   <motion.div

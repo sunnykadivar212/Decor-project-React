@@ -4,18 +4,19 @@ function AanganVol3() {
   return (
     <ProductPage
       title="Aangan Vol 3"
-      description="Third collection with exclusive premium designs"
-      image="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&q=80"
+      description="Innovative textures and stone-inspired finishes. Volume 3 pushes the boundaries of decorative materials with organic feels and bold visuals."
+      image="https://images.unsplash.com/photo-1556912176-117565860352?w=800&q=80"
       features={[
-        'Exclusive premium designs',
-        'Innovative patterns',
-        'High-quality finish',
-        'Stain resistant',
-        'Easy to clean',
-        'Suitable for all applications',
+        'Organic stone-finish textures',
+        'Burl wood and exotic grains',
+        'Enhanced thermal stability',
+        'Impact resistant surface',
+        'UV color protection',
+        'Suitable for all luxury applications',
       ]}
       pdfLink="https://aangangroup.in/images/categories/aangan-vol-3.pdf"
-      color="secondary"
+      color="laminate"
+      heroImage="https://images.unsplash.com/photo-1541014169601-e6e737cbe113?w=1600&q=80"
     />
   );
 }

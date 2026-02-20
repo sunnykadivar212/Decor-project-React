@@ -62,7 +62,7 @@ function Hardware() {
         title="Hardware & Materials"
         subtitle="Quality hardware where every detail is carefully curated to reflect seamless execution and deliver timeless interiors"
         breadcrumbs={[
-          { label: 'Shop', link: '/shop' },
+          { label: 'Interior Items', link: '/interior' },
           { label: 'Hardware' }
         ]}
         variant="primary"

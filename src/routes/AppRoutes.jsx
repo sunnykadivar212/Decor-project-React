@@ -5,7 +5,6 @@ import Home from '../pages/Home';
 import About from '../pages/About';
 import Services from '../pages/Services';
 import TurnkeyProjects from '../pages/TurnkeyProjects';
-import Shop from '../pages/Shop';
 import Interior from '../pages/Interior';
 import Decorative from '../pages/Decorative';
 import Contact from '../pages/Contact';
@@ -56,18 +55,51 @@ function AppRoutes() {
       <Route path="/services" element={<Services />} />
       <Route path="/services-detail" element={<Services />} />
       <Route path="/turnkey-projects" element={<TurnkeyProjects />} />
-      <Route path="/shop" element={<Shop />} />
-      <Route path="/interior" element={<Interior />} />
-      <Route path="/decorative" element={<Decorative />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/contact-us" element={<Contact />} />
+
+      {/* Main Category Pages */}
+      <Route path="/interior" element={<Interior />} />
+      <Route path="/decorative" element={<Decorative />} />
 
       {/* Content Pages */}
       <Route path="/faq" element={<FAQ />} />
       <Route path="/privacy-policy" element={<Privacy />} />
       <Route path="/terms-conditions" element={<Terms />} />
 
-      {/* Individual Product Pages */}
+      {/* Category Pages - Nested under main categories */}
+      <Route path="/categories/laminate" element={<Laminate />} />
+      <Route path="/categories/louvers" element={<Louvers />} />
+      <Route path="/categories/decorative" element={<DecorativeCategory />} />
+      <Route path="/categories/plywood" element={<PlywoodCategory />} />
+      <Route path="/categories/hardware" element={<Hardware />} />
+
+      {/* Individual Product Pages - Interior Items */}
+      <Route path="/interior/aangan-plywood" element={<AanganPlywood />} />
+      <Route path="/interior/aangan-plain-laminate" element={<AanganPlainLaminate />} />
+      <Route path="/interior/aangan-mocco-laminate" element={<AanganMoccoLaminate />} />
+      <Route path="/interior/a-fab" element={<AFab />} />
+      <Route path="/interior/aangan-acrylic" element={<AanganAcrylic />} />
+
+      {/* Individual Product Pages - Decorative Items */}
+      <Route path="/decorative/plants" element={<Plants />} />
+      <Route path="/decorative/aangan-decorative" element={<AanganDecorative />} />
+      <Route path="/decorative/mandala-art" element={<MandalaArt />} />
+      <Route path="/decorative/aangan-vol-1" element={<AanganVol1 />} />
+      <Route path="/decorative/aangan-vol-2" element={<AanganVol2 />} />
+      <Route path="/decorative/aangan-vol-3" element={<AanganVol3 />} />
+      <Route path="/decorative/aangan-vol-4" element={<AanganVol4 />} />
+      <Route path="/decorative/clocks" element={<Clocks />} />
+      <Route path="/decorative/artifacts" element={<Artifacts />} />
+      <Route path="/decorative/designer-mirrors" element={<DesignerMirrors />} />
+      <Route path="/decorative/designer-lights" element={<DesignerLights />} />
+      <Route path="/decorative/designer-sofas" element={<DesignerSofas />} />
+      <Route path="/decorative/curtains" element={<Curtains />} />
+      <Route path="/decorative/designer-chairs" element={<DesignerChairs />} />
+      <Route path="/decorative/dining-tables" element={<DiningTables />} />
+      <Route path="/decorative/center-tables" element={<CenterTables />} />
+
+      {/* Legacy Routes - Redirect old URLs to new structure */}
       <Route path="/aangan-plywood" element={<AanganPlywood />} />
       <Route path="/aangan-plain-laminate" element={<AanganPlainLaminate />} />
       <Route path="/aangan-mocco-laminate" element={<AanganMoccoLaminate />} />
@@ -89,11 +121,8 @@ function AppRoutes() {
       <Route path="/designer-chairs" element={<DesignerChairs />} />
       <Route path="/dining-tables" element={<DiningTables />} />
       <Route path="/center-tables" element={<CenterTables />} />
-
-      {/* Category Pages */}
       <Route path="/laminate" element={<Laminate />} />
       <Route path="/louvers" element={<Louvers />} />
-      <Route path="/decorative" element={<DecorativeCategory />} />
       <Route path="/plywood" element={<PlywoodCategory />} />
       <Route path="/hardware" element={<Hardware />} />
 

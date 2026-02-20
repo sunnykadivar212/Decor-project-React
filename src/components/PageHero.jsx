@@ -5,9 +5,10 @@ import './PageHero.css';
 
 function PageHero({ title, subtitle, breadcrumbs, variant = 'primary', backgroundImage }) {
   const heroStyle = backgroundImage ? { 
-    backgroundImage: `url(${backgroundImage})`,
+    backgroundImage: `url('${backgroundImage}')`,
     backgroundSize: 'cover',
-    backgroundPosition: 'center'
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
   } : {};
 
   return (

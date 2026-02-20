@@ -39,7 +39,7 @@ function NotFound() {
             <FaHome />
             <span>Go Home</span>
           </Link>
-          <Link to="/shop" className="btn btn-outline">
+          <Link to="/interior" className="btn btn-outline">
             <FaSearch />
             <span>Browse Products</span>
           </Link>
