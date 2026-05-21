@@ -1,4 +1,4 @@
-﻿import ProductPage from './ProductPage';
+import ProductPage from './ProductPage';
 
 function Plants() {
   const plantOptions = [
@@ -37,7 +37,7 @@ function Plants() {
         'Expert plant care guides provided',
         'Various sizes from tabletop to floor-standing',
       ]}
-      pdfLink="/catalogs/plants.pdf"
+      pdfLink="/catalogs/Aangan_Group_Company_Profile.pdf"
       color="decorative"
       options={plantOptions}
       heroImage="https://images.unsplash.com/photo-1463320726281-696a485928c7?w=1600&q=80"

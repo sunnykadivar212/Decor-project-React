@@ -37,7 +37,7 @@ function DesignerMirrors() {
         'Vertical and horizontal hanging options',
         'Creates an illusion of larger space',
       ]}
-      pdfLink="/catalogs/mirrors.pdf"
+      pdfLink="/catalogs/Aangan_Group_Company_Profile.pdf"
       color="decorative"
       options={mirrorOptions}
       heroImage="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1600&q=80"

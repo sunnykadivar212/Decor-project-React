@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FaArrowRight, FaStar, FaCheckCircle } from 'react-icons/fa';
+import { FaArrowRight, FaStar, FaCheckCircle, FaLeaf, FaTruck, FaMedal, FaHome, FaQuoteLeft } from 'react-icons/fa';
 import ScrollReveal from '../components/ScrollReveal';
 import AnimatedCard from '../components/AnimatedCard';
 import GradientButton from '../components/GradientButton';
@@ -27,10 +27,43 @@ function Home() {
   ];
 
   const features = [
-    { icon: <FaCheckCircle />, title: 'Premium Quality', text: 'Handpicked materials' },
-    { icon: <FaCheckCircle />, title: 'Expert Design', text: 'Professional guidance' },
-    { icon: <FaCheckCircle />, title: 'Fast Delivery', text: 'Quick turnaround' },
-    { icon: <FaCheckCircle />, title: 'Best Prices', text: 'Competitive rates' },
+    { icon: <FaMedal />, title: 'Premium Quality', text: 'Handpicked ISI-grade materials sourced from top manufacturers' },
+    { icon: <FaHome />, title: 'Expert Design', text: 'Professional interior guidance by seasoned design consultants' },
+    { icon: <FaTruck />, title: 'Fast Delivery', text: 'On-time project delivery with careful logistics handling' },
+    { icon: <FaLeaf />, title: 'Eco-Conscious', text: 'Sustainably sourced materials with minimal environmental impact' },
+  ];
+
+  const galleryFrames = [
+    {
+      image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80',
+      label: 'Living Room',
+      tag: 'Interior Design',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80',
+      label: 'Luxury Sofa',
+      tag: 'Furniture',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1549490349-8643362247b5?w=800&q=80',
+      label: 'Mandala Art',
+      tag: 'Decorative',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1540932239986-30128078f3c5?w=800&q=80',
+      label: 'Designer Lights',
+      tag: 'Lighting',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1615873968403-89e068629265?w=800&q=80',
+      label: 'Premium Laminates',
+      tag: 'Interior',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1581783898377-1c85bf937427?w=800&q=80',
+      label: 'Dining Table',
+      tag: 'Furniture',
+    },
   ];
 
   return (
@@ -129,7 +162,7 @@ function Home() {
           <ScrollReveal direction="up">
             <div className="section-header">
               <h2 className="gradient-text-animated">Our Collections</h2>
-              <p>Explore our two main categories of premium products</p>
+              <p>Explore our two main categories of premium decor &amp; interior products</p>
             </div>
           </ScrollReveal>
 
@@ -159,14 +192,62 @@ function Home() {
         </div>
       </section>
 
+      {/* Framed Gallery Section */}
+      <section className="framed-gallery-section section">
+        <div className="container">
+          <ScrollReveal direction="up">
+            <div className="section-header">
+              <span className="section-eyebrow">Portfolio Showcase</span>
+              <h2>From Our Portfolio</h2>
+              <p>A glimpse into the spaces we have transformed with artisanal craftsmanship</p>
+            </div>
+          </ScrollReveal>
+          <div className="framed-gallery-grid">
+            {galleryFrames.map((frame, index) => (
+              <ScrollReveal key={frame.label} direction="up" delay={index * 0.08}>
+                <div className="framed-picture">
+                  <div className="frame-border">
+                    <div className="frame-inner">
+                      <img src={frame.image} alt={frame.label} className="frame-img" />
+                      <div className="frame-overlay">
+                        <span className="frame-tag">{frame.tag}</span>
+                        <h4 className="frame-label">{frame.label}</h4>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="frame-caption">
+                    <div className="caption-dot"></div>
+                    <span>{frame.label}</span>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+          <ScrollReveal direction="up">
+            <div className="gallery-cta-row">
+              <Link to="/interior" className="btn btn-primary">View Interior Range</Link>
+              <Link to="/decorative" className="btn btn-outline">Browse Decorative Items</Link>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* Features Section */}
       <section className="features-section section-sm bg-mesh-intense">
         <div className="container">
+          <ScrollReveal direction="up">
+            <div className="section-header">
+              <span className="section-eyebrow">Why Choose Us</span>
+              <h2>The Aangan Difference</h2>
+            </div>
+          </ScrollReveal>
           <div className="features-grid">
             {features.map((feature, index) => (
               <ScrollReveal key={feature.title} direction="scale" delay={index * 0.1}>
-                <div className="feature-item glass-card hover-scale-glow">
-                  <div className="feature-icon glow-primary">{feature.icon}</div>
+                <div className="feature-item">
+                  <div className="feature-icon-wrap">
+                    <div className="feature-icon">{feature.icon}</div>
+                  </div>
                   <h4>{feature.title}</h4>
                   <p>{feature.text}</p>
                 </div>
@@ -178,19 +259,23 @@ function Home() {
 
       {/* CTA Section */}
       <section className="cta-section">
-        {/* Particles Removed */}
+        <div className="cta-bg-image">
+          <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?w=1600&q=80" alt="CTA Background" />
+          <div className="cta-bg-overlay"></div>
+        </div>
         <div className="container">
           <ScrollReveal direction="up">
-            <div className="cta-content glass-card-dark">
-              <h2 className="gradient-text-gold">Ready to Transform Your Space?</h2>
-              <p>Get in touch with our experts for personalized design solutions</p>
+            <div className="cta-content">
+              <FaQuoteLeft className="cta-quote-icon" />
+              <h2>Ready to Transform Your Space?</h2>
+              <p>Get in touch with our design experts for personalized solutions tailored to your vision</p>
               <div className="cta-actions">
                 <Link to="/contact">
                   <GradientButton variant="gold" size="large">
                     Contact Us Today
                   </GradientButton>
                 </Link>
-                <a href="http://wa.me/917069630777" target="_blank" rel="noopener noreferrer">
+                <a href="http://wa.me/917069621777" target="_blank" rel="noopener noreferrer">
                   <GradientButton variant="secondary" size="large">
                     WhatsApp Us
                   </GradientButton>

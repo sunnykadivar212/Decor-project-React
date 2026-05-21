@@ -1,46 +1,49 @@
 .newsletter-section {
   position: relative;
   overflow: hidden;
-  background-color: var(--color-bg-primary);
-  margin-top: var(--spacing-2xl);
+  background-color: var(--color-bg-secondary);
+  border-top: 1px solid var(--color-border);
+  padding: var(--spacing-4xl) 0;
 }
 
 .newsletter-glass-card {
   position: relative;
-  max-width: 900px;
+  max-width: 800px;
   margin: 0 auto;
-  padding: var(--spacing-3xl);
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-2xl);
-  box-shadow: var(--shadow-2xl);
+  padding: 0 var(--spacing-xl);
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
   text-align: center;
-  overflow: hidden;
+  overflow: visible;
 }
 
-/* Background elements for the card */
-.newsletter-glass-card::before {
+/* Background elements on the section container */
+.newsletter-section::before {
   content: '';
   position: absolute;
-  top: -50%;
-  right: -20%;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(79, 157, 105, 0.1) 0%, transparent 70%);
-  z-index: -1;
+  top: -20%;
+  right: -5%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(79, 157, 105, 0.05) 0%, transparent 70%);
+  z-index: 1;
+  pointer-events: none;
 }
 
-.newsletter-glass-card::after {
+.newsletter-section::after {
   content: '';
   position: absolute;
-  bottom: -40%;
-  left: -10%;
-  width: 250px;
-  height: 250px;
-  background: radial-gradient(circle, rgba(201, 169, 97, 0.1) 0%, transparent 70%);
-  z-index: -1;
+  bottom: -20%;
+  left: -5%;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(201, 169, 97, 0.05) 0%, transparent 70%);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .newsletter-decor-icon {
@@ -184,8 +187,8 @@
 /* Responsive Styles */
 @media (max-width: 768px) {
   .newsletter-glass-card {
-    padding: var(--spacing-xl) var(--spacing-md);
-    margin: 0 var(--spacing-sm);
+    padding: 0 var(--spacing-sm);
+    margin: 0;
   }
 
   .input-field-wrapper {

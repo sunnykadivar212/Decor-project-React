@@ -37,7 +37,7 @@ function DesignerLights() {
         'Unique artisanal glass blowing',
         'Available in a wide range of styles',
       ]}
-      pdfLink="/catalogs/lights.pdf"
+      pdfLink="/catalogs/Aangan_Group_Company_Profile.pdf"
       color="decorative"
       options={lightOptions}
       heroImage="https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=1600&q=80"

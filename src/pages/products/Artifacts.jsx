@@ -37,7 +37,7 @@ function Artifacts() {
         'Ideal for gifting and home styling',
         'Perfectly weighted and finished',
       ]}
-      pdfLink="/catalogs/artifacts.pdf"
+      pdfLink="/catalogs/Aangan_Group_Company_Profile.pdf"
       color="decorative"
       options={artifactOptions}
       heroImage="https://images.unsplash.com/photo-1581783898377-1c85bf937427?w=1600&q=80"

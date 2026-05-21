@@ -37,7 +37,7 @@ function DesignerChairs() {
         'Available in fabric, velvet, and top-grain leather',
         'Perfect for residential and commercial spaces',
       ]}
-      pdfLink="/catalogs/chairs.pdf"
+      pdfLink="/catalogs/Aangan_Group_Company_Profile.pdf"
       color="decorative"
       options={chairOptions}
       heroImage="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1600&q=80"

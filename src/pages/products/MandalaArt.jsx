@@ -1,4 +1,4 @@
-﻿import ProductPage from './ProductPage';
+import ProductPage from './ProductPage';
 
 function MandalaArt() {
   const mandalaOptions = [
@@ -37,7 +37,7 @@ function MandalaArt() {
         'Available in various sizes and color palettes',
         'Ready-to-hang museum-grade framing',
       ]}
-      pdfLink="/catalogs/mandala-art.pdf"
+      pdfLink="/catalogs/Aangan_Group_Company_Profile.pdf"
       color="decorative"
       options={mandalaOptions}
       heroImage="https://images.unsplash.com/photo-1549490349-8643362247b5?w=1600&q=80"

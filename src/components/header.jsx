@@ -79,7 +79,7 @@ function Header() {
           <div className="top-bar-right">
             <a href="mailto:aangandecor7@gmail.com" className="top-bar-link">aangandecor7@gmail.com</a>
             <span className="top-bar-divider">|</span>
-            <a href="tel:+919876543210" className="top-bar-link">+91 70696 21777</a>
+            <a href="tel:+917069621777" className="top-bar-link">+91 70696 21777</a>
           </div>
         </div>
       </div>
@@ -180,11 +180,11 @@ function Header() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 }}
               >
-                 <div className="menu-socials">
-                    <a href="#" className="social-link">Instagram</a>
-                    <a href="#" className="social-link">Facebook</a>
-                    <a href="#" className="social-link">LinkedIn</a>
-                 </div>
+                  <div className="menu-socials">
+                    <a href="https://www.instagram.com/aangan__decor" target="_blank" rel="noopener noreferrer" className="social-link">Instagram</a>
+                    <a href="https://www.facebook.com/AanganDecor" target="_blank" rel="noopener noreferrer" className="social-link">Facebook</a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-link">LinkedIn</a>
+                  </div>
               </motion.div>
             </motion.div>
           </motion.div>

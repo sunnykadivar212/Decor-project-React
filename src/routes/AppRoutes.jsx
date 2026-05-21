@@ -21,6 +21,10 @@ import AanganPlainLaminate from '../pages/products/AanganPlainLaminate';
 import AanganMoccoLaminate from '../pages/products/AanganMoccoLaminate';
 import AFab from '../pages/products/AFab';
 import AanganAcrylic from '../pages/products/AanganAcrylic';
+import Veneer from '../pages/products/Veneer';
+import PUWallPanel from '../pages/products/PUWallPanel';
+import MouldingPatti from '../pages/products/MouldingPatti';
+import FalseCeiling from '../pages/products/FalseCeiling';
 import Plants from '../pages/products/Plants';
 import AanganDecorative from '../pages/products/AanganDecorative';
 import MandalaArt from '../pages/products/MandalaArt';
@@ -80,6 +84,10 @@ function AppRoutes() {
       <Route path="/interior/aangan-mocco-laminate" element={<AanganMoccoLaminate />} />
       <Route path="/interior/a-fab" element={<AFab />} />
       <Route path="/interior/aangan-acrylic" element={<AanganAcrylic />} />
+      <Route path="/interior/veneer" element={<Veneer />} />
+      <Route path="/interior/pu-wall-panel" element={<PUWallPanel />} />
+      <Route path="/interior/moulding-patti" element={<MouldingPatti />} />
+      <Route path="/interior/false-ceiling" element={<FalseCeiling />} />
 
       {/* Individual Product Pages - Decorative Items */}
       <Route path="/decorative/plants" element={<Plants />} />
@@ -105,6 +113,10 @@ function AppRoutes() {
       <Route path="/aangan-mocco-laminate" element={<AanganMoccoLaminate />} />
       <Route path="/a-fab" element={<AFab />} />
       <Route path="/aangan-acrylic" element={<AanganAcrylic />} />
+      <Route path="/veneer" element={<Veneer />} />
+      <Route path="/pu-wall-panel" element={<PUWallPanel />} />
+      <Route path="/moulding-patti" element={<MouldingPatti />} />
+      <Route path="/false-ceiling" element={<FalseCeiling />} />
       <Route path="/plants" element={<Plants />} />
       <Route path="/aangan-decorative" element={<AanganDecorative />} />
       <Route path="/mandala-art" element={<MandalaArt />} />

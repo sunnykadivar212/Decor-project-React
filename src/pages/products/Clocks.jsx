@@ -37,7 +37,7 @@ function Clocks() {
         'Easy to hang mounting hardware included',
         'Statement pieces for any room size',
       ]}
-      pdfLink="/catalogs/clocks.pdf"
+      pdfLink="/catalogs/Aangan_Group_Company_Profile.pdf"
       color="decorative"
       options={clockOptions}
       heroImage="https://images.unsplash.com/photo-1508057198441-2a143d99616e?w=1600&q=80"

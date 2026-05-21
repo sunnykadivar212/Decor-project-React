@@ -59,6 +59,34 @@ function Interior() {
       features: ['Soft Touch', 'Elegant Look', 'Easy Installation'],
       link: '/interior/a-fab',
     },
+    {
+      title: 'Aangan Veneers',
+      description: 'Thin natural wood overlays for a rich, warm, and sophisticated wooden finish',
+      image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80',
+      features: ['100% Natural Wood', 'Unique Grain Patterns', 'Premium Finish'],
+      link: '/interior/veneer',
+    },
+    {
+      title: 'PU Wall Panels',
+      description: 'High-density polyurethane panels offering a stunning stone-imitation facade',
+      image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=80',
+      features: ['Realistic Slate Textures', 'Lightweight & Sturdy', 'Water & Impact Resistant'],
+      link: '/interior/pu-wall-panel',
+    },
+    {
+      title: 'Moulding Patti',
+      description: 'Elegant PVC, WPC, or wooden trim profiles to conceal joints and refine edges',
+      image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&q=80',
+      features: ['Conceals Gaps & Joints', 'Brushed Metallic Trims', 'Durable Borders'],
+      link: '/interior/moulding-patti',
+    },
+    {
+      title: 'False Ceiling & ACP',
+      description: 'Transformative plaster of Paris (POP) structures and weather-resistant ACP facades',
+      image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600&q=80',
+      features: ['Artisan POP Ceilings', 'Weatherproof Exterior ACP', 'Ambient Cove Lighting'],
+      link: '/interior/false-ceiling',
+    },
   ];
 
   return (
@@ -129,7 +157,7 @@ function Interior() {
         {/* Particles Removed */}
         <div className="container">
           <ScrollReveal direction="up">
-            <div className="cta-content glass-card">
+            <div className="cta-content">
               <h2>Need Help Choosing?</h2>
               <p>Our experts are here to guide you in selecting the perfect materials for your project</p>
               <div className="cta-actions">

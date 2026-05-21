@@ -37,7 +37,7 @@ function DesignerSofas() {
         'Contemporary and classic silhouettes',
         'Available in 100+ fabric options',
       ]}
-      pdfLink="/catalogs/sofas.pdf"
+      pdfLink="/catalogs/Aangan_Group_Company_Profile.pdf"
       color="decorative"
       options={sofaOptions}
       heroImage="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=1600&q=80"

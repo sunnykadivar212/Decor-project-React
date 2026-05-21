@@ -37,7 +37,7 @@ function CenterTables() {
         'Artistic and functional silhouettes',
         'Durable and easy-to-clean surfaces',
       ]}
-      pdfLink="/catalogs/center-tables.pdf"
+      pdfLink="/catalogs/Aangan_Group_Company_Profile.pdf"
       color="decorative"
       options={tableOptions}
       heroImage="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1600&q=80"

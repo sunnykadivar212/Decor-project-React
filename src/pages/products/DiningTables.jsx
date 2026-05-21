@@ -37,7 +37,7 @@ function DiningTables() {
         'Architectural leg designs',
         'Easy to clean and maintain',
       ]}
-      pdfLink="/catalogs/dining-tables.pdf"
+      pdfLink="/catalogs/Aangan_Group_Company_Profile.pdf"
       color="decorative"
       options={tableOptions}
       heroImage="https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600&q=80"

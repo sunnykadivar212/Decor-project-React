@@ -37,7 +37,7 @@ function Curtains() {
         'Available in motorized and manual tracks',
         'Vast library of patterns and solid colors',
       ]}
-      pdfLink="/catalogs/curtains.pdf"
+      pdfLink="/catalogs/Aangan_Group_Company_Profile.pdf"
       color="decorative"
       options={curtainOptions}
       heroImage="https://images.unsplash.com/photo-1513519247341-33ae85703f84?w=1600&q=80"
