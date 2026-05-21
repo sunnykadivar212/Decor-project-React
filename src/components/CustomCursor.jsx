@@ -1,86 +1,69 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import './CustomCursor.css';
 
 const CustomCursor = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [position, setPosition] = useState({ x: -100, y: -100 });
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    const addEventListeners = () => {
-      document.addEventListener('mousemove', onMouseMove);
-      document.addEventListener('mouseenter', onMouseEnter);
-      document.addEventListener('mouseleave', onMouseLeave);
-      document.addEventListener('mouseover', onMouseOver);
-      document.addEventListener('mouseout', onMouseOut);
-    };
+  // Only enable on non-touch devices
+  const isPointerFine = typeof window !== 'undefined' && window.matchMedia('(pointer: fine)').matches;
 
-    const removeEventListeners = () => {
+  const onMouseMove = useCallback((e) => {
+    setPosition({ x: e.clientX, y: e.clientY });
+    if (!isVisible) setIsVisible(true);
+  }, [isVisible]);
+
+  const onMouseEnter = useCallback(() => setIsVisible(true), []);
+  const onMouseLeave = useCallback(() => setIsVisible(false), []);
+
+  const onMouseOver = useCallback((e) => {
+    // Efficient check: walk up the DOM tree a few levels only, no getComputedStyle
+    let el = e.target;
+    let depth = 0;
+    while (el && depth < 4) {
+      const tag = el.tagName;
+      if (tag === 'A' || tag === 'BUTTON' || tag === 'INPUT' || tag === 'SELECT' || tag === 'LABEL') {
+        setIsHovering(true);
+        return;
+      }
+      const role = el.getAttribute?.('role');
+      if (role === 'button' || role === 'link') {
+        setIsHovering(true);
+        return;
+      }
+      el = el.parentElement;
+      depth++;
+    }
+    setIsHovering(false);
+  }, []);
+
+  useEffect(() => {
+    if (!isPointerFine) return;
+
+    document.addEventListener('mousemove', onMouseMove, { passive: true });
+    document.addEventListener('mouseenter', onMouseEnter);
+    document.addEventListener('mouseleave', onMouseLeave);
+    document.addEventListener('mouseover', onMouseOver, { passive: true });
+
+    return () => {
       document.removeEventListener('mousemove', onMouseMove);
       document.removeEventListener('mouseenter', onMouseEnter);
       document.removeEventListener('mouseleave', onMouseLeave);
       document.removeEventListener('mouseover', onMouseOver);
-      document.removeEventListener('mouseout', onMouseOut);
     };
+  }, [onMouseMove, onMouseEnter, onMouseLeave, onMouseOver, isPointerFine]);
 
-    const onMouseMove = (e) => {
-      setPosition({ x: e.clientX, y: e.clientY });
-      if (!isVisible) setIsVisible(true);
-    };
-
-    const onMouseEnter = () => {
-      setIsVisible(true);
-    };
-
-    const onMouseLeave = () => {
-      setIsVisible(false);
-    };
-
-    const onMouseOver = (e) => {
-      // Check if the target is clickable or has a parent that is clickable
-      const target = e.target;
-      const isClickable = 
-        target.tagName === 'A' || 
-        target.tagName === 'BUTTON' || 
-        target.closest('a') || 
-        target.closest('button') ||
-        target.classList.contains('clickable') ||
-        target.classList.contains('nav-link') ||
-        target.classList.contains('fullscreen-nav-link') ||
-        getComputedStyle(target).cursor === 'pointer';
-
-      if (isClickable) {
-        setIsHovering(true);
-      }
-    };
-
-    const onMouseOut = (e) => {
-      setIsHovering(false);
-    };
-
-    // Only enable on non-touch devices
-    if (window.matchMedia('(pointer: fine)').matches) {
-      addEventListeners();
-    }
-
-    return () => removeEventListeners();
-  }, [isVisible]);
-
-  const cursorClasses = `custom-cursor ${isHovering ? 'hovering' : ''} ${!isVisible ? 'hidden' : ''}`;
+  if (!isPointerFine) return null;
 
   return (
-    <>
-      <div 
-        className={cursorClasses}
-        style={{ 
-          left: `${position.x}px`, 
-          top: `${position.y}px` 
-        }}
-      >
-        <div className="cursor-dot"></div>
-        <div className="cursor-ring"></div>
-      </div>
-    </>
+    <div
+      className={`custom-cursor ${isHovering ? 'hovering' : ''} ${!isVisible ? 'hidden' : ''}`}
+      style={{ transform: `translate(${position.x}px, ${position.y}px)` }}
+    >
+      <div className="cursor-dot" />
+      <div className="cursor-ring" />
+    </div>
   );
 };
 

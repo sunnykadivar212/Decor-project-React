@@ -1,204 +1,159 @@
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebook, FaInstagram, FaWhatsapp, FaLinkedin } from 'react-icons/fa';
-import Newsletter from './Newsletter';
+import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebook, FaInstagram, FaWhatsapp, FaLinkedin, FaArrowRight } from 'react-icons/fa';
 import logoDark from '../assets/logo-dark.svg';
 import './Footer.css';
+
+const quickLinks = [
+  { path: '/', label: 'Home' },
+  { path: '/about', label: 'About Us' },
+  { path: '/turnkey-projects', label: 'Turnkey Projects' },
+  { path: '/interior', label: 'Interior Items' },
+  { path: '/decorative', label: 'Decorative Items' },
+  { path: '/contact', label: 'Contact Us' },
+];
+
+const products = [
+  'Plywood & MDF', 'Laminates', 'Acrylic Sheets',
+  'Veneer', 'PU Wall Panels', 'False Ceiling',
+  'Mandala Art', 'Designer Mirrors', 'Designer Lights',
+  'Artifacts', 'Clocks', 'Curtains',
+];
+
+const socials = [
+  { href: 'https://www.facebook.com/AanganDecor', icon: <FaFacebook />, label: 'Facebook', color: '#1877F2' },
+  { href: 'https://www.instagram.com/aangan__decor', icon: <FaInstagram />, label: 'Instagram', color: '#E1306C' },
+  { href: 'http://wa.me/917069630777', icon: <FaWhatsapp />, label: 'WhatsApp', color: '#25D366' },
+  { href: 'https://linkedin.com', icon: <FaLinkedin />, label: 'LinkedIn', color: '#0A66C2' },
+];
 
 function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const quickLinks = [
-    { path: '/', label: 'Home' },
-    { path: '/about', label: 'About Us' },
-    { path: '/interior', label: 'Interior Items' },
-    { path: '/decorative', label: 'Decorative Items' },
-    { path: '/contact', label: 'Contact Us' },
-  ];
-
-  const categories = [
-    'Plywood',
-    'Laminates',
-    'Acrylic',
-    'Louvers',
-    'Mandala Art',
-    'Clocks',
-    'Designer Mirrors',
-    'Designer Lights',
-    'Artifacts',
-    'Furniture',
-    'Hardware & Materials',
-  ];
-
   return (
     <footer className="footer">
-      {/* Newsletter Section */}
-      {/*<Newsletter />*/}
-
       <div className="footer-main">
         <div className="container">
           <div className="footer-grid">
-            {/* Company Info */}
-            <motion.div
-              className="footer-column"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="footer-logo">
-                <img src={logoDark} alt="Aangan Decor" className="logo-image" />
-              </div>
-              <p className="footer-description">
-                Transforming spaces with premium interior and decorative solutions. 
+
+            {/* ─ Brand Column */}
+            <div className="footer-col footer-brand-col">
+              <Link to="/" className="footer-logo">
+                <img src={logoDark} alt="Aangan Decor" />
+              </Link>
+              <p className="footer-desc">
+                Transforming spaces with premium interior and decorative solutions.
                 Quality craftsmanship meets elegant design.
               </p>
-              
-              {/* Our Group Of Agency */}
-              <div className="group-companies elevated-section">
-                <h5 className="accent-title">Our Group Of Agency</h5>
-                <ul className="group-list">
-                  <li>
-                    <span className="brand-dot"></span>
-                    <span className="brand-name">Aangan Decor</span>
-                  </li>
-                  <li>
-                    <span className="brand-dot"></span>
-                    <span className="brand-name">Aangan Design Studio</span>
-                  </li>
-                </ul>
+
+              <div className="footer-group-companies">
+                <span className="footer-group-label">Our Group</span>
+                <div className="footer-group-list">
+                  <span>Aangan Decor</span>
+                  <span>Aangan Design Studio</span>
+                </div>
               </div>
 
-              {/* Instagram Section */}
-              <div className="instagram-section">
-                <p className="instagram-text">
-                  Share with <strong>#Aangan</strong>
-                </p>
-                <a 
-                  href="https://www.instagram.com/aangan__decor" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="instagram-link"
-                >
-                  Follow @aangan__decor for more
-                </a>
+              <div className="footer-socials">
+                {socials.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="footer-social-icon"
+                    aria-label={s.label}
+                    style={{ '--social-color': s.color }}
+                  >
+                    {s.icon}
+                  </a>
+                ))}
               </div>
+            </div>
 
-              <div className="social-links premium-socials">
-                <motion.a
-                  href="https://www.facebook.com/AanganDecor"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.2, rotate: 5 }}
-                  className="social-icon-wrapper fb"
-                >
-                  <FaFacebook />
-                </motion.a>
-                <motion.a
-                  href="https://www.instagram.com/aangan__decor"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.2, rotate: -5 }}
-                  className="social-icon-wrapper ig"
-                >
-                  <FaInstagram />
-                </motion.a>
-                <motion.a
-                  href="http://wa.me/917069630777"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.2, rotate: 5 }}
-                  className="social-icon-wrapper wa"
-                >
-                  <FaWhatsapp />
-                </motion.a>
-                <motion.a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.2, rotate: -5 }}
-                  className="social-icon-wrapper li"
-                >
-                  <FaLinkedin />
-                </motion.a>
-              </div>
-            </motion.div>
-
-            {/* Quick Links */}
-            <motion.div
-              className="footer-column"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              <h4 className="footer-heading">Quick Links</h4>
+            {/* ─ Quick Links */}
+            <div className="footer-col">
+              <h4 className="footer-col-heading">Quick Links</h4>
               <ul className="footer-links">
                 {quickLinks.map((link) => (
                   <li key={link.path}>
-                    <Link to={link.path}>{link.label}</Link>
+                    <Link to={link.path}>
+                      <FaArrowRight aria-hidden="true" />
+                      {link.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
 
-            {/* Categories */}
-            <motion.div
-              className="footer-column"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <h4 className="footer-heading">Our Products</h4>
-              <ul className="footer-links">
-                {categories.map((category) => (
-                  <li key={category}>
-                    <span>{category}</span>
+            {/* ─ Products */}
+            <div className="footer-col">
+              <h4 className="footer-col-heading">Our Products</h4>
+              <ul className="footer-links footer-products">
+                {products.map((p) => (
+                  <li key={p}>
+                    <span className="footer-product-dot" aria-hidden="true" />
+                    <span>{p}</span>
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
 
-            {/* Contact Info */}
-            <motion.div
-              className="footer-column"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              <h4 className="footer-heading">Contact Us</h4>
+            {/* ─ Contact */}
+            <div className="footer-col">
+              <h4 className="footer-col-heading">Get In Touch</h4>
               <ul className="footer-contact">
                 <li>
-                  <FaPhone />
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                    <a href="tel:917069621777">+91 70696 21777</a>
-                    <a href="tel:917069622777">+91 70696 22777</a>
+                  <span className="contact-icon"><FaPhone /></span>
+                  <div className="contact-text">
+                    <a href="tel:+917069621777">+91 70696 21777</a>
+                    <a href="tel:+917069622777">+91 70696 22777</a>
                   </div>
                 </li>
                 <li>
-                  <FaEnvelope />
-                  <a href="mailto:aangandecor7@gmail.com">aangandecor7@gmail.com</a>
+                  <span className="contact-icon"><FaEnvelope /></span>
+                  <div className="contact-text">
+                    <a href="mailto:aangandecor7@gmail.com">aangandecor7@gmail.com</a>
+                  </div>
                 </li>
                 <li>
-                  <FaMapMarkerAlt />
-                  <span>3rd Floor, Sky Tower, Upper Sanket India, Nr. Umiya Circle, Morbi 363 641</span>
+                  <span className="contact-icon"><FaMapMarkerAlt /></span>
+                  <div className="contact-text">
+                    <a
+                      href="https://www.google.com/maps/place/AANGAN+DECOR/@22.8009269,70.8162366,17z/data=!4m14!1m7!3m6!1s0x39598d0074e4713b:0x2feeedf7a891372f!2sAANGAN+DECOR!8m2!3d22.8009269!4d70.8162366!16s%2Fg%2F11lymc8fjk!3m5!1s0x39598d0074e4713b:0x2feeedf7a891372f!8m2!3d22.8009269!4d70.8162366!16s%2Fg%2F11lymc8fjk?authuser=0&entry=ttu"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="contact-address"
+                    >
+                      3rd Floor, Sky Tower, Upper Sanket India,<br />
+                      Nr. Umiya Circle, Morbi 363 641
+                    </a>
+                  </div>
                 </li>
               </ul>
-            </motion.div>
+
+              <a
+                href="http://wa.me/917069621777"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-whatsapp-btn"
+              >
+                <FaWhatsapp />
+                Chat on WhatsApp
+              </a>
+            </div>
+
           </div>
         </div>
       </div>
 
-      {/* Footer Bottom */}
+      {/* Bottom bar */}
       <div className="footer-bottom">
         <div className="container">
-          <div className="footer-bottom-content">
-            <p>&copy; {currentYear} Aangan Decor. All rights reserved.</p>
+          <div className="footer-bottom-inner">
+            <p>© {currentYear} Aangan Decor. All rights reserved.</p>
             <div className="footer-bottom-links">
               <Link to="/privacy-policy">Privacy Policy</Link>
-              <span>•</span>
+              <span aria-hidden="true">·</span>
               <Link to="/terms-conditions">Terms of Service</Link>
             </div>
           </div>

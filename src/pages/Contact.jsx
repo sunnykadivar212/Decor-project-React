@@ -85,8 +85,8 @@ function Contact() {
     {
       icon: <FaMapMarkerAlt />,
       title: 'Location',
-      details: '3rd Floor, Sky Tower, Upper Sanket India, Nr. Umiya Circle, Morbi 363 641',
-      link: '#',
+      details: 'Umiya Circle, Sanala Rd, Patel Colony, Vaibhav Nagar Society, Sanala, Morbi, Gujarat 363641',
+      link: 'https://www.google.com/maps/place/AANGAN+DECOR/@22.8009269,70.8162366,17z/data=!4m14!1m7!3m6!1s0x39598d0074e4713b:0x2feeedf7a891372f!2sAANGAN+DECOR!8m2!3d22.8009269!4d70.8162366!16s%2Fg%2F11lymc8fjk!3m5!1s0x39598d0074e4713b:0x2feeedf7a891372f!8m2!3d22.8009269!4d70.8162366!16s%2Fg%2F11lymc8fjk?authuser=0&entry=ttu',
     },
   ];
 
@@ -229,7 +229,33 @@ function Contact() {
           </div>
         </div>
       </section>
-      
+
+      {/* Map Section */}
+      <section className="contact-map-section">
+        <div className="container">
+          <ScrollReveal direction="up">
+            <div className="contact-map-card glass">
+              <div className="contact-map-header">
+                <h2>Find Our Showroom</h2>
+                <p>Visit us to explore our collections in person. We are located in the heart of Morbi's business district.</p>
+              </div>
+              <div className="map-wrapper">
+                <iframe
+                  title="Aangan Decor Location Map"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.222765376516!2d70.8162366!3d22.8009269!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39598d0074e4713b%3A0x2feeedf7a891372f!2sAANGAN%20DECOR!5e0!3m2!1sen!2sin!4v1716300000000!5m2!1sen!2sin"
+                  width="100%"
+                  height="450"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       <Newsletter />
     </div>
   );

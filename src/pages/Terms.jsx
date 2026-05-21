@@ -150,7 +150,7 @@ function Terms() {
               <ul className="contact-list">
                 <li><strong>Email:</strong> aangandecor7@gmail.com</li>
                 <li><strong>Phone:</strong> +91 70696 30777</li>
-                <li><strong>Address:</strong> 3rd Floor, Sky Tower, Upper Sanket India, Nr. Umiya Circle, Morbi 363 641</li>
+                <li><strong>Address:</strong> Umiya Circle, Sanala Rd, Patel Colony, Vaibhav Nagar Society, Sanala, Morbi, Gujarat 363641</li>
               </ul>
             </div>
           </div>

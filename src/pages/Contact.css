@@ -196,3 +196,67 @@
     padding: var(--spacing-xl);
   }
 }
+
+/* Map Section */
+.contact-map-section {
+  background-color: var(--color-bg-secondary);
+  background-image: var(--gradient-mesh);
+  padding-top: 0;
+  padding-bottom: var(--spacing-4xl);
+}
+
+.contact-map-card {
+  padding: 2.5rem;
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--color-border);
+}
+
+.contact-map-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.contact-map-header h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.contact-map-header p {
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+
+.map-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  height: 480px;
+  background: #f0ece4;
+}
+
+.map-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .contact-map-card {
+    padding: 1.5rem;
+    border-radius: var(--radius-xl);
+  }
+  
+  .map-wrapper {
+    height: 320px;
+  }
+}

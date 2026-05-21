@@ -11,6 +11,7 @@ const testimonials = [
     image: 'https://i.pravatar.cc/150?img=12',
     rating: 5,
     text: 'Aangan transformed our home beautifully! The quality of materials and attention to detail exceeded our expectations. Highly recommended!',
+    location: 'Ahmedabad',
   },
   {
     id: 2,
@@ -19,6 +20,7 @@ const testimonials = [
     image: 'https://i.pravatar.cc/150?img=45',
     rating: 5,
     text: 'Working with Aangan has been a pleasure. Their premium laminates and decorative items are perfect for creating stunning interiors.',
+    location: 'Surat',
   },
   {
     id: 3,
@@ -27,6 +29,7 @@ const testimonials = [
     image: 'https://i.pravatar.cc/150?img=33',
     rating: 5,
     text: 'Exceptional service and premium quality products. They completed our office renovation on time and within budget. Very professional!',
+    location: 'Rajkot',
   },
   {
     id: 4,
@@ -35,6 +38,7 @@ const testimonials = [
     image: 'https://i.pravatar.cc/150?img=47',
     rating: 5,
     text: 'The craftsmanship and material quality from Aangan is outstanding. They are my go-to choice for all interior projects.',
+    location: 'Vadodara',
   },
 ];
 
@@ -59,42 +63,30 @@ function TestimonialsCarousel() {
     setCurrentIndex(index);
   };
 
+  // Fixed: only isPaused in deps, not currentIndex — prevents timer recreation on every slide
   useEffect(() => {
-    if (!isPaused) {
-      timerRef.current = setInterval(() => {
-        handleNext();
-      }, 5000);
-    }
-
-    return () => {
-      if (timerRef.current) {
-        clearInterval(timerRef.current);
-      }
-    };
-  }, [isPaused, currentIndex]);
+    if (isPaused) return;
+    timerRef.current = setInterval(() => {
+      setDirection(1);
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(timerRef.current);
+  }, [isPaused]);
 
   const slideVariants = {
-    enter: (direction) => ({
-      x: direction > 0 ? 1000 : -1000,
-      opacity: 0,
-    }),
-    center: {
-      zIndex: 1,
-      x: 0,
-      opacity: 1,
-    },
-    exit: (direction) => ({
-      zIndex: 0,
-      x: direction < 0 ? 1000 : -1000,
-      opacity: 0,
-    }),
+    enter: (dir) => ({ x: dir > 0 ? 80 : -80, opacity: 0 }),
+    center: { x: 0, opacity: 1 },
+    exit: (dir) => ({ x: dir < 0 ? 80 : -80, opacity: 0 }),
   };
+
+  const t = testimonials[currentIndex];
 
   return (
     <section className="testimonials-section section">
       <div className="container">
         <div className="section-header">
-          <h2 className="gradient-text-animated">What Our Clients Say</h2>
+          <span className="section-eyebrow">Client Stories</span>
+          <h2>What Our Clients Say</h2>
           <p>Trusted by thousands of satisfied customers across India</p>
         </div>
 
@@ -111,66 +103,52 @@ function TestimonialsCarousel() {
               initial="enter"
               animate="center"
               exit="exit"
-              transition={{
-                x: { type: 'spring', stiffness: 300, damping: 30 },
-                opacity: { duration: 0.2 },
-              }}
+              transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="testimonial-card"
             >
-              <div className="quote-icon">
-                <FaQuoteLeft />
-              </div>
+              <div className="testimonial-card-inner">
+                <div className="testimonial-top">
+                  <FaQuoteLeft className="quote-icon" />
+                  <div className="testimonial-rating">
+                    {[...Array(t.rating)].map((_, i) => (
+                      <FaStar key={i} className="star-icon" />
+                    ))}
+                  </div>
+                </div>
 
-              <div className="testimonial-rating">
-                {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                  <FaStar key={i} className="star-icon" />
-                ))}
-              </div>
+                <p className="testimonial-text">{t.text}</p>
 
-              <p className="testimonial-text">{testimonials[currentIndex].text}</p>
-
-              <div className="testimonial-author">
-                <img
-                  src={testimonials[currentIndex].image}
-                  alt={testimonials[currentIndex].name}
-                  className="author-image"
-                />
-                <div className="author-info">
-                  <h4>{testimonials[currentIndex].name}</h4>
-                  <p>{testimonials[currentIndex].role}</p>
+                <div className="testimonial-author">
+                  <img
+                    src={t.image}
+                    alt={t.name}
+                    className="author-image"
+                    loading="lazy"
+                  />
+                  <div className="author-info">
+                    <h4>{t.name}</h4>
+                    <p>{t.role}</p>
+                    <span className="author-location">📍 {t.location}</span>
+                  </div>
                 </div>
               </div>
             </motion.div>
           </AnimatePresence>
 
-          {/* Navigation Arrows */}
-          <motion.button
-            className="carousel-nav carousel-nav-prev"
-            onClick={handlePrevious}
-            whileHover={{ scale: 1.1, x: -5 }}
-            whileTap={{ scale: 0.9 }}
-          >
+          <button className="carousel-nav carousel-nav-prev" onClick={handlePrevious} aria-label="Previous testimonial">
             <FaChevronLeft />
-          </motion.button>
-
-          <motion.button
-            className="carousel-nav carousel-nav-next"
-            onClick={handleNext}
-            whileHover={{ scale: 1.1, x: 5 }}
-            whileTap={{ scale: 0.9 }}
-          >
+          </button>
+          <button className="carousel-nav carousel-nav-next" onClick={handleNext} aria-label="Next testimonial">
             <FaChevronRight />
-          </motion.button>
+          </button>
 
-          {/* Dots Navigation */}
           <div className="carousel-dots">
             {testimonials.map((_, index) => (
-              <motion.button
+              <button
                 key={index}
                 className={`carousel-dot ${index === currentIndex ? 'active' : ''}`}
                 onClick={() => handleDotClick(index)}
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
+                aria-label={`Go to testimonial ${index + 1}`}
               />
             ))}
           </div>
