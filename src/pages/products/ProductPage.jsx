@@ -68,7 +68,7 @@ function ProductPage({ title, description, image, gallery, features, pdfLink, co
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.4, ease: 'easeInOut' }}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                    style={{ width: '100%', height: '80vh', objectFit: 'cover', display: 'block' }}
                   />
                 </AnimatePresence>
                 {activeOption && (

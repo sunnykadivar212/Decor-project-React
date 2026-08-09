@@ -1,26 +1,30 @@
-﻿import ProductPage from './ProductPage';
+﻿import ProductPage from "./ProductPage";
 
 function AanganPlainLaminate() {
   const laminateOptions = [
     {
       name: "Matte Finish",
       description: "Soft touch, non-reflective surface for elegant results",
-      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"
+      image:
+        "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786293528/4409_bwmn3v.jpg"
     },
     {
       name: "High Gloss",
       description: "Mirror-like shine for a luxurious, modern look",
-      image: "https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=800&q=80"
+      image:
+        "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786286573/DG-08_nqur4o.jpg"
     },
     {
       name: "Suede Finish",
       description: "Micro-texture that feels like premium fabric",
-      image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80"
+      image:
+        "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786285172/Laminate-9_uocrrw.jpg"
     },
     {
       name: "Deep Texture",
       description: "Dramatic industrial and natural textures",
-      image: "https://images.unsplash.com/photo-1628745277895-4a4e2d5fd5cb?w=800&q=80"
+      image:
+        "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786286573/DG-9_sc2aye.jpg"
     }
   ];
 
@@ -28,14 +32,14 @@ function AanganPlainLaminate() {
     <ProductPage
       title="Aangan Plain Laminate"
       description="Refined simplicity meets durability. Our plain laminates offer a curated palette of solid colors with multiple finishing options for contemporary interiors."
-      image="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&q=80"
+      image="https://res.cloudinary.com/dbuoua4q1/image/upload/v1786286545/2011_12x24_kxtljl.jpg"
       features={[
-        'Vivid solid color collection',
-        'Scratch, stain and impact resistant',
-        'Easy to clean and maintain',
-        'Anti-yellowing technology',
-        'Perfect for residential and commercial use',
-        'Available in multiple tactile finishes',
+        "Vivid solid color collection",
+        "Scratch, stain and impact resistant",
+        "Easy to clean and maintain",
+        "Anti-yellowing technology",
+        "Perfect for residential and commercial use",
+        "Available in multiple tactile finishes"
       ]}
       pdfLink="https://aangangroup.in/images/categories/aangan-plain-laminate.pdf"
       color="laminate"

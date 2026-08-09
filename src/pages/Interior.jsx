@@ -1,92 +1,122 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { FaArrowRight, FaWhatsapp, FaQuoteRight } from 'react-icons/fa';
-import PageHero from '../components/PageHero';
-import ScrollReveal from '../components/ScrollReveal';
-import AnimatedCard from '../components/AnimatedCard';
-import QuoteModal from '../components/QuoteModal';
-import './Interior.css';
-import Newsletter from '../components/Newsletter';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { FaArrowRight, FaWhatsapp, FaQuoteRight } from "react-icons/fa";
+import PageHero from "../components/PageHero";
+import ScrollReveal from "../components/ScrollReveal";
+import AnimatedCard from "../components/AnimatedCard";
+import QuoteModal from "../components/QuoteModal";
+import "./Interior.css";
+import Newsletter from "../components/Newsletter";
 
 function Interior() {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState('');
-  
+  const [selectedProduct, setSelectedProduct] = useState("");
+
   const openQuoteModal = (productTitle) => {
     setSelectedProduct(productTitle);
     setIsQuoteModalOpen(true);
   };
   const products = [
     {
-      title: 'Premium Plywood',
-      description: 'High-quality plywood for durable and elegant furniture',
-      image: 'https://images.unsplash.com/photo-1615873968403-89e068629265?w=600&q=80',
-      features: ['Waterproof', 'Termite Resistant', 'Multiple Thickness'],
-      link: '/interior/aangan-plywood',
+      title: "Premium Plywood",
+      description: "High-quality plywood for durable and elegant furniture",
+      image:
+        "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786285320/IMG_1505_llxmkb.jpg",
+      features: ["Waterproof", "Termite Resistant", "Multiple Thickness"],
+      link: "/interior/aangan-plywood"
     },
     {
-      title: 'Plain Laminates',
-      description: 'Smooth, elegant laminates in various colors',
-      image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80',
-      features: ['Scratch Resistant', 'Easy Maintenance', 'Wide Color Range'],
-      link: '/interior/aangan-plain-laminate',
+      title: "Plain Laminates",
+      description: "Smooth, elegant laminates in various colors",
+      image:
+        "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786293528/4429_fvxzld.jpg",
+      features: ["Scratch Resistant", "Easy Maintenance", "Wide Color Range"],
+      link: "/interior/aangan-plain-laminate"
     },
     {
-      title: 'Mocco Laminates',
-      description: 'Textured laminates with sophisticated patterns',
-      image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80',
-      features: ['Unique Textures', 'Premium Finish', 'Durable Surface'],
-      link: '/interior/aangan-mocco-laminate',
+      title: "Mocco Laminates",
+      description: "Textured laminates with sophisticated patterns",
+      image:
+        "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786293528/4409_bwmn3v.jpg",
+      features: ["Unique Textures", "Premium Finish", "Durable Surface"],
+      link: "/interior/aangan-mocco-laminate"
     },
     {
-      title: 'Acrylic Sheets',
-      description: 'Versatile acrylic for modern interior applications',
-      image: 'https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=600&q=80',
-      features: ['High Gloss', 'UV Resistant', 'Multiple Colors'],
-      link: '/interior/aangan-acrylic',
+      title: "Acrylic Sheets",
+      description: "Versatile acrylic for modern interior applications",
+      image:
+        "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786261720/IMG_1436_tkyjgo.jpg",
+      features: ["High Gloss", "UV Resistant", "Multiple Colors"],
+      link: "/interior/aangan-acrylic"
     },
     {
-      title: 'Louvers',
-      description: 'Stylish louvers for ventilation and aesthetics',
-      image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=600&q=80',
-      features: ['Ventilation', 'Privacy', 'Modern Design'],
-      link: '/louvers',
+      title: "Louvers",
+      description: "Stylish louvers for ventilation and aesthetics",
+      image:
+        "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786285201/IMG_1412_oonk08.jpg",
+      features: ["Ventilation", "Privacy", "Modern Design"],
+      link: "/louvers"
     },
     {
-      title: 'A-Fab Materials',
-      description: 'Premium fabric-based decorative materials',
-      image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80',
-      features: ['Soft Touch', 'Elegant Look', 'Easy Installation'],
-      link: '/interior/a-fab',
+      title: "A-Fab Materials",
+      description: "Premium fabric-based decorative materials",
+      image:
+        "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786289539/A-fab_qh2tkp.jpg",
+      features: ["Soft Touch", "Elegant Look", "Easy Installation"],
+      link: "/interior/a-fab"
     },
     {
-      title: 'Aangan Veneers',
-      description: 'Thin natural wood overlays for a rich, warm, and sophisticated wooden finish',
-      image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80',
-      features: ['100% Natural Wood', 'Unique Grain Patterns', 'Premium Finish'],
-      link: '/interior/veneer',
+      title: "Aangan Veneers",
+      description:
+        "Thin natural wood overlays for a rich, warm, and sophisticated wooden finish",
+      image:
+        "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786298830/images_56_blqkx5.jpg",
+      features: [
+        "100% Natural Wood",
+        "Unique Grain Patterns",
+        "Premium Finish"
+      ],
+      link: "/interior/veneer"
     },
     {
-      title: 'PU Wall Panels',
-      description: 'High-density polyurethane panels offering a stunning stone-imitation facade',
-      image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=80',
-      features: ['Realistic Slate Textures', 'Lightweight & Sturdy', 'Water & Impact Resistant'],
-      link: '/interior/pu-wall-panel',
+      title: "PU Wall Panels",
+      description:
+        "High-density polyurethane panels offering a stunning stone-imitation facade",
+      image:
+        "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786298593/images_53_rjsqgx.jpg",
+      features: [
+        "Realistic Slate Textures",
+        "Lightweight & Sturdy",
+        "Water & Impact Resistant"
+      ],
+      link: "/interior/pu-wall-panel"
     },
     {
-      title: 'Moulding Patti',
-      description: 'Elegant PVC, WPC, or wooden trim profiles to conceal joints and refine edges',
-      image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&q=80',
-      features: ['Conceals Gaps & Joints', 'Brushed Metallic Trims', 'Durable Borders'],
-      link: '/interior/moulding-patti',
+      title: "Moulding Patti",
+      description:
+        "Elegant PVC, WPC, or wooden trim profiles to conceal joints and refine edges",
+      image:
+        "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&q=80",
+      features: [
+        "Conceals Gaps & Joints",
+        "Brushed Metallic Trims",
+        "Durable Borders"
+      ],
+      link: "/interior/moulding-patti"
     },
     {
-      title: 'False Ceiling & ACP',
-      description: 'Transformative plaster of Paris (POP) structures and weather-resistant ACP facades',
-      image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600&q=80',
-      features: ['Artisan POP Ceilings', 'Weatherproof Exterior ACP', 'Ambient Cove Lighting'],
-      link: '/interior/false-ceiling',
-    },
+      title: "False Ceiling & ACP",
+      description:
+        "Transformative plaster of Paris (POP) structures and weather-resistant ACP facades",
+      image:
+        "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786297500/images_43_zw8t4m.jpg",
+      features: [
+        "Artisan POP Ceilings",
+        "Weatherproof Exterior ACP",
+        "Ambient Cove Lighting"
+      ],
+      link: "/interior/false-ceiling"
+    }
   ];
 
   return (
@@ -95,7 +125,7 @@ function Interior() {
       <PageHero
         title="Interior Items"
         subtitle="Premium materials for stunning interiors - plywood, laminates, acrylic, and more"
-        breadcrumbs={[{ label: 'Interior Items' }]}
+        breadcrumbs={[{ label: "Interior Items" }]}
         variant="primary"
         backgroundImage="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1920"
       />
@@ -105,29 +135,42 @@ function Interior() {
         <div className="container">
           <div className="gallery-grid">
             {products.map((product, index) => (
-              <ScrollReveal key={product.title} direction="up" delay={index * 0.1}>
+              <ScrollReveal
+                key={product.title}
+                direction="up"
+                delay={index * 0.1}
+              >
                 <div className="gallery-item group">
                   <div className="gallery-image-wrapper">
-                    <img src={product.image} alt={product.title} className="gallery-image" />
-                    
+                    <img
+                      src={product.image}
+                      alt={product.title}
+                      className="gallery-image"
+                    />
+
                     {/* Hover Content */}
                     <div className="gallery-overlay">
                       <div className="gallery-info">
-                        <span className="gallery-category">Premium Quality</span>
+                        <span className="gallery-category">
+                          Premium Quality
+                        </span>
                         <h3 className="gallery-title">{product.title}</h3>
                         <p className="gallery-desc">{product.description}</p>
-                        
+
                         <div className="gallery-actions">
-                          <button 
+                          <button
                             className="action-pill quote-btn"
                             onClick={() => openQuoteModal(product.title)}
                           >
                             <FaQuoteRight /> Quote
                           </button>
-                          <Link to={product.link} className="action-pill primary">
+                          <Link
+                            to={product.link}
+                            className="action-pill primary"
+                          >
                             Details <FaArrowRight />
                           </Link>
-                          <a 
+                          <a
                             href={`http://wa.me/917069630777?text=Hi, I'm interested in ${product.title}`}
                             target="_blank"
                             rel="noopener noreferrer"
@@ -139,7 +182,7 @@ function Interior() {
                       </div>
                     </div>
                   </div>
-                  
+
                   {/* Static Info (Visible on Mobile or as Minimal Label) */}
                   <div className="gallery-footer">
                     <h4 className="footer-title">{product.title}</h4>
@@ -159,9 +202,17 @@ function Interior() {
           <ScrollReveal direction="up">
             <div className="cta-content">
               <h2>Need Help Choosing?</h2>
-              <p>Our experts are here to guide you in selecting the perfect materials for your project</p>
+              <p>
+                Our experts are here to guide you in selecting the perfect
+                materials for your project
+              </p>
               <div className="cta-actions">
-                <a href="http://wa.me/917069630777" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                <a
+                  href="http://wa.me/917069630777"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+                >
                   Contact Our Experts
                 </a>
                 <Link to="/contact" className="btn btn-outline">
@@ -172,12 +223,12 @@ function Interior() {
           </ScrollReveal>
         </div>
       </section>
-      
+
       <Newsletter />
 
-      <QuoteModal 
-        isOpen={isQuoteModalOpen} 
-        onClose={() => setIsQuoteModalOpen(false)} 
+      <QuoteModal
+        isOpen={isQuoteModalOpen}
+        onClose={() => setIsQuoteModalOpen(false)}
         productTitle={selectedProduct}
       />
     </div>
