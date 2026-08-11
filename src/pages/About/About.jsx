@@ -1,9 +1,9 @@
 import { FaCheckCircle, FaUsers, FaAward, FaHeart } from 'react-icons/fa';
-import PageHero from '../components/PageHero';
-import ScrollReveal from '../components/ScrollReveal';
-import AnimatedCard from '../components/AnimatedCard';
+import PageHero from '../../components/common/PageHero/PageHero';
+import ScrollReveal from '../../components/common/ScrollReveal/ScrollReveal';
+import AnimatedCard from '../../components/common/AnimatedCard/AnimatedCard';
 import './About.css';
-import Newsletter from '../components/Newsletter';
+import Newsletter from '../../components/features/Newsletter/Newsletter';
 
 function About() {
   const stats = [

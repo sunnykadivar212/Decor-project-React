@@ -1,5 +1,5 @@
-import PageHero from '../components/PageHero';
-import SEO from '../components/SEO';
+import PageHero from '../../components/common/PageHero/PageHero';
+import SEO from '../../components/common/SEO/SEO';
 import './Privacy.css';
 
 function Privacy() {

@@ -11,10 +11,10 @@ import {
   FaWhatsapp,
   FaPhone
 } from "react-icons/fa";
-import ScrollReveal from "../components/ScrollReveal";
-import GradientButton from "../components/GradientButton";
-import TestimonialsCarousel from "../components/TestimonialsCarousel";
-import Newsletter from "../components/Newsletter";
+import ScrollReveal from "../../components/common/ScrollReveal/ScrollReveal";
+import GradientButton from "../../components/common/GradientButton/GradientButton";
+import TestimonialsCarousel from "../../components/features/TestimonialsCarousel/TestimonialsCarousel";
+import Newsletter from "../../components/features/Newsletter/Newsletter";
 import "./Home.css";
 
 const categories = [

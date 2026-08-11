@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaCheckCircle, FaDownload, FaExpand } from 'react-icons/fa';
-import PageHero from '../../components/PageHero';
-import ImageGallery from '../../components/ImageGallery';
+import PageHero from '../../components/common/PageHero/PageHero';
+import ImageGallery from '../../components/features/ImageGallery/ImageGallery';
 import './ProductPage.css';
 
 function ProductPage({ title, description, image, gallery, features, pdfLink, color = 'primary', options = [], heroImage }) {

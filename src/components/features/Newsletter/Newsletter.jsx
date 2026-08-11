@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FaPaperPlane, FaCheckCircle, FaEnvelope } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
-import { WEB3FORMS_ACCESS_KEY } from '../config';
+import { WEB3FORMS_ACCESS_KEY } from '../../../config/config';
 import './Newsletter.css';
 
 function Newsletter() {

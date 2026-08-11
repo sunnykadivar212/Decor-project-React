@@ -1,6 +1,6 @@
-import PageHero from '../components/PageHero';
-import SEO from '../components/SEO';
-import './Privacy.css';
+import PageHero from '../../components/common/PageHero/PageHero';
+import SEO from '../../components/common/SEO/SEO';
+import '../Privacy/Privacy.css';
 
 function Terms() {
   return (

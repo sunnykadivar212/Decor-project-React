@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebook, FaInstagram, FaWhatsapp, FaLinkedin, FaArrowRight } from 'react-icons/fa';
-import logoDark from '../assets/logo-dark.svg';
+import logoDark from '../../../assets/logo-dark.svg';
 import './Footer.css';
 
 const quickLinks = [

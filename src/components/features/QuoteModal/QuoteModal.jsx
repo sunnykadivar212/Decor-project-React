@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaTimes, FaPaperPlane, FaCheckCircle } from 'react-icons/fa';
-import { WEB3FORMS_ACCESS_KEY } from '../config';
+import { WEB3FORMS_ACCESS_KEY } from '../../../config/config';
 import './QuoteModal.css';
 
 function QuoteModal({ isOpen, onClose, productTitle = 'Custom Inquiry' }) {

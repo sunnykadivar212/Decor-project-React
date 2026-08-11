@@ -1,8 +1,8 @@
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import ScrollToTop from '../components/ScrollToTop';
-import BackToTop from '../components/BackToTop';
-import ChatWidget from '../components/ChatWidget';
+import Header from '../components/layout/Header/Header';
+import Footer from '../components/layout/Footer/Footer';
+import ScrollToTop from '../components/layout/ScrollToTop/ScrollToTop';
+import BackToTop from '../components/layout/BackToTop/BackToTop';
+import ChatWidget from '../components/features/ChatWidget/ChatWidget';
 
 
 function MainLayout({ children }) {

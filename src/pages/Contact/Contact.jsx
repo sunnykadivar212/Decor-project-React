@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { WEB3FORMS_ACCESS_KEY } from '../config';
+import { WEB3FORMS_ACCESS_KEY } from '../../config/config';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaWhatsapp, FaPaperPlane } from 'react-icons/fa';
-import PageHero from '../components/PageHero';
-import ScrollReveal from '../components/ScrollReveal';
-import GradientButton from '../components/GradientButton';
+import PageHero from '../../components/common/PageHero/PageHero';
+import ScrollReveal from '../../components/common/ScrollReveal/ScrollReveal';
+import GradientButton from '../../components/common/GradientButton/GradientButton';
 import './Contact.css';
-import Newsletter from '../components/Newsletter';
+import Newsletter from '../../components/features/Newsletter/Newsletter';
 
 function Contact() {
   const [formData, setFormData] = useState({

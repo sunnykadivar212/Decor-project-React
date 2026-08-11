@@ -1,8 +1,8 @@
 import { FaPaintBrush, FaRulerCombined, FaTruck, FaTools, FaLightbulb, FaHandshake, FaKey, FaDraftingCompass, FaCube } from 'react-icons/fa';
-import PageHero from '../components/PageHero';
-import ScrollReveal from '../components/ScrollReveal';
-import AnimatedCard from '../components/AnimatedCard';
-import GradientButton from '../components/GradientButton';
+import PageHero from '../../components/common/PageHero/PageHero';
+import ScrollReveal from '../../components/common/ScrollReveal/ScrollReveal';
+import AnimatedCard from '../../components/common/AnimatedCard/AnimatedCard';
+import GradientButton from '../../components/common/GradientButton/GradientButton';
 import './Services.css';
 
 function Services() {

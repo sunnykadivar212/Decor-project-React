@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaArrowRight, FaWhatsapp, FaQuoteRight } from "react-icons/fa";
-import PageHero from "../components/PageHero";
-import ScrollReveal from "../components/ScrollReveal";
-import AnimatedCard from "../components/AnimatedCard";
-import QuoteModal from "../components/QuoteModal";
+import PageHero from "../../components/common/PageHero/PageHero";
+import ScrollReveal from "../../components/common/ScrollReveal/ScrollReveal";
+import AnimatedCard from "../../components/common/AnimatedCard/AnimatedCard";
+import QuoteModal from "../../components/features/QuoteModal/QuoteModal";
 import "./Interior.css";
-import Newsletter from "../components/Newsletter";
+import Newsletter from "../../components/features/Newsletter/Newsletter";
 
 function Interior() {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);

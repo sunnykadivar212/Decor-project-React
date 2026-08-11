@@ -2,19 +2,19 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 // ── EAGER: Main & Home (critical path)
-import Home from '../pages/Home';
+import Home from '../pages/Home/Home';
 
 // ── LAZY: All other pages (loaded on demand)
-const About           = lazy(() => import('../pages/About'));
-const Services        = lazy(() => import('../pages/Services'));
-const TurnkeyProjects = lazy(() => import('../pages/TurnkeyProjects'));
-const Interior        = lazy(() => import('../pages/Interior'));
-const Decorative      = lazy(() => import('../pages/Decorative'));
-const Contact         = lazy(() => import('../pages/Contact'));
-const NotFound        = lazy(() => import('../pages/NotFound'));
-const FAQ             = lazy(() => import('../pages/FAQ'));
-const Privacy         = lazy(() => import('../pages/Privacy'));
-const Terms           = lazy(() => import('../pages/Terms'));
+const About           = lazy(() => import('../pages/About/About'));
+const Services        = lazy(() => import('../pages/Services/Services'));
+const TurnkeyProjects = lazy(() => import('../pages/TurnkeyProjects/TurnkeyProjects'));
+const Interior        = lazy(() => import('../pages/Interior/Interior'));
+const Decorative      = lazy(() => import('../pages/Decorative/Decorative'));
+const Contact         = lazy(() => import('../pages/Contact/Contact'));
+const NotFound        = lazy(() => import('../pages/NotFound/NotFound'));
+const FAQ             = lazy(() => import('../pages/FAQ/FAQ'));
+const Privacy         = lazy(() => import('../pages/Privacy/Privacy'));
+const Terms           = lazy(() => import('../pages/Terms/Terms'));
 
 // Category Pages
 const Laminate           = lazy(() => import('../pages/categories/Laminate'));

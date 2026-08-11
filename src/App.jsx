@@ -4,7 +4,7 @@ import MainLayout from './layouts/MainLayout';
 import AppRoutes from './routes/AppRoutes';
 import './App.css';
 
-import CustomCursor from './components/CustomCursor';
+import CustomCursor from './components/layout/CustomCursor/CustomCursor';
 
 function App() {
   return (

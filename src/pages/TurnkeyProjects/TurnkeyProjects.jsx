@@ -1,9 +1,9 @@
 // Force update
 import { motion } from 'framer-motion';
 import { FaKey, FaClipboardCheck, FaUsers, FaClock, FaCheckCircle, FaTools, FaPaintBrush, FaHardHat, FaChartLine, FaHandshake, FaArrowRight } from 'react-icons/fa';
-import ScrollReveal from '../components/ScrollReveal';
-import AnimatedCard from '../components/AnimatedCard';
-import GradientButton from '../components/GradientButton';
+import ScrollReveal from '../../components/common/ScrollReveal/ScrollReveal';
+import AnimatedCard from '../../components/common/AnimatedCard/AnimatedCard';
+import GradientButton from '../../components/common/GradientButton/GradientButton';
 import './TurnkeyProjects.css';
 
 function TurnkeyProjects() {

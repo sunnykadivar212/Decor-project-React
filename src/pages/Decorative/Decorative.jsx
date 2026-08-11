@@ -2,10 +2,10 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaArrowRight, FaWhatsapp, FaQuoteRight } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
-import PageHero from "../components/PageHero";
-import ScrollReveal from "../components/ScrollReveal";
-import QuoteModal from "../components/QuoteModal";
-import Newsletter from "../components/Newsletter";
+import PageHero from "../../components/common/PageHero/PageHero";
+import ScrollReveal from "../../components/common/ScrollReveal/ScrollReveal";
+import QuoteModal from "../../components/features/QuoteModal/QuoteModal";
+import Newsletter from "../../components/features/Newsletter/Newsletter";
 import "./Decorative.css";
 
 function Decorative() {
