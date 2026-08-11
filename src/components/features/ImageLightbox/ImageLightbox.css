@@ -202,3 +202,19 @@
     bottom: 70px;
   }
 }
+
+@media (max-width: 480px) {
+  .lightbox-nav {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+  .lightbox-prev { left: 4px; }
+  .lightbox-next { right: 4px; }
+  .lightbox-counter { font-size: 0.8rem; padding: 0.25rem 0.75rem; }
+}
+
+@media (max-width: 360px) {
+  .lightbox-controls { display: none; }
+}
+

@@ -1,5 +1,5 @@
 .contact {
-  padding-top: 80px;
+  padding-top: var(--header-total-height, 80px);
 }
 
 /* Hero Section */
@@ -260,3 +260,39 @@
     height: 320px;
   }
 }
+
+@media (max-width: 480px) {
+  .contact-hero {
+    padding: var(--spacing-2xl) 0;
+  }
+  .contact-info-item {
+    padding: var(--spacing-lg);
+    gap: var(--spacing-sm);
+  }
+  .contact-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.1rem;
+    border-radius: var(--radius-lg);
+  }
+  .contact-form {
+    padding: 1.25rem;
+    border-radius: var(--radius-xl);
+  }
+  .contact-map-card {
+    padding: 1rem;
+  }
+  .map-wrapper {
+    height: 260px;
+  }
+}
+
+@media (max-width: 360px) {
+  .contact-form {
+    padding: 1rem 0.75rem;
+  }
+  .map-wrapper {
+    height: 220px;
+  }
+}
+

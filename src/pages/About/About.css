@@ -1,5 +1,5 @@
 .about {
-  padding-top: 80px;
+  padding-top: var(--header-total-height, 80px);
 }
 
 /* Hero Section */
@@ -176,4 +176,29 @@
   .stats-grid {
     grid-template-columns: 1fr;
   }
+
+  .stat-item {
+    padding: var(--spacing-lg);
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .value-card {
+    padding: var(--spacing-lg);
+  }
 }
+
+@media (max-width: 360px) {
+  .stat-item {
+    padding: var(--spacing-md);
+  }
+  .stat-icon {
+    font-size: 2.2rem;
+  }
+  .stat-number {
+    font-size: 1.75rem;
+  }
+}
+

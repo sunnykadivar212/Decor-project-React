@@ -311,3 +311,14 @@
     justify-content: center;
   }
 }
+
+@media (max-width: 360px) {
+  .filter-panel {
+    padding: 0.85rem;
+  }
+  .filter-badge-item {
+    font-size: 0.78rem;
+    padding: 0.35rem 0.75rem;
+  }
+}
+

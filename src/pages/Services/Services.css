@@ -1,5 +1,5 @@
 .services {
-  padding-top: 80px;
+  padding-top: var(--header-total-height, 80px);
 }
 
 /* Hero Section */
@@ -160,7 +160,41 @@
     grid-template-columns: 1fr;
   }
 
+  .service-card {
+    padding: var(--spacing-2xl) var(--spacing-xl);
+  }
+
   .cta-box {
     padding: var(--spacing-2xl);
   }
 }
+
+@media (max-width: 480px) {
+  .service-card {
+    padding: 1.5rem 1.25rem;
+    border-radius: var(--radius-xl);
+  }
+
+  .service-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .service-card h3 {
+    font-size: 1.4rem;
+  }
+
+  .cta-box {
+    padding: 1.5rem 1.25rem;
+    border-radius: var(--radius-xl);
+  }
+}
+
+@media (max-width: 360px) {
+  .service-card {
+    padding: 1.25rem 1rem;
+  }
+}
+

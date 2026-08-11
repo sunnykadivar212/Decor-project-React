@@ -330,6 +330,15 @@
 }
 
 @media (max-width: 480px) {
+  .footer-main { padding: 3rem 0 2rem; }
   .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-  .footer-bottom-inner { flex-direction: column; text-align: center; }
+  .footer-bottom-inner { flex-direction: column; text-align: center; gap: 0.75rem; }
+  .footer-whatsapp-btn { width: 100%; justify-content: center; }
 }
+
+@media (max-width: 360px) {
+  .footer-main { padding: 2.5rem 0 1.5rem; }
+  .footer-grid { gap: 1.5rem; }
+  .footer-socials { gap: 0.5rem; }
+}
+

@@ -141,15 +141,46 @@
   .chat-widget-btn {
     bottom: calc(var(--spacing-lg) + 60px);
     right: var(--spacing-lg);
-    width: 56px;
-    height: 56px;
-    font-size: 1.6rem;
+    width: 52px;
+    height: 52px;
+    font-size: 1.5rem;
   }
 
   .chat-popup {
-    bottom: calc(var(--spacing-lg) + 125px);
+    bottom: calc(var(--spacing-lg) + 120px);
     right: var(--spacing-lg);
-    width: calc(100vw - var(--spacing-2xl));
+    width: calc(100vw - 2 * var(--spacing-lg));
     max-width: 340px;
   }
 }
+
+@media (max-width: 480px) {
+  .chat-widget-btn {
+    bottom: calc(var(--spacing-md) + 54px);
+    right: var(--spacing-md);
+    width: 48px;
+    height: 48px;
+    font-size: 1.4rem;
+  }
+
+  .chat-popup {
+    bottom: calc(var(--spacing-md) + 110px);
+    right: var(--spacing-md);
+    left: var(--spacing-md);
+    width: auto;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .chat-widget-btn {
+    bottom: calc(var(--spacing-sm) + 50px);
+    right: var(--spacing-sm);
+  }
+  .chat-popup {
+    bottom: calc(var(--spacing-sm) + 104px);
+    right: var(--spacing-sm);
+    left: var(--spacing-sm);
+  }
+}
+

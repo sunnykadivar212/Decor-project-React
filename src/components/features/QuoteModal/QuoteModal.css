@@ -3,13 +3,16 @@
   inset: 0;
   background: rgba(0, 0, 0, 0.85); /* Slightly darker for better focus */
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   z-index: 2000;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: var(--spacing-md);
-  margin-top: var(--spacing-3xl); /* Viewport safety padding */
+  padding-top: max(var(--spacing-md), env(safe-area-inset-top));
+  padding-bottom: max(var(--spacing-md), env(safe-area-inset-bottom));
 }
+
 
 .quote-modal {
   position: relative; /* Changed from fixed since parent overlay is now flex */
@@ -176,9 +179,10 @@
 
 @media (max-width: 600px) {
   .quote-modal {
-    padding: var(--spacing-xl);
-    width: 90%;
-    max-height: 95vh;
+    padding: 1.5rem 1.25rem;
+    width: 94%;
+    max-height: 90vh;
+    border-radius: var(--radius-xl);
   }
   
   .modal-form .form-row {
@@ -186,6 +190,26 @@
   }
   
   .modal-header h2 {
-    font-size: 1.8rem;
+    font-size: 1.75rem;
+  }
+
+  .close-modal {
+    width: 36px;
+    height: 36px;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1rem;
   }
 }
+
+@media (max-width: 360px) {
+  .quote-modal {
+    padding: 1.25rem 1rem;
+    width: 98%;
+  }
+
+  .modal-header h2 {
+    font-size: 1.5rem;
+  }
+}
+

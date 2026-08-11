@@ -213,8 +213,13 @@
 }
 
 @media (max-width: 480px) {
-  .newsletter-glass-card { padding: 2rem 1.5rem; border-radius: var(--radius-xl); }
-  .input-field-wrapper { flex-direction: column; border-radius: var(--radius-xl); }
-  .premium-input { text-align: center; }
-  .premium-submit-btn { justify-content: center; border-radius: var(--radius-xl); }
+  .newsletter-glass-card { padding: 2rem 1.25rem; border-radius: var(--radius-xl); }
+  .input-field-wrapper { flex-direction: column; border-radius: var(--radius-xl); gap: 0.5rem; background: transparent; border: none; }
+  .premium-input { text-align: center; border: 1.5px solid var(--color-border); border-radius: var(--radius-xl); background: var(--color-bg-secondary); padding: 0.85rem 1rem; }
+  .premium-submit-btn { justify-content: center; border-radius: var(--radius-xl); width: 100%; margin: 0; padding: 0.85rem 1rem; }
 }
+
+@media (max-width: 360px) {
+  .newsletter-glass-card { padding: 1.5rem 1rem; }
+}
+

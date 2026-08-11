@@ -1,5 +1,5 @@
 .faq-page {
-  padding-top: 80px;
+  padding-top: var(--header-total-height, 80px);
 }
 
 .faq-content {
@@ -204,3 +204,29 @@
     font-size: 1.5rem;
   }
 }
+
+@media (max-width: 480px) {
+  .faq-category {
+    padding: var(--spacing-md);
+    border-radius: var(--radius-xl);
+  }
+
+  .faq-search input {
+    font-size: 1rem;
+  }
+
+  .faq-cta {
+    padding: var(--spacing-xl) var(--spacing-md);
+    border-radius: var(--radius-xl);
+  }
+}
+
+@media (max-width: 360px) {
+  .faq-category {
+    padding: 1rem 0.75rem;
+  }
+  .category-title {
+    font-size: 1.2rem;
+  }
+}
+

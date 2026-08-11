@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaBars, FaTimes, FaWhatsapp } from 'react-icons/fa';
+import { FaBars, FaTimes, FaWhatsapp, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from 'react-icons/fa';
 import logoDark from '../../../assets/logo-dark.svg';
 import './Header.css';
 
@@ -74,12 +74,20 @@ function Header() {
         <div className="header-top-bar">
           <div className="container-wide top-bar-content">
             <div className="top-bar-left">
-              <span className="top-bar-tagline">India's Premium Decor Solutions</span>
+              <span className="top-bar-location">
+                <FaMapMarkerAlt /> <span>Morbi, Gujarat</span>
+              </span>
+              <span className="top-bar-divider" aria-hidden="true" />
+              <span className="top-bar-tagline">✨ India's Premium Decor Solutions</span>
             </div>
             <div className="top-bar-right">
-              <a href="mailto:aangandecor7@gmail.com" className="top-bar-link">aangandecor7@gmail.com</a>
+              <a href="mailto:aangandecor7@gmail.com" className="top-bar-link">
+                <FaEnvelope /> <span>aangandecor7@gmail.com</span>
+              </a>
               <span className="top-bar-divider" aria-hidden="true" />
-              <a href="tel:+917069621777" className="top-bar-link">+91 70696 21777</a>
+              <a href="tel:+917069621777" className="top-bar-link">
+                <FaPhoneAlt /> <span>+91 70696 21777</span>
+              </a>
             </div>
           </div>
         </div>
@@ -113,10 +121,11 @@ function Header() {
             className="header-whatsapp"
             aria-label="WhatsApp us"
           >
+            <span className="whatsapp-status-dot" aria-hidden="true" />
             <FaWhatsapp />
             <span>WhatsApp</span>
           </a>
-          <Link to="/contact" className="btn btn-primary header-cta">
+          <Link to="/contact" className="btn btn-gold header-cta">
             Get Quote
           </Link>
           <motion.button
@@ -142,67 +151,106 @@ function Header() {
         </div>
       </div>
 
+
       {/* Full-Screen Overlay Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
             className="fullscreen-menu"
-            initial={{ clipPath: 'inset(0 0 100% 0)' }}
-            animate={{ clipPath: 'inset(0 0 0% 0)' }}
-            exit={{ clipPath: 'inset(0 0 100% 0)' }}
-            transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
           >
-            {/* Brand Panel */}
-            <div className="menu-left">
-              <div className="menu-brand-content">
-                <span className="menu-brand-eyebrow">Premium Decor Solutions</span>
-                <h2 className="menu-brand-title">Aangan<br />Group</h2>
-                <div className="menu-contact-info">
-                  <p>Morbi, Gujarat — India</p>
-                  <a href="mailto:aangandecor7@gmail.com">aangandecor7@gmail.com</a>
-                </div>
-              </div>
-              <div className="menu-blob" aria-hidden="true" />
+            {/* Dedicated Top Bar inside Mobile Overlay */}
+            <div className="mobile-overlay-header">
+              <Link to="/" onClick={() => setIsMobileMenuOpen(false)} aria-label="Aangan Decor — Home">
+                <img src={logoDark} alt="Aangan Decor" className="logo-image overlay-logo" />
+              </Link>
+              <button
+                className="overlay-close-btn"
+                onClick={() => setIsMobileMenuOpen(false)}
+                aria-label="Close menu"
+              >
+                <FaTimes />
+              </button>
             </div>
 
-            {/* Navigation Panel */}
-            <div className="menu-right">
-              <nav className="fullscreen-nav" aria-label="Full screen navigation">
-                {navLinks.map((link, index) => (
-                  <motion.div
-                    key={link.path}
-                    initial={{ x: 60, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 0.1 + index * 0.08, duration: 0.5, ease: 'easeOut' }}
-                  >
+            <div className="fullscreen-menu-wrapper">
+              {/* Left brand panel (Desktop/Tablet wide) */}
+              <div className="menu-left">
+                <div className="menu-brand-content">
+                  <span className="menu-brand-eyebrow">Premium Decor Solutions</span>
+                  <h2 className="menu-brand-title">Aangan<br />Group</h2>
+                  <div className="menu-contact-info">
+                    <p>Morbi, Gujarat — India</p>
+                    <a href="mailto:aangandecor7@gmail.com">aangandecor7@gmail.com</a>
+                    <a href="tel:+917069621777">+91 70696 21777</a>
+                  </div>
+                </div>
+                <div className="menu-blob" aria-hidden="true" />
+              </div>
+
+              {/* Navigation Panel */}
+              <div className="menu-right">
+                <span className="mobile-menu-eyebrow">✨ Aangan Decor • Luxury Interiors</span>
+
+                <nav className="fullscreen-nav" aria-label="Full screen navigation">
+                  {navLinks.map((link, index) => (
+                    <motion.div
+                      key={link.path}
+                      initial={{ x: 40, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: 0.08 + index * 0.06, duration: 0.4, ease: 'easeOut' }}
+                    >
+                      <Link
+                        to={link.path}
+                        className={`fullscreen-nav-link ${location.pathname === link.path ? 'active' : ''}`}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        <span className="nav-number">0{index + 1}</span>
+                        <span className="nav-text">{link.label}</span>
+                      </Link>
+                    </motion.div>
+                  ))}
+                </nav>
+
+                <motion.div
+                  className="menu-footer"
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.45 }}
+                >
+                  <div className="mobile-menu-actions">
                     <Link
-                      to={link.path}
-                      className={`fullscreen-nav-link ${location.pathname === link.path ? 'active' : ''}`}
+                      to="/contact"
+                      className="btn btn-gold mobile-action-btn"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
-                      <span className="nav-number">0{index + 1}</span>
-                      <span className="nav-text">{link.label}</span>
+                      Get Free Quote
                     </Link>
-                  </motion.div>
-                ))}
-              </nav>
+                    <a
+                      href="http://wa.me/917069621777"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mobile-wa-pill"
+                    >
+                      <FaWhatsapp /> <span>WhatsApp Us</span>
+                    </a>
+                  </div>
 
-              <motion.div
-                className="menu-footer"
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.65 }}
-              >
-                <div className="menu-socials">
-                  <a href="https://www.instagram.com/aangan__decor" target="_blank" rel="noopener noreferrer" className="social-link">Instagram</a>
-                  <a href="https://www.facebook.com/AanganDecor" target="_blank" rel="noopener noreferrer" className="social-link">Facebook</a>
-                  <a href="http://wa.me/917069621777" target="_blank" rel="noopener noreferrer" className="social-link">WhatsApp</a>
-                </div>
-              </motion.div>
+                  <div className="menu-socials">
+                    <a href="https://www.instagram.com/aangan__decor" target="_blank" rel="noopener noreferrer" className="social-link">Instagram</a>
+                    <a href="https://www.facebook.com/AanganDecor" target="_blank" rel="noopener noreferrer" className="social-link">Facebook</a>
+                    <a href="http://wa.me/917069621777" target="_blank" rel="noopener noreferrer" className="social-link">WhatsApp</a>
+                  </div>
+                </motion.div>
+              </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
     </motion.header>
   );
 }

@@ -1,6 +1,6 @@
 .privacy-page,
 .terms-page {
-  padding-top: 80px;
+  padding-top: var(--header-total-height, 80px);
 }
 
 .privacy-content,
@@ -97,3 +97,17 @@
     font-size: 1rem;
   }
 }
+
+@media (max-width: 480px) {
+  .content-wrapper {
+    padding: 1.25rem 1rem;
+    border-radius: var(--radius-xl);
+  }
+}
+
+@media (max-width: 360px) {
+  .content-wrapper {
+    padding: 1rem 0.75rem;
+  }
+}
+

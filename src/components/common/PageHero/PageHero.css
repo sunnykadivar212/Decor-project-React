@@ -155,6 +155,29 @@
 /* Responsive */
 @media (max-width: 768px) {
   .page-hero {
-    padding: var(--spacing-2xl) 0 var(--spacing-xl);
+    padding: calc(var(--header-total-height, 80px) + 2rem) 0 var(--spacing-2xl);
+  }
+  .page-hero h1 {
+    font-size: clamp(2.2rem, 7vw, 3.2rem);
   }
 }
+
+@media (max-width: 480px) {
+  .page-hero {
+    padding: calc(var(--header-content-height, 70px) + 1.5rem) 0 var(--spacing-xl);
+  }
+  .page-hero .breadcrumb {
+    font-size: 0.75rem;
+    padding: 0.4em 1em;
+  }
+  .page-hero .hero-subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .page-hero h1 {
+    font-size: 1.8rem;
+  }
+}
+
