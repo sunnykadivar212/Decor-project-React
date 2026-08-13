@@ -1,0 +1,345 @@
+/* ═════════════════════════════════════════════════════════════════
+   CINEMATIC INTERIOR BACKGROUND & OVERLAYS (APPLE / AWWWARDS LUXURY)
+   ═════════════════════════════════════════════════════════════════ */
+
+.cinematic-container {
+    position: relative;
+    width: 100%;
+    background: #060a07; /* Ultra deep dark green/black tint */
+    margin-top: -90px;   /* Pull under transparent fixed navbar */
+}
+
+.canvas-wrapper {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.canvas-wrapper canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Subtle Vignette Overlay for High Contrast Text (Lighter Touch) */
+.cinematic-vignette {
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(circle at 30% 50%, rgba(5, 12, 8, 0.12) 0%, rgba(5, 12, 8, 0.4) 100%),
+        linear-gradient(to bottom, rgba(5, 10, 7, 0.3) 0%, transparent 30%, transparent 80%, rgba(5, 10, 7, 0.35) 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Mouse Scroll Indicator */
+.cinematic-scroll-hint {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    pointer-events: none;
+    opacity: 0.85;
+}
+
+.scroll-mouse {
+    width: 24px;
+    height: 38px;
+    border: 2px solid rgba(201, 169, 97, 0.6);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    padding-top: 6px;
+    box-shadow: 0 0 10px rgba(201, 169, 97, 0.15);
+}
+
+.scroll-wheel {
+    width: 4px;
+    height: 8px;
+    background: var(--color-secondary, #c9a961);
+    border-radius: 2px;
+    animation: scrollAnim 1.8s infinite ease-in-out;
+}
+
+@keyframes scrollAnim {
+    0%   { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(12px); }
+}
+
+.cinematic-scroll-hint span {
+    font-family: var(--font-accent, sans-serif);
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(244, 228, 193, 0.8);
+}
+
+/* Loading Indicator */
+.cinematic-loader {
+    position: absolute;
+    bottom: 2.5rem;
+    right: 2.5rem;
+    z-index: 10;
+    color: #fff;
+    background: rgba(10, 20, 14, 0.6);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    padding: 0.85rem 1.4rem;
+    border-radius: 12px;
+    border: 1px solid rgba(201, 169, 97, 0.25);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.loader-text {
+    font-family: var(--font-accent, sans-serif);
+    font-size: 0.72rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-secondary-light, #f4e4c1);
+    font-weight: 600;
+}
+
+.loader-bar-bg {
+    width: 160px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.loader-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #c9a961, #f4e4c1);
+    transition: width 0.3s ease;
+}
+
+/* Overlays Container */
+.cinematic-overlays {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Floating Glass Cards (Softer Shadow & Light Glass) */
+.overlay-card {
+    position: absolute;
+    left: 8%;
+    max-width: 620px;
+    width: 90%;
+    padding: 2.8rem 3rem;
+    background: rgba(8, 16, 11, 0.42);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 24px;
+    border: 1px solid rgba(201, 169, 97, 0.22);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+    color: #fff;
+    will-change: transform, opacity, filter;
+}
+
+.overlay-center {
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+/* Eyebrow Badge */
+.overlay-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background: rgba(201, 169, 97, 0.12);
+    border: 1px solid rgba(201, 169, 97, 0.35);
+    border-radius: 50px;
+    font-family: var(--font-accent, sans-serif);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #f4e4c1;
+    margin-bottom: 1.5rem;
+}
+
+.overlay-eyebrow svg {
+    color: #c9a961;
+    font-size: 0.75rem;
+}
+
+/* Headings */
+.overlay-card h2 {
+    font-family: var(--font-heading, 'Playfair Display', serif);
+    font-size: clamp(2.4rem, 4.2vw, 4.2rem);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+    background: linear-gradient(135deg, #FFFFFF 15%, #F4E4C1 65%, #C9A961 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 2px 10px rgba(0,0,0,0.5));
+}
+
+.overlay-subtitle {
+    font-family: var(--font-heading, 'Playfair Display', serif);
+    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(244, 228, 193, 0.9);
+    margin-bottom: 1.25rem;
+}
+
+.overlay-desc {
+    font-family: var(--font-primary, sans-serif);
+    font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.82);
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+/* Chips / Badges */
+.overlay-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-family: var(--font-accent, sans-serif);
+    letter-spacing: 0.05em;
+    color: #e5c88a;
+    backdrop-filter: blur(8px);
+}
+
+.chip svg {
+    color: #c9a961;
+}
+
+/* Action Buttons */
+.overlay-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.cinematic-btn {
+    pointer-events: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.9rem 2.2rem;
+    border-radius: 50px;
+    font-family: var(--font-accent, sans-serif);
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    transition: all 0.35s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.cinematic-btn.primary {
+    background: linear-gradient(135deg, #c9a961 0%, #a68444 100%);
+    color: #0d1a12;
+    box-shadow: 0 10px 30px rgba(201, 169, 97, 0.35);
+}
+
+.cinematic-btn.primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(201, 169, 97, 0.5);
+    color: #000;
+}
+
+.cinematic-btn.secondary {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+}
+
+.cinematic-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: var(--color-secondary, #c9a961);
+    transform: translateY(-3px);
+    color: #fff;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .canvas-wrapper canvas { display: none; }
+    .cinematic-container {
+        height: 100vh !important;
+        background-image: url('/frames/frame_00001.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+    .overlay-card {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        position: relative;
+        left: 0;
+        margin: 0 auto;
+    }
+    .overlay-card:not(:first-child) { display: none; }
+    .cinematic-scroll-hint, .cinematic-loader { display: none; }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .overlay-card {
+        left: 5%;
+        right: 5%;
+        width: 90%;
+        padding: 2.2rem 2rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .overlay-card {
+        padding: 1.75rem 1.5rem;
+        border-radius: 18px;
+    }
+    .overlay-card h2 {
+        font-size: 2.1rem;
+    }
+    .overlay-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .cinematic-btn {
+        justify-content: center;
+        width: 100%;
+    }
+    .cinematic-scroll-hint {
+        display: none;
+    }
+}

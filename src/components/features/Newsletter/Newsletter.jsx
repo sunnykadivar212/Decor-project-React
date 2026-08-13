@@ -56,7 +56,7 @@ function Newsletter() {
   };
 
   return (
-    <section className="newsletter-section section-lg">
+    <section className="newsletter-section">
       <div className="container">
         <motion.div 
           className="newsletter-glass-card"
@@ -70,8 +70,15 @@ function Newsletter() {
           </div>
           
           <div className="newsletter-header">
-            <h2 className="gradient-text-animated">Stay Updated</h2>
-            <p>Join our exclusive community for the latest interior trends, premium releases, and special offers.</p>
+            <span className="newsletter-eyebrow">VIP Architectural Circle</span>
+            <h2>Stay Updated with Aangan</h2>
+            <p>Join our inner circle for bespoke interior trends, luxury material releases, and private offers.</p>
+          </div>
+
+          <div className="newsletter-benefits">
+            <span className="benefit-pill">✨ Exclusive Catalogs</span>
+            <span className="benefit-pill">✨ Early Material Drops</span>
+            <span className="benefit-pill">✨ Design Trends</span>
           </div>
 
           <AnimatePresence mode="wait">
@@ -87,7 +94,7 @@ function Newsletter() {
                 <div className="input-field-wrapper">
                   <input
                     type="email"
-                    placeholder="your@email.com"
+                    placeholder="Enter your email address..."
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -104,7 +111,7 @@ function Newsletter() {
                       </div>
                     ) : (
                       <>
-                        <span className="btn-text">Inspire Me</span>
+                        <span className="btn-text">Subscribe Now</span>
                         <FaPaperPlane className="icon-slant" />
                       </>
                     )}
@@ -129,7 +136,7 @@ function Newsletter() {
           </AnimatePresence>
           
           <div className="newsletter-footer">
-            <p>We respect your privacy. Unsubscribe at any time.</p>
+            <p>🔒 We respect your privacy. Unsubscribe at any time with 1-click.</p>
           </div>
         </motion.div>
       </div>

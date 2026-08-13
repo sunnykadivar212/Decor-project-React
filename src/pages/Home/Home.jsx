@@ -15,6 +15,7 @@ import ScrollReveal from "../../components/common/ScrollReveal/ScrollReveal";
 import GradientButton from "../../components/common/GradientButton/GradientButton";
 import TestimonialsCarousel from "../../components/features/TestimonialsCarousel/TestimonialsCarousel";
 import Newsletter from "../../components/features/Newsletter/Newsletter";
+import CinematicInterior from "../../components/features/CinematicInterior/CinematicInterior";
 import "./Home.css";
 
 const categories = [
@@ -110,108 +111,8 @@ const stats = [
 function Home() {
   return (
     <div className="home">
-      {/* ── HERO ─────────────────────────────── */}
-      <section className="hero-section" aria-label="Hero">
-        <div className="hero-bg">
-          <img
-            src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1800&q=85"
-            alt=""
-            aria-hidden="true"
-            loading="eager"
-          />
-          <div className="hero-overlay" />
-          <div className="hero-shimmer" aria-hidden="true" />
-        </div>
-
-        <div className="container hero-body">
-          <motion.div
-            className="hero-content"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-          >
-            <motion.div
-              className="hero-eyebrow"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-            >
-              <FaStar aria-hidden="true" />
-              <span>India's Premium Decor Solutions</span>
-            </motion.div>
-
-            <motion.h1
-              className="hero-title"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35, duration: 0.7 }}
-            >
-              Transform Your Space
-              <br />
-              <em>With Elegant Design</em>
-            </motion.h1>
-
-            <motion.p
-              className="hero-subtitle"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-            >
-              "At Aangan, we don't just design interiors — we craft moods, and
-              build timeless spaces"
-            </motion.p>
-
-            <motion.div
-              className="hero-actions"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.65, duration: 0.6 }}
-            >
-              <Link to="/interior">
-                <GradientButton variant="gold" size="large">
-                  Explore Collections
-                  <FaArrowRight aria-hidden="true" />
-                </GradientButton>
-              </Link>
-              <a
-                href="http://wa.me/917069621777"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <GradientButton variant="secondary" size="large">
-                  <FaWhatsapp aria-hidden="true" />
-                  WhatsApp Us
-                </GradientButton>
-              </a>
-            </motion.div>
-
-            <motion.div
-              className="hero-stats"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8, duration: 0.6 }}
-            >
-              {stats.map((stat) => (
-                <div key={stat.label} className="hero-stat">
-                  <span className="hero-stat-value">{stat.value}</span>
-                  <span className="hero-stat-label">{stat.label}</span>
-                </div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          className="scroll-indicator"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
-        >
-          <div className="scroll-indicator-line" />
-          <span>Scroll</span>
-        </motion.div>
-      </section>
+      {/* ── CINEMATIC HERO ─────────────────────────────── */}
+      <CinematicInterior />
 
       {/* ── CATEGORIES ───────────────────────── */}
       <section
@@ -334,46 +235,58 @@ function Home() {
         </div>
       </section>
 
-      {/* ── CTA ──────────────────────────────── */}
-      <section className="cta-section" aria-label="Call to Action">
-        <div className="cta-bg">
-          <img
-            src="https://images.unsplash.com/photo-1615873968403-89e068629265?w=1600&q=80"
-            alt=""
-            aria-hidden="true"
-            loading="lazy"
-          />
-          <div className="cta-overlay" />
-        </div>
+      {/* ── CTA / CONTACT US ─────────────────── */}
+      <section className="cta-section section" aria-label="Contact Us & Get Started">
         <div className="container">
           <ScrollReveal direction="up">
-            <div className="cta-box">
-              <span
-                className="section-eyebrow"
-                style={{
-                  borderColor: "rgba(201,169,97,0.5)",
-                  color: "var(--color-secondary-light)"
-                }}
-              >
-                Start Your Project
-              </span>
-              <h2>Ready to Transform Your Space?</h2>
-              <p>
-                Get in touch with our design experts for personalized solutions
-                tailored to your vision
-              </p>
-              <div className="cta-actions">
-                <Link to="/contact">
-                  <GradientButton variant="gold" size="large">
-                    Contact Us Today
-                  </GradientButton>
-                </Link>
-                <a href="tel:+917069621777">
-                  <GradientButton variant="outline-light" size="large">
-                    <FaPhone aria-hidden="true" />
-                    Call Now
-                  </GradientButton>
-                </a>
+            <div className="cta-card">
+              <div className="cta-content">
+                <span className="section-eyebrow cta-eyebrow">Start Your Transformation</span>
+                <h2>Ready to Elevate Your Living Space?</h2>
+                <p>
+                  Consult with our senior interior specialists for personalized material selections, 
+                  bespoke decor guidance, and end-to-end turnkey execution.
+                </p>
+
+                <div className="cta-perks">
+                  <div className="cta-perk">
+                    <span className="cta-perk-icon"><FaCheckCircle /></span>
+                    <span>Free Design Consultation</span>
+                  </div>
+                  <div className="cta-perk">
+                    <span className="cta-perk-icon"><FaCheckCircle /></span>
+                    <span>100% ISI-Grade Sourcing</span>
+                  </div>
+                  <div className="cta-perk">
+                    <span className="cta-perk-icon"><FaCheckCircle /></span>
+                    <span>Turnkey Project Execution</span>
+                  </div>
+                </div>
+
+                <div className="cta-actions">
+                  <Link to="/contact">
+                    <GradientButton variant="gold" size="large">
+                      Book Free Consultation
+                      <FaArrowRight aria-hidden="true" style={{ marginLeft: '0.4rem' }} />
+                    </GradientButton>
+                  </Link>
+                  <a href="tel:+917069621777" className="cta-phone-link">
+                    <GradientButton variant="outline-dark" size="large">
+                      <FaPhone aria-hidden="true" />
+                      Call +91 70696 21777
+                    </GradientButton>
+                  </a>
+                  <a 
+                    href="http://wa.me/917069621777" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="cta-whatsapp-btn"
+                    aria-label="Chat on WhatsApp"
+                  >
+                    <FaWhatsapp />
+                    <span>WhatsApp</span>
+                  </a>
+                </div>
               </div>
             </div>
           </ScrollReveal>

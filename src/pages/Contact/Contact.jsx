@@ -98,7 +98,7 @@ function Contact() {
         subtitle="Have a question or ready to start your project? We'd love to hear from you"
         breadcrumbs={[{ label: 'Contact' }]}
         variant="primary"
-        backgroundImage="https://images.unsplash.com/photo-1596524430615-b46475ddff6e?auto=format&fit=crop&q=80&w=1920"
+        backgroundImage="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=85&w=1920"
       />
 
       {/* Contact Content */}
