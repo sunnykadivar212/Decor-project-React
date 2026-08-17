@@ -2,6 +2,7 @@ import { FaCheckCircle, FaUsers, FaAward, FaHeart } from 'react-icons/fa';
 import PageHero from '../../components/common/PageHero/PageHero';
 import ScrollReveal from '../../components/common/ScrollReveal/ScrollReveal';
 import AnimatedCard from '../../components/common/AnimatedCard/AnimatedCard';
+import { optimizeImageUrl } from '../../utils/imageOptimizer';
 import './About.css';
 import Newsletter from '../../components/features/Newsletter/Newsletter';
 
@@ -40,7 +41,7 @@ function About() {
         subtitle="Transforming spaces with premium materials and exceptional craftsmanship since 2009"
         breadcrumbs={[{ label: 'About' }]}
         variant="primary"
-        backgroundImage="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1920"
+        backgroundImage={optimizeImageUrl("https://images.unsplash.com/photo-1497366216548-37526070297c", { width: 1400 })}
       />
 
       {/* Story Section */}
@@ -49,7 +50,12 @@ function About() {
           <div className="story-grid">
             <ScrollReveal direction="left">
               <div className="story-image gold-shine">
-                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80" alt="Our Story" />
+                <img 
+                  src={optimizeImageUrl("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0", { width: 800 })} 
+                  alt="Our Story" 
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
             </ScrollReveal>
             <ScrollReveal direction="right">

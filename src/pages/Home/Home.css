@@ -602,7 +602,7 @@
   .categories-grid { gap: var(--spacing-xl); }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px), (hover: none) {
   .hero-body { padding-top: 8rem; padding-bottom: 5rem; }
   .hero-title { font-size: clamp(2.5rem, 8vw, 4rem); }
   .hero-stats { gap: 0; }
@@ -615,6 +615,17 @@
   .category-image-wrap { height: 260px; }
 
   .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+
+  /* Permanently show overlay labels on touch screens */
+  .gallery-frame-overlay {
+    opacity: 1 !important;
+    background: linear-gradient(to top, rgba(13, 26, 18, 0.95) 0%, rgba(13, 26, 18, 0.4) 60%, transparent 100%);
+  }
+
+  .gallery-tag, .gallery-label {
+    transform: translateY(0);
+    opacity: 1;
+  }
 
   .features-grid { grid-template-columns: 1fr; }
 

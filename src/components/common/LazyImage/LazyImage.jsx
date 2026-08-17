@@ -1,84 +1,63 @@
-import { useState, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { optimizeImageUrl } from '../../../utils/imageOptimizer';
 import './LazyImage.css';
 
 function LazyImage({ 
   src, 
   alt, 
   className = '', 
-  placeholderSrc = null,
-  aspectRatio = '16/9'
+  aspectRatio,
+  width = 800,
+  quality = 75,
+  style = {},
+  objectFit = 'cover'
 }) {
-  const [imageSrc, setImageSrc] = useState(placeholderSrc || null);
-  const [imageLoaded, setImageLoaded] = useState(false);
-  const [isInView, setIsInView] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+  const imgRef = useRef(null);
+
+  const optimizedSrc = optimizeImageUrl(src, { width, quality });
 
   useEffect(() => {
-    // Intersection Observer for lazy loading
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsInView(true);
-            observer.disconnect();
-          }
-        });
-      },
-      {
-        rootMargin: '50px',
-      }
-    );
-
-    const imageElement = document.getElementById(`lazy-${src}`);
-    if (imageElement) {
-      observer.observe(imageElement);
+    if (imgRef.current && imgRef.current.complete) {
+      setLoaded(true);
     }
-
-    return () => {
-      if (imageElement) {
-        observer.unobserve(imageElement);
-      }
-    };
-  }, [src]);
-
-  useEffect(() => {
-    if (isInView && src) {
-      const img = new Image();
-      img.src = src;
-      img.onload = () => {
-        setImageSrc(src);
-        setImageLoaded(true);
-      };
-    }
-  }, [isInView, src]);
+  }, [optimizedSrc]);
 
   return (
     <div 
-      id={`lazy-${src}`}
       className={`lazy-image-container ${className}`}
-      style={{ aspectRatio }}
+      style={{ 
+        ...(aspectRatio ? { aspectRatio } : {}),
+        ...style 
+      }}
     >
-      {!imageLoaded && (
+      {!loaded && (
         <div className="lazy-image-skeleton skeleton-loader" />
       )}
-      {imageSrc && (
-        <img
-          src={imageSrc}
-          alt={alt}
-          className={`lazy-image ${imageLoaded ? 'loaded' : 'loading'}`}
-          loading="lazy"
-        />
-      )}
+      <img
+        ref={imgRef}
+        src={optimizedSrc}
+        alt={alt || ''}
+        className={`lazy-image ${loaded ? 'loaded' : 'loading'}`}
+        loading="lazy"
+        decoding="async"
+        onLoad={() => setLoaded(true)}
+        style={{ objectFit }}
+      />
     </div>
   );
 }
 
 LazyImage.propTypes = {
   src: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
+  alt: PropTypes.string,
   className: PropTypes.string,
-  placeholderSrc: PropTypes.string,
   aspectRatio: PropTypes.string,
+  width: PropTypes.number,
+  quality: PropTypes.number,
+  style: PropTypes.object,
+  objectFit: PropTypes.string
 };
 
 export default LazyImage;

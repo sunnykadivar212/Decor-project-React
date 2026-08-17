@@ -1,11 +1,13 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FaChevronRight } from 'react-icons/fa';
+import { optimizeImageUrl } from '../../../utils/imageOptimizer';
 import './PageHero.css';
 
 function PageHero({ title, subtitle, breadcrumbs, variant = 'primary', backgroundImage }) {
-  const heroStyle = backgroundImage ? { 
-    backgroundImage: `url('${backgroundImage}')`,
+  const optimizedBg = backgroundImage ? optimizeImageUrl(backgroundImage, { width: 1600 }) : null;
+  const heroStyle = optimizedBg ? { 
+    backgroundImage: `url('${optimizedBg}')`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat'

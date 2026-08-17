@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import { FaArrowRight, FaWhatsapp, FaQuoteRight } from "react-icons/fa";
 import PageHero from "../../components/common/PageHero/PageHero";
 import ScrollReveal from "../../components/common/ScrollReveal/ScrollReveal";
-import AnimatedCard from "../../components/common/AnimatedCard/AnimatedCard";
 import QuoteModal from "../../components/features/QuoteModal/QuoteModal";
+import LazyImage from "../../components/common/LazyImage/LazyImage";
+import { optimizeImageUrl } from "../../utils/imageOptimizer";
 import "./Interior.css";
 import Newsletter from "../../components/features/Newsletter/Newsletter";
 
@@ -20,48 +21,60 @@ function Interior() {
     {
       title: "Premium Plywood",
       description: "High-quality plywood for durable and elegant furniture",
-      image:
+      image: optimizeImageUrl(
         "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786285320/IMG_1505_llxmkb.jpg",
+        { width: 700 }
+      ),
       features: ["Waterproof", "Termite Resistant", "Multiple Thickness"],
       link: "/interior/aangan-plywood"
     },
     {
       title: "Plain Laminates",
       description: "Smooth, elegant laminates in various colors",
-      image:
+      image: optimizeImageUrl(
         "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786293528/4429_fvxzld.jpg",
+        { width: 700 }
+      ),
       features: ["Scratch Resistant", "Easy Maintenance", "Wide Color Range"],
       link: "/interior/aangan-plain-laminate"
     },
     {
       title: "Mocco Laminates",
       description: "Textured laminates with sophisticated patterns",
-      image:
+      image: optimizeImageUrl(
         "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786293528/4409_bwmn3v.jpg",
+        { width: 700 }
+      ),
       features: ["Unique Textures", "Premium Finish", "Durable Surface"],
       link: "/interior/aangan-mocco-laminate"
     },
     {
       title: "Acrylic Sheets",
       description: "Versatile acrylic for modern interior applications",
-      image:
+      image: optimizeImageUrl(
         "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786261720/IMG_1436_tkyjgo.jpg",
+        { width: 700 }
+      ),
       features: ["High Gloss", "UV Resistant", "Multiple Colors"],
       link: "/interior/aangan-acrylic"
     },
     {
       title: "Louvers",
       description: "Stylish louvers for ventilation and aesthetics",
-      image:
+      image: optimizeImageUrl(
         "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786285201/IMG_1412_oonk08.jpg",
+        { width: 700 }
+      ),
       features: ["Ventilation", "Privacy", "Modern Design"],
       link: "/louvers"
     },
     {
       title: "A-Fab Materials",
       description: "Premium fabric-based decorative materials",
-      image:
+      image: optimizeImageUrl(
         "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786289539/A-fab_qh2tkp.jpg",
+        { width: 700 }
+      ),
       features: ["Soft Touch", "Elegant Look", "Easy Installation"],
       link: "/interior/a-fab"
     },
@@ -69,8 +82,10 @@ function Interior() {
       title: "Aangan Veneers",
       description:
         "Thin natural wood overlays for a rich, warm, and sophisticated wooden finish",
-      image:
+      image: optimizeImageUrl(
         "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786298830/images_56_blqkx5.jpg",
+        { width: 700 }
+      ),
       features: [
         "100% Natural Wood",
         "Unique Grain Patterns",
@@ -82,8 +97,10 @@ function Interior() {
       title: "PU Wall Panels",
       description:
         "High-density polyurethane panels offering a stunning stone-imitation facade",
-      image:
+      image: optimizeImageUrl(
         "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786298593/images_53_rjsqgx.jpg",
+        { width: 700 }
+      ),
       features: [
         "Realistic Slate Textures",
         "Lightweight & Sturdy",
@@ -95,8 +112,10 @@ function Interior() {
       title: "Moulding Patti",
       description:
         "Elegant PVC, WPC, or wooden trim profiles to conceal joints and refine edges",
-      image:
-        "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&q=80",
+      image: optimizeImageUrl(
+        "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6",
+        { width: 700 }
+      ),
       features: [
         "Conceals Gaps & Joints",
         "Brushed Metallic Trims",
@@ -108,8 +127,10 @@ function Interior() {
       title: "False Ceiling & ACP",
       description:
         "Transformative plaster of Paris (POP) structures and weather-resistant ACP facades",
-      image:
+      image: optimizeImageUrl(
         "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786297500/images_43_zw8t4m.jpg",
+        { width: 700 }
+      ),
       features: [
         "Artisan POP Ceilings",
         "Weatherproof Exterior ACP",
@@ -127,7 +148,10 @@ function Interior() {
         subtitle="Premium materials for stunning interiors - plywood, laminates, acrylic, and more"
         breadcrumbs={[{ label: "Interior Items" }]}
         variant="primary"
-        backgroundImage="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1920"
+        backgroundImage={optimizeImageUrl(
+          "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6",
+          { width: 1400 }
+        )}
       />
 
       {/* Products Section - Gallery Editorial Grid */}
@@ -138,55 +162,48 @@ function Interior() {
               <ScrollReveal
                 key={product.title}
                 direction="up"
-                delay={index * 0.1}
+                delay={index * 0.05}
               >
                 <div className="gallery-item group">
                   <div className="gallery-image-wrapper">
-                    <img
+                    <LazyImage
                       src={product.image}
                       alt={product.title}
                       className="gallery-image"
+                      width={700}
                     />
-
-                    {/* Hover Content */}
-                    <div className="gallery-overlay">
-                      <div className="gallery-info">
-                        <span className="gallery-category">
-                          Premium Quality
-                        </span>
-                        <h3 className="gallery-title">{product.title}</h3>
-                        <p className="gallery-desc">{product.description}</p>
-
-                        <div className="gallery-actions">
-                          <button
-                            className="action-pill quote-btn"
-                            onClick={() => openQuoteModal(product.title)}
-                          >
-                            <FaQuoteRight /> Quote
-                          </button>
-                          <Link
-                            to={product.link}
-                            className="action-pill primary"
-                          >
-                            Details <FaArrowRight />
-                          </Link>
-                          <a
-                            href={`http://wa.me/917069630777?text=Hi, I'm interested in ${product.title}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="action-pill whatsapp"
-                          >
-                            <FaWhatsapp />
-                          </a>
-                        </div>
-                      </div>
-                    </div>
+                    <span className="gallery-badge">
+                      Premium Quality
+                    </span>
                   </div>
 
-                  {/* Static Info (Visible on Mobile or as Minimal Label) */}
-                  <div className="gallery-footer">
-                    <h4 className="footer-title">{product.title}</h4>
-                    <div className="footer-line"></div>
+                  <div className="gallery-content">
+                    <h3 className="gallery-title">{product.title}</h3>
+                    <p className="gallery-desc">{product.description}</p>
+
+                    <div className="gallery-actions">
+                      <button
+                        className="action-pill quote-btn"
+                        onClick={() => openQuoteModal(product.title)}
+                      >
+                        <FaQuoteRight /> Quote
+                      </button>
+                      <Link
+                        to={product.link}
+                        className="action-pill primary"
+                      >
+                        Details <FaArrowRight />
+                      </Link>
+                      <a
+                        href={`http://wa.me/917069630777?text=Hi, I'm interested in ${product.title}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="action-pill whatsapp"
+                        aria-label="Contact on WhatsApp"
+                      >
+                        <FaWhatsapp />
+                      </a>
+                    </div>
                   </div>
                 </div>
               </ScrollReveal>

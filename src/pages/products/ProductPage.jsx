@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaCheckCircle, FaDownload, FaExpand } from 'react-icons/fa';
 import PageHero from '../../components/common/PageHero/PageHero';
 import ImageGallery from '../../components/features/ImageGallery/ImageGallery';
+import { optimizeImageUrl } from '../../utils/imageOptimizer';
 import './ProductPage.css';
 
 function ProductPage({ title, description, image, gallery, features, pdfLink, color = 'primary', options = [], heroImage }) {
@@ -10,7 +11,8 @@ function ProductPage({ title, description, image, gallery, features, pdfLink, co
   const [activeImage, setActiveImage] = useState(image);
   const [activeOption, setActiveOption] = useState(null);
   
-  const finalHeroImage = heroImage;
+  const finalHeroImage = optimizeImageUrl(heroImage, { width: 1400 });
+  const optimizedActiveImage = optimizeImageUrl(activeImage, { width: 1000 });
   
   // If gallery is provided, use it; otherwise create a single-image gallery
   const galleryImages = gallery || [{ url: image, alt: title }];
@@ -61,13 +63,15 @@ function ProductPage({ title, description, image, gallery, features, pdfLink, co
               >
                 <AnimatePresence mode="wait">
                   <motion.img
-                    key={activeImage}
-                    src={activeImage}
+                    key={optimizedActiveImage}
+                    src={optimizedActiveImage}
                     alt={activeOption || title}
                     initial={{ opacity: 0, scale: 1.04 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.4, ease: 'easeInOut' }}
+                    decoding="async"
+                    loading="eager"
                     style={{ width: '100%', height: '80vh', objectFit: 'cover', display: 'block' }}
                   />
                 </AnimatePresence>
@@ -155,7 +159,12 @@ function ProductPage({ title, description, image, gallery, features, pdfLink, co
                     whileHover={{ y: -4 }}
                   >
                     <div className="option-image">
-                      <img src={option.image} alt={option.name} loading="lazy" />
+                      <img 
+                        src={optimizeImageUrl(option.image, { width: 500 })} 
+                        alt={option.name} 
+                        loading="lazy" 
+                        decoding="async"
+                      />
                     </div>
                     <div className="option-info">
                       <h4>{option.name}</h4>

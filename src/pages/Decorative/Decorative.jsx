@@ -6,6 +6,8 @@ import PageHero from "../../components/common/PageHero/PageHero";
 import ScrollReveal from "../../components/common/ScrollReveal/ScrollReveal";
 import QuoteModal from "../../components/features/QuoteModal/QuoteModal";
 import Newsletter from "../../components/features/Newsletter/Newsletter";
+import LazyImage from "../../components/common/LazyImage/LazyImage";
+import { optimizeImageUrl } from "../../utils/imageOptimizer";
 import "./Decorative.css";
 
 function Decorative() {
@@ -29,8 +31,10 @@ function Decorative() {
     {
       title: "Mandala Art",
       description: "Intricate handcrafted mandala designs for wall decoration",
-      image:
+      image: optimizeImageUrl(
         "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786287129/il_794xN.2688857519_ahre_anrxzz.jpg",
+        { width: 700 }
+      ),
       features: ["Handcrafted", "Multiple Sizes", "Custom Colors"],
       link: "/decorative/mandala-art",
       category: "art"
@@ -38,8 +42,10 @@ function Decorative() {
     {
       title: "Decorative Accents",
       description: "Unique decorative pieces to enhance your space",
-      image:
+      image: optimizeImageUrl(
         "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786285380/1000093028_d2g3p1.jpg",
+        { width: 700 }
+      ),
       features: ["Unique Designs", "Premium Materials", "Easy Installation"],
       link: "/decorative/aangan-decorative",
       category: "decor"
@@ -47,8 +53,10 @@ function Decorative() {
     {
       title: "Indoor Plants",
       description: "Beautiful plants to bring life to your interiors",
-      image:
+      image: optimizeImageUrl(
         "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786285379/1000093023_l7moih.jpg",
+        { width: 700 }
+      ),
       features: ["Low Maintenance", "Air Purifying", "Various Sizes"],
       link: "/decorative/plants",
       category: "decor"
@@ -56,8 +64,10 @@ function Decorative() {
     {
       title: "Wall Art Vol 1",
       description: "Curated wall art pieces for modern spaces",
-      image:
-        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80",
+      image: optimizeImageUrl(
+        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c",
+        { width: 700 }
+      ),
       features: ["Modern Designs", "Gallery Quality", "Ready to Hang"],
       link: "/decorative/aangan-vol-1",
       category: "art"
@@ -65,44 +75,21 @@ function Decorative() {
     {
       title: "Wall Art Vol 2",
       description: "Elegant decorative panels for walls and partitions",
-      image:
+      image: optimizeImageUrl(
         "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786287755/71vDD2QGl-L_wbkz2d.jpg",
+        { width: 700 }
+      ),
       features: ["3D Effects", "Lightweight", "Easy to Install"],
       link: "/decorative/aangan-vol-2",
       category: "art"
     },
-    //{
-    //  title: "Wall Art Vol 3",
-    //  description: "Contemporary sculptures for sophisticated interiors",
-    //  image:
-    //    "https://images.unsplash.com/photo-1556912176-117565860352?w=600&q=80",
-    //  features: ["Unique Pieces", "Premium Finish", "Statement Decor"],
-    //  link: "/decorative/aangan-vol-3",
-    //  category: "art"
-    //},
-    //{
-    //  title: "Wall Art Vol 4",
-    //  description: "Elite designs that define high-end artistic aesthetics",
-    //  image:
-    //    "https://images.unsplash.com/photo-1504104251347-19ce7db5ec13?w=600&q=80",
-    //  features: ["Premium Selection", "Avant Garde", "Hand-picked Materials"],
-    //  link: "/decorative/aangan-vol-4",
-    //  category: "art"
-    //},
-    //{
-    //  title: "Wall Clocks",
-    //  description: "Precision engineering and timeless wall clock art",
-    //  image:
-    //    "https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?w=600&q=80",
-    //  features: ["Silent Sweep", "Artisanal Design", "Metal & Wood"],
-    //  link: "/decorative/clocks",
-    //  category: "decor"
-    //},
     {
       title: "Luxury Artifacts",
       description: "Bespoke artifacts and curios for luxurious living",
-      image:
+      image: optimizeImageUrl(
         "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786285409/1000093048_pree6p.jpg",
+        { width: 700 }
+      ),
       features: ["Handcrafted", "Bespoke Curios", "Exquisite Detail"],
       link: "/decorative/artifacts",
       category: "decor"
@@ -110,8 +97,10 @@ function Decorative() {
     {
       title: "Designer Mirrors",
       description: "Elegant mirrors that expand light and style",
-      image:
+      image: optimizeImageUrl(
         "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786296408/images_28_cwxoil.jpg",
+        { width: 700 }
+      ),
       features: ["Reflection Art", "Premium Frame", "Space-enhancing"],
       link: "/decorative/designer-mirrors",
       category: "decor"
@@ -119,8 +108,10 @@ function Decorative() {
     {
       title: "Designer Lights",
       description: "Sophisticated lighting options for every ambiance",
-      image:
+      image: optimizeImageUrl(
         "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786296187/images_21_w6hfio.jpg",
+        { width: 700 }
+      ),
       features: ["Custom Ambiance", "Modern Chandeliers", "Energy Efficient"],
       link: "/decorative/designer-lights",
       category: "decor"
@@ -129,8 +120,10 @@ function Decorative() {
       title: "Designer Sofas",
       description:
         "Luxurious sofas combining ergonomic support with fine fabrics",
-      image:
+      image: optimizeImageUrl(
         "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786296635/images_34_w1cebm.jpg",
+        { width: 700 }
+      ),
       features: ["Premium Fabrics", "Ergonomic Support", "Custom Layouts"],
       link: "/decorative/designer-sofas",
       category: "furniture"
@@ -138,8 +131,10 @@ function Decorative() {
     {
       title: "Designer Curtains",
       description: "Elite curtains and custom drapery for window dressings",
-      image:
+      image: optimizeImageUrl(
         "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786295606/images_11_c7dpmq.jpg",
+        { width: 700 }
+      ),
       features: ["Bespoke Fabrics", "Thermal Insulation", "Premium Textures"],
       link: "/decorative/curtains",
       category: "decor"
@@ -147,8 +142,10 @@ function Decorative() {
     {
       title: "Designer Chairs",
       description: "Exquisite accent and lounge chairs for absolute comfort",
-      image:
+      image: optimizeImageUrl(
         "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786295884/images_16_ewyyfr.jpg",
+        { width: 700 }
+      ),
       features: ["Ergonomic Luxury", "Robust Frames", "Sleek Silhouettes"],
       link: "/decorative/designer-chairs",
       category: "furniture"
@@ -156,8 +153,10 @@ function Decorative() {
     {
       title: "Dining Tables",
       description: "Stunning dining tables that anchor your feast and memory",
-      image:
+      image: optimizeImageUrl(
         "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786296865/images_37_lttvoa.jpg",
+        { width: 700 }
+      ),
       features: ["Solid Wood/Marble", "Robust Structure", "Architectural Base"],
       link: "/decorative/dining-tables",
       category: "furniture"
@@ -166,8 +165,10 @@ function Decorative() {
       title: "Center Tables",
       description:
         "Charming center and coffee tables to complete your living room",
-      image:
+      image: optimizeImageUrl(
         "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786295196/bf111692bea12bca1e24d11699f91272_idn7yf.jpg",
+        { width: 700 }
+      ),
       features: ["Minimalist/Storage", "Sturdy Construction", "Luxury Veneers"],
       link: "/decorative/center-tables",
       category: "furniture"
@@ -187,7 +188,10 @@ function Decorative() {
         subtitle="Elegant mandala art, decorative accents, and luxury furniture to personalize your space"
         breadcrumbs={[{ label: "Decorative Items" }]}
         variant="secondary"
-        backgroundImage="https://images.unsplash.com/photo-1617104551722-3b2d51366400?auto=format&fit=crop&q=80&w=1920"
+        backgroundImage={optimizeImageUrl(
+          "https://images.unsplash.com/photo-1617104551722-3b2d51366400",
+          { width: 1400 }
+        )}
       />
 
       {/* Category Filter Tabs */}
@@ -231,55 +235,48 @@ function Decorative() {
                   className="gallery-item group"
                 >
                   <div className="gallery-image-wrapper">
-                    <img
+                    <LazyImage
                       src={product.image}
                       alt={product.title}
                       className="gallery-image"
+                      width={700}
                     />
-
-                    {/* Hover Content */}
-                    <div className="gallery-overlay">
-                      <div className="gallery-info">
-                        <span className="gallery-category">
-                          {product.category === "art"
-                            ? "Wall Art"
-                            : product.category === "furniture"
-                              ? "Luxury Furniture"
-                              : "Artisan Decor"}
-                        </span>
-                        <h3 className="gallery-title">{product.title}</h3>
-                        <p className="gallery-desc">{product.description}</p>
-
-                        <div className="gallery-actions">
-                          <button
-                            className="action-pill quote-btn"
-                            onClick={() => openQuoteModal(product.title)}
-                          >
-                            <FaQuoteRight /> Quote
-                          </button>
-                          <Link
-                            to={product.link}
-                            className="action-pill primary"
-                          >
-                            Details <FaArrowRight />
-                          </Link>
-                          <a
-                            href={`http://wa.me/917069621777?text=Hi, I'm interested in ${product.title}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="action-pill whatsapp"
-                          >
-                            <FaWhatsapp />
-                          </a>
-                        </div>
-                      </div>
-                    </div>
+                    <span className="gallery-badge">
+                      {product.category === "art"
+                        ? "Wall Art"
+                        : product.category === "furniture"
+                          ? "Luxury Furniture"
+                          : "Artisan Decor"}
+                    </span>
                   </div>
 
-                  {/* Static Info */}
-                  <div className="gallery-footer">
-                    <h4 className="footer-title">{product.title}</h4>
-                    <div className="footer-line"></div>
+                  <div className="gallery-content">
+                    <h3 className="gallery-title">{product.title}</h3>
+                    <p className="gallery-desc">{product.description}</p>
+
+                    <div className="gallery-actions">
+                      <button
+                        className="action-pill quote-btn"
+                        onClick={() => openQuoteModal(product.title)}
+                      >
+                        <FaQuoteRight /> Quote
+                      </button>
+                      <Link
+                        to={product.link}
+                        className="action-pill primary"
+                      >
+                        Details <FaArrowRight />
+                      </Link>
+                      <a
+                        href={`http://wa.me/917069621777?text=Hi, I'm interested in ${product.title}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="action-pill whatsapp"
+                        aria-label="Contact on WhatsApp"
+                      >
+                        <FaWhatsapp />
+                      </a>
+                    </div>
                   </div>
                 </motion.div>
               ))}

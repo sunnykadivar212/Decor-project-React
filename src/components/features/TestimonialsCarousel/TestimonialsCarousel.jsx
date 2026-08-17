@@ -124,6 +124,7 @@ function TestimonialsCarousel() {
                     alt={t.name}
                     className="author-image"
                     loading="lazy"
+                    decoding="async"
                   />
                   <div className="author-info">
                     <h4>{t.name}</h4>

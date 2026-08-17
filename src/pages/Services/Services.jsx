@@ -3,6 +3,7 @@ import PageHero from '../../components/common/PageHero/PageHero';
 import ScrollReveal from '../../components/common/ScrollReveal/ScrollReveal';
 import AnimatedCard from '../../components/common/AnimatedCard/AnimatedCard';
 import GradientButton from '../../components/common/GradientButton/GradientButton';
+import { optimizeImageUrl } from '../../utils/imageOptimizer';
 import './Services.css';
 
 function Services() {
@@ -72,7 +73,7 @@ function Services() {
         subtitle="Comprehensive solutions for all your interior and decorative needs"
         breadcrumbs={[{ label: 'Services' }]}
         variant="primary"
-        backgroundImage="https://images.unsplash.com/photo-1581094794329-cd1096d52d95?auto=format&fit=crop&q=80&w=1920"
+        backgroundImage={optimizeImageUrl("https://images.unsplash.com/photo-1581094794329-cd1096d52d95", { width: 1400 })}
       />
 
       {/* Services Grid */}

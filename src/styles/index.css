@@ -548,3 +548,33 @@ img {
   .card:hover { transform: none; }
 }
 
+/* ═══════════════════════════════════════════
+   PERFORMANCE & SMOOTH SCROLL OPTIMIZATIONS
+   ═══════════════════════════════════════════ */
+img {
+  max-width: 100%;
+  height: auto;
+  content-visibility: auto;
+  backface-visibility: hidden;
+}
+
+.gallery-item,
+.card,
+.product-card,
+.option-card,
+.hardware-card,
+.feature-card,
+.glass-card {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+.bg-mesh,
+.hero-bg,
+.cta-bg {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+

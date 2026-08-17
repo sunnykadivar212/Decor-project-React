@@ -15,6 +15,7 @@ import ScrollReveal from "../../components/common/ScrollReveal/ScrollReveal";
 import GradientButton from "../../components/common/GradientButton/GradientButton";
 import TestimonialsCarousel from "../../components/features/TestimonialsCarousel/TestimonialsCarousel";
 import Newsletter from "../../components/features/Newsletter/Newsletter";
+import { optimizeImageUrl } from "../../utils/imageOptimizer";
 import "./Home.css";
 
 const categories = [
@@ -22,8 +23,10 @@ const categories = [
     title: "Interior Items",
     description:
       "Premium plywood, laminates, acrylic, veneer, PU wall panels, and materials for stunning interiors",
-    image:
-      "https://images.unsplash.com/photo-1615873968403-89e068629265?w=900&q=85",
+    image: optimizeImageUrl(
+      "https://images.unsplash.com/photo-1615873968403-89e068629265",
+      { width: 800 }
+    ),
     link: "/interior",
     tag: "20+ Products"
   },
@@ -31,8 +34,10 @@ const categories = [
     title: "Decorative Items",
     description:
       "Elegant mandala art, designer mirrors, clocks, artifacts, curtains, and unique handcrafted pieces",
-    image:
-      "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=900&q=85",
+    image: optimizeImageUrl(
+      "https://images.unsplash.com/photo-1513694203232-719a280e022f",
+      { width: 800 }
+    ),
     link: "/decorative",
     tag: "15+ Products"
   }
@@ -63,38 +68,50 @@ const features = [
 
 const galleryFrames = [
   {
-    image:
+    image: optimizeImageUrl(
       "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786299843/images_59_aojqm9.jpg",
+      { width: 600 }
+    ),
     label: "Living Room",
     tag: "Interior Design"
   },
   {
-    image:
+    image: optimizeImageUrl(
       "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786296639/images_32_gwgu3v.jpg",
+      { width: 600 }
+    ),
     label: "Luxury Sofa",
     tag: "Furniture"
   },
   {
-    image:
+    image: optimizeImageUrl(
       "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786287129/il_794xN.2688857519_ahre_anrxzz.jpg",
+      { width: 600 }
+    ),
     label: "Mandala Art",
     tag: "Decorative"
   },
   {
-    image:
+    image: optimizeImageUrl(
       "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786296187/images_21_w6hfio.jpg",
+      { width: 600 }
+    ),
     label: "Designer Lights",
     tag: "Lighting"
   },
   {
-    image:
+    image: optimizeImageUrl(
       "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786286573/DG-08_nqur4o.jpg",
+      { width: 600 }
+    ),
     label: "Premium Laminates",
     tag: "Interior"
   },
   {
-    image:
+    image: optimizeImageUrl(
       "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786296870/images_35_l2cawn.jpg",
+      { width: 600 }
+    ),
     label: "Dining Table",
     tag: "Furniture"
   }
