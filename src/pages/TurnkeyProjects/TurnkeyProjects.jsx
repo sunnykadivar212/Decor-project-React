@@ -182,7 +182,6 @@ function TurnkeyProjects() {
               <GradientButton size="large" onClick={() => window.location.href='/contact'}>
                  Book Consultation <FaArrowRight style={{marginLeft: '10px'}}/>
               </GradientButton>
-
            </div>
         </div>
       </section>

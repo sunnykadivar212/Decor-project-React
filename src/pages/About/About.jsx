@@ -211,7 +211,6 @@ function About() {
               </div>
             </ScrollReveal>
 
-
           </div>
         </div>
       </section>

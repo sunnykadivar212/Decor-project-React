@@ -99,7 +99,6 @@ function Footer() {
                     <span>Company Profile</span>
                   </a>
                 </li>
-
               </ul>
             </div>
 
