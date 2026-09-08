@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaArrowRight, FaWhatsapp, FaQuoteRight } from "react-icons/fa";
+import { FaArrowRight, FaWhatsapp, FaQuoteRight, FaDownload } from "react-icons/fa";
 import PageHero from "../../components/common/PageHero/PageHero";
 import ScrollReveal from "../../components/common/ScrollReveal/ScrollReveal";
 import QuoteModal from "../../components/features/QuoteModal/QuoteModal";
 import LazyImage from "../../components/common/LazyImage/LazyImage";
 import { optimizeImageUrl } from "../../utils/imageOptimizer";
 import "./Interior.css";
-import Newsletter from "../../components/features/Newsletter/Newsletter";
 
 function Interior() {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
@@ -157,6 +156,26 @@ function Interior() {
       {/* Products Section - Gallery Editorial Grid */}
       <section className="products-section section bg-mesh">
         <div className="container">
+          <div className="category-header-bar">
+            <div className="category-header-info">
+              <span className="category-eyebrow">Aangan Interior Collection</span>
+              <h2>Premium Architectural Materials</h2>
+              <p>Explore our complete range of ISI-grade plywood, bespoke laminates, veneers, and decorative surfaces.</p>
+            </div>
+            <div className="category-header-action">
+              <a
+                href="https://aangangroup.in/images/categories/aangan-plywood.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="main-catalog-btn"
+                title="Download Complete Interior Catalog PDF"
+              >
+                <FaDownload className="btn-icon" />
+                <span>Download Interior Catalog</span>
+              </a>
+            </div>
+          </div>
+
           <div className="gallery-grid">
             {products.map((product, index) => (
               <ScrollReveal
@@ -240,8 +259,6 @@ function Interior() {
           </ScrollReveal>
         </div>
       </section>
-
-      <Newsletter />
 
       <QuoteModal
         isOpen={isQuoteModalOpen}

@@ -175,8 +175,9 @@
 }
 
 .overlay-center {
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
     text-align: center;
 }
 
@@ -425,8 +426,9 @@
 
 @media (max-width: 900px) {
     .overlay-card {
-        left: 5%;
-        right: 5%;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
         width: 90%;
         padding: 2.4rem 2.2rem;
     }

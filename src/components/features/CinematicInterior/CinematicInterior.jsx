@@ -25,8 +25,18 @@ const CinematicInterior = () => {
 
     const [loadedPercent, setLoadedPercent] = useState(0);
     const [isReady, setIsReady] = useState(false);
+    const [containerHeight, setContainerHeight] = useState('450vh');
     const imagesRef = useRef([]);
     const frameIndexRef = useRef(0);
+
+    useEffect(() => {
+        const updateHeight = () => {
+            setContainerHeight(window.innerWidth <= 768 ? '180vh' : '450vh');
+        };
+        updateHeight();
+        window.addEventListener('resize', updateHeight);
+        return () => window.removeEventListener('resize', updateHeight);
+    }, []);
 
     const getFrameUrl = (index) => {
         const paddedIndex = (index + 1).toString().padStart(5, '0');
@@ -198,7 +208,7 @@ const CinematicInterior = () => {
     }, [isReady]);
 
     return (
-        <section ref={containerRef} className="cinematic-container" style={{ height: animationConfig.scrollHeight }}>
+        <section ref={containerRef} className="cinematic-container" style={{ height: containerHeight }}>
             <div className="canvas-wrapper">
                 <canvas ref={canvasRef} />
                 

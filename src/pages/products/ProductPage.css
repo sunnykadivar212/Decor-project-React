@@ -271,47 +271,7 @@
   line-height: 1.45;
 }
 
-/* Active Option State */
-.option-active {
-  border: 2px solid var(--color-secondary, #c9a84c);
-  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.2);
-  position: relative;
-}
 
-.option-active::after {
-  content: '✓';
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: var(--color-secondary, #c9a84c);
-  color: #fff;
-  font-size: 0.75rem;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-}
-
-/* Active option badge on main product image */
-.active-option-badge {
-  position: absolute;
-  bottom: 16px;
-  left: 16px;
-  background: rgba(13, 26, 18, 0.85);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  color: #fff;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 0.82rem;
-  font-weight: 500;
-  z-index: 5;
-  border: 1px solid rgba(201, 169, 97, 0.3);
-}
 
 /* Trust Section */
 .trust-section {

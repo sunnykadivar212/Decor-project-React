@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion';
-import { FaKey, FaClipboardCheck, FaUsers, FaClock, FaCheckCircle, FaTools, FaPaintBrush, FaHardHat, FaChartLine, FaHandshake, FaArrowRight } from 'react-icons/fa';
+import { FaKey, FaClipboardCheck, FaUsers, FaClock, FaCheckCircle, FaTools, FaPaintBrush, FaHardHat, FaChartLine, FaHandshake, FaArrowRight, FaDownload } from 'react-icons/fa';
 import ScrollReveal from '../../components/common/ScrollReveal/ScrollReveal';
 import AnimatedCard from '../../components/common/AnimatedCard/AnimatedCard';
 import GradientButton from '../../components/common/GradientButton/GradientButton';
 import { optimizeImageUrl } from '../../utils/imageOptimizer';
+import { DOWNLOAD_RESOURCES } from '../../constants/downloads';
 import './TurnkeyProjects.css';
 
 function TurnkeyProjects() {
@@ -177,10 +178,22 @@ function TurnkeyProjects() {
         <div className="container cta-container">
            <h2>Ready to Build?</h2>
            <p>Let's discuss your upcoming project. Our experts are ready to guide you.</p>
-           <div className="cta-btn-group">
+           <div className="cta-btn-group" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
               <GradientButton size="large" onClick={() => window.location.href='/contact'}>
                  Book Consultation <FaArrowRight style={{marginLeft: '10px'}}/>
               </GradientButton>
+              <a
+                  href={DOWNLOAD_RESOURCES.designPortfolio.url}
+                  download={DOWNLOAD_RESOURCES.designPortfolio.downloadName}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ textDecoration: 'none' }}
+                  title="Download Design Portfolio PDF"
+               >
+                  <GradientButton size="large" variant="outline">
+                     <FaDownload style={{marginRight: '8px'}}/> Download Portfolio
+                  </GradientButton>
+               </a>
            </div>
         </div>
       </section>

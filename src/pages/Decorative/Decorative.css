@@ -37,6 +37,13 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: var(--spacing-xl);
+  align-items: stretch;
+}
+
+.gallery-grid > * {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .gallery-item {
@@ -49,6 +56,8 @@
   transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.2, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
+  height: 100%;
+  width: 100%;
 }
 
 .gallery-item:hover {
@@ -58,10 +67,11 @@
 
 .gallery-image-wrapper {
   position: relative;
-  height: 280px;
+  height: 260px;
   width: 100%;
   overflow: hidden;
   background: #f5f2eb;
+  flex-shrink: 0;
 }
 
 .gallery-image {
@@ -100,18 +110,19 @@
   background: #ffffff;
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 1 1 auto;
   text-align: left;
 }
 
 .gallery-title {
-  font-size: 1.45rem;
+  font-size: 1.4rem;
   font-family: var(--font-heading);
   font-weight: 700;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.4rem;
   color: #1a1a1a;
   line-height: 1.25;
   text-align: left;
+  min-height: 1.8rem;
 }
 
 .gallery-desc {
@@ -120,6 +131,7 @@
   margin-bottom: 1.25rem;
   line-height: 1.5;
   text-align: left;
+  min-height: 2.8rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -135,6 +147,7 @@
   justify-content: space-between !important;
   width: 100% !important;
   margin-top: auto !important;
+  padding-top: 0.5rem;
 }
 
 .action-pill {
@@ -352,38 +365,196 @@
 .tabs-container {
   display: flex;
   justify-content: center;
-  gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-3xl);
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
   flex-wrap: wrap;
   position: relative;
   z-index: 2;
 }
 
 .tab-btn {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--color-text-secondary);
-  padding: 0.8rem 1.8rem;
+  height: 46px;
+  min-height: 46px;
+  min-width: 170px;
+  padding: 0 1.5rem;
+  background: #ffffff;
+  border: 1.5px solid rgba(201, 169, 97, 0.3);
+  color: #2b2b2b;
   border-radius: var(--radius-full);
   font-family: var(--font-accent);
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: 0.82rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.2, 1, 0.3, 1);
-  backdrop-filter: blur(5px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
 }
 
 .tab-btn:hover {
-  background: rgba(255, 255, 255, 0.12);
-  color: var(--color-secondary);
+  background: #fdfaf3;
+  border-color: var(--color-secondary);
+  color: var(--color-primary-dark);
   transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(201, 169, 97, 0.2);
 }
 
 .tab-btn.active {
-  background: var(--color-secondary);
-  border-color: var(--color-secondary);
-  color: var(--color-primary-dark);
-  box-shadow: 0 4px 15px rgba(201, 169, 97, 0.3);
+  background: linear-gradient(135deg, #c9a961 0%, #e5c88a 100%);
+  border-color: #c9a961;
+  color: #0d1a12;
+  font-weight: 700;
+  box-shadow: 0 6px 20px rgba(201, 169, 97, 0.35);
+  transform: translateY(-2px);
+}
+
+/* ══════════════════════════════════════════
+   CATEGORY HEADER BAR & CATALOG DOWNLOAD
+══════════════════════════════════════════ */
+.category-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  padding: 2rem 2.25rem;
+  background: white;
+  border-radius: var(--radius-2xl, 20px);
+  border: 1px solid var(--color-border, rgba(0, 0, 0, 0.08));
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.category-header-info {
+  max-width: 680px;
+}
+
+.category-eyebrow {
+  display: inline-block;
+  font-family: var(--font-accent, sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-secondary-dark, #a68444);
+  background: rgba(201, 169, 97, 0.12);
+  padding: 0.35rem 0.85rem;
+  border-radius: 50px;
+  margin-bottom: 0.65rem;
+}
+
+.category-header-info h2 {
+  font-family: var(--font-heading, serif);
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  color: var(--color-text-primary, #111);
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.category-header-info p {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary, #666);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.category-header-action {
+  flex-shrink: 0;
+}
+
+.main-catalog-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.95rem 1.8rem;
+  background: linear-gradient(135deg, #2a1f10 0%, #151007 100%);
+  color: #fff !important;
+  border-radius: 50px;
+  font-family: var(--font-accent, sans-serif);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  transition: all 0.35s ease;
+  border: 1px solid rgba(201, 169, 97, 0.4);
+}
+
+.main-catalog-btn:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #3d2c16 0%, #20170a 100%);
+  box-shadow: 0 10px 28px rgba(201, 169, 97, 0.35);
+  color: #f4e4c1 !important;
+}
+
+.main-catalog-btn .btn-icon {
+  font-size: 1rem;
+  color: var(--color-secondary, #c9a961);
+  transition: transform 0.3s ease;
+}
+
+.main-catalog-btn:hover .btn-icon {
+  transform: translateY(2px);
+}
+
+@media (max-width: 768px) {
+  .category-header-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem 1.25rem;
+    gap: 1.25rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .category-header-action {
+    width: 100%;
+  }
+
+  .main-catalog-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.85rem 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .tabs-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    max-width: 440px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+  }
+  
+  .tab-btn {
+    width: 100%;
+    min-width: 0;
+    height: 44px;
+    min-height: 44px;
+    padding: 0 0.75rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tabs-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    max-width: 100%;
+  }
+
+  .tab-btn {
+    height: 42px;
+    min-height: 42px;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    padding: 0 0.5rem;
+  }
 }

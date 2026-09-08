@@ -14,9 +14,10 @@ import {
 import ScrollReveal from "../../components/common/ScrollReveal/ScrollReveal";
 import GradientButton from "../../components/common/GradientButton/GradientButton";
 import TestimonialsCarousel from "../../components/features/TestimonialsCarousel/TestimonialsCarousel";
-import Newsletter from "../../components/features/Newsletter/Newsletter";
+import HorizontalPortfolio from "../../components/features/HorizontalPortfolio/HorizontalPortfolio";
 import { optimizeImageUrl } from "../../utils/imageOptimizer";
 import CinematicInterior from "../../components/features/CinematicInterior/CinematicInterior";
+import LazyImage from "../../components/common/LazyImage/LazyImage";
 import "./Home.css";
 
 const categories = [
@@ -67,60 +68,9 @@ const features = [
   }
 ];
 
-const galleryFrames = [
-  {
-    image: optimizeImageUrl(
-      "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786299843/images_59_aojqm9.jpg",
-      { width: 600 }
-    ),
-    label: "Living Room",
-    tag: "Interior Design"
-  },
-  {
-    image: optimizeImageUrl(
-      "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786296639/images_32_gwgu3v.jpg",
-      { width: 600 }
-    ),
-    label: "Luxury Sofa",
-    tag: "Furniture"
-  },
-  {
-    image: optimizeImageUrl(
-      "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786287129/il_794xN.2688857519_ahre_anrxzz.jpg",
-      { width: 600 }
-    ),
-    label: "Mandala Art",
-    tag: "Decorative"
-  },
-  {
-    image: optimizeImageUrl(
-      "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786296187/images_21_w6hfio.jpg",
-      { width: 600 }
-    ),
-    label: "Designer Lights",
-    tag: "Lighting"
-  },
-  {
-    image: optimizeImageUrl(
-      "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786286573/DG-08_nqur4o.jpg",
-      { width: 600 }
-    ),
-    label: "Premium Laminates",
-    tag: "Interior"
-  },
-  {
-    image: optimizeImageUrl(
-      "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786296870/images_35_l2cawn.jpg",
-      { width: 600 }
-    ),
-    label: "Dining Table",
-    tag: "Furniture"
-  }
-];
-
 const stats = [
-  { value: "15+", label: "Years Experience" },
-  { value: "5000+", label: "Projects Completed" },
+  { value: "2+", label: "Years Experience" },
+  { value: "1200+", label: "Projects Completed" },
   { value: "200+", label: "Premium Products" },
   { value: "98%", label: "Client Satisfaction" }
 ];
@@ -153,11 +103,11 @@ function Home() {
               <ScrollReveal key={cat.title} direction="up" delay={i * 0.15}>
                 <Link
                   to={cat.link}
-                  className="category-card"
+                  className="category-card shine-sweep-hover card-tilt"
                   aria-label={`Explore ${cat.title}`}
                 >
                   <div className="category-image-wrap">
-                    <img src={cat.image} alt={cat.title} loading="lazy" />
+                    <LazyImage src={cat.image} alt={cat.title} width={800} />
                     <div className="category-overlay" />
                     <span className="category-tag">{cat.tag}</span>
                   </div>
@@ -176,48 +126,8 @@ function Home() {
         </div>
       </section>
 
-      {/* ── GALLERY ──────────────────────────── */}
-      <section className="gallery-section section" aria-label="Portfolio">
-        <div className="container">
-          <ScrollReveal direction="up">
-            <div className="section-header">
-              <span className="section-eyebrow">Portfolio</span>
-              <h2>From Our Portfolio</h2>
-              <p>
-                A glimpse into the spaces we have transformed with artisanal
-                craftsmanship
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <div className="gallery-grid">
-            {galleryFrames.map((frame, i) => (
-              <ScrollReveal key={frame.label} direction="up" delay={i * 0.07}>
-                <div className="gallery-item">
-                  <div className="gallery-frame">
-                    <img src={frame.image} alt={frame.label} loading="lazy" />
-                    <div className="gallery-frame-overlay">
-                      <span className="gallery-tag">{frame.tag}</span>
-                      <h4 className="gallery-label">{frame.label}</h4>
-                    </div>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-
-          <ScrollReveal direction="up">
-            <div className="gallery-actions">
-              <Link to="/interior" className="btn btn-primary">
-                View Interior Range
-              </Link>
-              <Link to="/decorative" className="btn btn-outline">
-                Browse Decorative Items
-              </Link>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
+      {/* ── HORIZONTAL PORTFOLIO ──────────────── */}
+      <HorizontalPortfolio />
 
       {/* ── FEATURES ─────────────────────────── */}
       <section
@@ -235,7 +145,7 @@ function Home() {
           <div className="features-grid">
             {features.map((feature, i) => (
               <ScrollReveal key={feature.title} direction="up" delay={i * 0.1}>
-                <div className="feature-card">
+                <div className="feature-card magnetic-pull">
                   <div className="feature-icon-wrap">
                     <span className="feature-icon" aria-hidden="true">
                       {feature.icon}
@@ -311,10 +221,7 @@ function Home() {
       </section>
 
       {/* ── TESTIMONIALS ─────────────────────── */}
-      <TestimonialsCarousel />
-
-      {/* ── NEWSLETTER ───────────────────────── */}
-      <Newsletter />
+      {/* <TestimonialsCarousel /> */}
     </div>
   );
 }

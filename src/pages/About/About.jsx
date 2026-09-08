@@ -1,17 +1,18 @@
-import { FaCheckCircle, FaUsers, FaAward, FaHeart } from 'react-icons/fa';
+import { FaCheckCircle, FaUsers, FaAward, FaHeart, FaDownload, FaFilePdf } from 'react-icons/fa';
 import PageHero from '../../components/common/PageHero/PageHero';
 import ScrollReveal from '../../components/common/ScrollReveal/ScrollReveal';
 import AnimatedCard from '../../components/common/AnimatedCard/AnimatedCard';
 import { optimizeImageUrl } from '../../utils/imageOptimizer';
+import LazyImage from '../../components/common/LazyImage/LazyImage';
+import { DOWNLOAD_RESOURCES } from '../../constants/downloads';
 import './About.css';
-import Newsletter from '../../components/features/Newsletter/Newsletter';
 
 function About() {
   const stats = [
+    { icon: <FaAward />, number: '2+', label: 'Years Experience' },
+    { icon: <FaCheckCircle />, number: '1200+', label: 'Projects Completed' },
     { icon: <FaUsers />, number: '500+', label: 'Happy Clients' },
-    { icon: <FaAward />, number: '15+', label: 'Years Experience' },
-    { icon: <FaCheckCircle />, number: '1000+', label: 'Projects Completed' },
-    { icon: <FaHeart />, number: '100%', label: 'Satisfaction Rate' },
+    { icon: <FaHeart />, number: '98%', label: 'Client Satisfaction' },
   ];
 
   const values = [
@@ -50,11 +51,10 @@ function About() {
           <div className="story-grid">
             <ScrollReveal direction="left">
               <div className="story-image gold-shine">
-                <img 
-                  src={optimizeImageUrl("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0", { width: 800 })} 
+                <LazyImage 
+                  src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0" 
                   alt="Our Story" 
-                  loading="lazy"
-                  decoding="async"
+                  width={800}
                 />
               </div>
             </ScrollReveal>
@@ -173,8 +173,71 @@ function About() {
           </div>
         </div>
       </section>
-      
-      <Newsletter />
+
+      {/* Corporate Downloads Section */}
+      <section className="about-downloads-section section bg-mesh">
+        <div className="container">
+          <ScrollReveal direction="up">
+            <div className="section-header text-center">
+              <span className="section-eyebrow" style={{ color: '#D4A574', background: 'rgba(212, 165, 116, 0.1)', padding: '0.35rem 1rem', borderRadius: '50px', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.15em', display: 'inline-block', marginBottom: '0.75rem' }}>Official Documentation</span>
+              <h2 className="gradient-text-animated">Download Corporate Literature</h2>
+              <p>Explore our official company profile and curated design portfolio</p>
+            </div>
+          </ScrollReveal>
+
+          <div className="about-downloads-grid">
+            {/* Company Profile Card */}
+            <ScrollReveal direction="left" delay={0.1}>
+              <div className="about-download-card glass-card">
+                <div className="download-card-badge">{DOWNLOAD_RESOURCES.companyProfile.badge}</div>
+                <div className="download-card-icon-wrap">
+                  <FaFilePdf className="download-pdf-icon" />
+                </div>
+                <div className="download-card-body">
+                  <h3>{DOWNLOAD_RESOURCES.companyProfile.title}</h3>
+                  <p>{DOWNLOAD_RESOURCES.companyProfile.description}</p>
+                </div>
+                <a
+                  href={DOWNLOAD_RESOURCES.companyProfile.url}
+                  download={DOWNLOAD_RESOURCES.companyProfile.downloadName}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-gold download-action-btn"
+                  title="Download Company Profile"
+                >
+                  <FaDownload />
+                  <span>Download Profile</span>
+                </a>
+              </div>
+            </ScrollReveal>
+
+            {/* Design Portfolio Card */}
+            <ScrollReveal direction="right" delay={0.2}>
+              <div className="about-download-card glass-card">
+                <div className="download-card-badge gold">{DOWNLOAD_RESOURCES.designPortfolio.badge}</div>
+                <div className="download-card-icon-wrap">
+                  <FaFilePdf className="download-pdf-icon" />
+                </div>
+                <div className="download-card-body">
+                  <h3>{DOWNLOAD_RESOURCES.designPortfolio.title}</h3>
+                  <p>{DOWNLOAD_RESOURCES.designPortfolio.description}</p>
+                </div>
+                <a
+                  href={DOWNLOAD_RESOURCES.designPortfolio.url}
+                  download={DOWNLOAD_RESOURCES.designPortfolio.downloadName}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-gold download-action-btn"
+                  title="Download Design Portfolio"
+                >
+                  <FaDownload />
+                  <span>Download Portfolio</span>
+                </a>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

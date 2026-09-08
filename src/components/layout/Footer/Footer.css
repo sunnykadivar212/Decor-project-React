@@ -171,6 +171,19 @@
 
 .footer-links li a:hover svg { transform: translateX(3px); }
 
+.footer-download-links li a {
+  color: rgba(201, 169, 97, 0.85);
+  font-weight: 500;
+}
+
+.footer-download-links li a:hover {
+  color: #f4e4c1;
+}
+
+.footer-download-links li a svg {
+  font-size: 0.75rem;
+}
+
 /* Products list (no link, just text) */
 .footer-products li {
   display: flex;

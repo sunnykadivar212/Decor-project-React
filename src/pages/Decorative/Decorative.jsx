@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaArrowRight, FaWhatsapp, FaQuoteRight } from "react-icons/fa";
+import { FaArrowRight, FaWhatsapp, FaQuoteRight, FaDownload } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import PageHero from "../../components/common/PageHero/PageHero";
 import ScrollReveal from "../../components/common/ScrollReveal/ScrollReveal";
 import QuoteModal from "../../components/features/QuoteModal/QuoteModal";
-import Newsletter from "../../components/features/Newsletter/Newsletter";
 import LazyImage from "../../components/common/LazyImage/LazyImage";
 import { optimizeImageUrl } from "../../utils/imageOptimizer";
 import "./Decorative.css";
@@ -219,9 +218,29 @@ function Decorative() {
       {/* Products Section - Gallery Editorial Grid */}
       <section
         className="products-section section bg-mesh"
-        style={{ paddingTop: "2rem" }}
+        style={{ paddingTop: "1.5rem" }}
       >
         <div className="container">
+          <div className="category-header-bar">
+            <div className="category-header-info">
+              <span className="category-eyebrow">Aangan Decorative Collection</span>
+              <h2>Bespoke Artisanal Decor</h2>
+              <p>Explore handcrafted mandala wall art, statement wall clocks, luxury seating, and artistic accents.</p>
+            </div>
+            <div className="category-header-action">
+              <a
+                href="https://aangangroup.in/images/categories/aangan-decorative.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="main-catalog-btn"
+                title="Download Complete Decorative Catalog PDF"
+              >
+                <FaDownload className="btn-icon" />
+                <span>Download Decorative Catalog</span>
+              </a>
+            </div>
+          </div>
+
           <motion.div layout className="gallery-grid">
             <AnimatePresence mode="popLayout">
               {filteredProducts.map((product) => (
@@ -312,8 +331,6 @@ function Decorative() {
           </ScrollReveal>
         </div>
       </section>
-
-      <Newsletter />
 
       <QuoteModal
         isOpen={isQuoteModalOpen}
