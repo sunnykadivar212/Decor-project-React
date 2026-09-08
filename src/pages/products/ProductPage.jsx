@@ -1,23 +1,26 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaCheckCircle, FaDownload, FaExpand } from 'react-icons/fa';
+import { FaCheckCircle, FaWhatsapp, FaExpand } from 'react-icons/fa';
 import PageHero from '../../components/common/PageHero/PageHero';
 import ImageGallery from '../../components/features/ImageGallery/ImageGallery';
+import LazyImage from '../../components/common/LazyImage/LazyImage';
+import { optimizeImageUrl } from '../../utils/imageOptimizer';
 import './ProductPage.css';
 
 function ProductPage({ title, description, image, gallery, features, pdfLink, color = 'primary', options = [], heroImage }) {
   const [showGallery, setShowGallery] = useState(false);
   const [activeImage, setActiveImage] = useState(image);
-  const [activeOption, setActiveOption] = useState(null);
   
-  const finalHeroImage = heroImage;
+  const finalHeroImage = optimizeImageUrl(heroImage, { width: 1400 });
+  const optimizedActiveImage = optimizeImageUrl(activeImage, { width: 1000 });
   
   // If gallery is provided, use it; otherwise create a single-image gallery
   const galleryImages = gallery || [{ url: image, alt: title }];
 
   const handleOptionClick = (option) => {
-    setActiveImage(option.image);
-    setActiveOption(option.name);
+    if (option.image) {
+      setActiveImage(option.image);
+    }
   };
 
   // Derive the correct category breadcrumb from the color/theme prop
@@ -60,22 +63,21 @@ function ProductPage({ title, description, image, gallery, features, pdfLink, co
                 style={{ position: 'relative', overflow: 'hidden' }}
               >
                 <AnimatePresence mode="wait">
-                  <motion.img
-                    key={activeImage}
-                    src={activeImage}
-                    alt={activeOption || title}
+                  <motion.div
+                    key={optimizedActiveImage}
                     initial={{ opacity: 0, scale: 1.04 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.4, ease: 'easeInOut' }}
-                    style={{ width: '100%', height: '80vh', objectFit: 'cover', display: 'block' }}
-                  />
+                  >
+                    <LazyImage
+                      src={activeImage}
+                      alt={title}
+                      width={1000}
+                      className="editorial-main-img"
+                    />
+                  </motion.div>
                 </AnimatePresence>
-                {activeOption && (
-                  <div className="active-option-badge">
-                    <span>{activeOption}</span>
-                  </div>
-                )}
                 {gallery && gallery.length > 1 && (
                   <div className="gallery-overlay-hint" onClick={() => setShowGallery(true)} style={{ cursor: 'pointer' }}>
                     <FaExpand />
@@ -109,24 +111,13 @@ function ProductPage({ title, description, image, gallery, features, pdfLink, co
               </div>
 
               <div className="editorial-actions">
-                {pdfLink && (
-                  <a
-                    href={pdfLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="editorial-btn primary"
-                  >
-                    <FaDownload />
-                    Download Catalog
-                  </a>
-                )}
-
                 <a
                   href="http://wa.me/917069621777"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="editorial-btn secondary"
+                  className="editorial-btn primary"
                 >
+                  <FaWhatsapp />
                   Request a Quote
                 </a>
               </div>
@@ -145,17 +136,20 @@ function ProductPage({ title, description, image, gallery, features, pdfLink, co
                 {options.map((option, index) => (
                   <motion.div 
                     key={index}
-                    className={`option-card glass-card ${activeOption === option.name ? 'option-active' : ''}`}
+                    className="option-card glass-card"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     onClick={() => handleOptionClick(option)}
-                    style={{ cursor: 'pointer' }}
                     whileHover={{ y: -4 }}
                   >
                     <div className="option-image">
-                      <img src={option.image} alt={option.name} loading="lazy" />
+                      <LazyImage
+                        src={option.image}
+                        alt={option.name}
+                        width={500}
+                      />
                     </div>
                     <div className="option-info">
                       <h4>{option.name}</h4>

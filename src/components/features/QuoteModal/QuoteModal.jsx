@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaTimes, FaPaperPlane, FaCheckCircle } from 'react-icons/fa';
-import { WEB3FORMS_ACCESS_KEY } from '../../../config/config';
+import { FORMSPREE_ENDPOINT } from '../../../config/config';
 import './QuoteModal.css';
 
 function QuoteModal({ isOpen, onClose, productTitle = 'Custom Inquiry' }) {
@@ -38,23 +38,19 @@ function QuoteModal({ isOpen, onClose, productTitle = 'Custom Inquiry' }) {
     setIsLoading(true);
     
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
-          subject: `Quote Request: ${productTitle}`,
-          from_name: 'Aangan Decor Quote Modal',
-          ...formData
+          ...formData,
+          _subject: `Quote Request: ${productTitle} (${formData.name})`
         })
       });
 
-      const result = await response.json();
-      
-      if (result.success) {
+      if (response.ok) {
         setIsSuccess(true);
         setTimeout(() => {
           setIsSuccess(false);
@@ -62,7 +58,9 @@ function QuoteModal({ isOpen, onClose, productTitle = 'Custom Inquiry' }) {
           setFormData({ name: '', email: '', phone: '', message: '' });
         }, 3000);
       } else {
-        alert('Something went wrong. Please try again.');
+        const result = await response.json();
+        const errorMessage = result.errors ? result.errors.map(err => err.message).join(', ') : 'Something went wrong. Please try again.';
+        alert(errorMessage);
       }
     } catch (error) {
       console.error('Error submitting quote:', error);

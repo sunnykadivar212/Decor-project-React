@@ -1,31 +1,142 @@
 .lazy-image-container {
   position: relative;
   width: 100%;
+  height: 100%;
   overflow: hidden;
-  border-radius: var(--radius-lg);
-  background: var(--color-bg-secondary);
+  border-radius: var(--radius-lg, 12px);
+  background: #0f1c14;
+  contain: layout paint;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* ══════════════════════════════════════════
+   LOADING SKELETON & SPINNER
+══════════════════════════════════════════ */
 .lazy-image-skeleton {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   background: linear-gradient(
     90deg,
-    #f0f0f0 0%,
-    #e0e0e0 50%,
-    #f0f0f0 100%
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(201, 169, 97, 0.12) 50%,
+    rgba(255, 255, 255, 0.03) 100%
   );
   background-size: 200% 100%;
+  animation: skeleton-shimmer 1.6s infinite linear;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.lazy-image-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(8, 16, 11, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(201, 169, 97, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.spinner-icon {
+  font-size: 1.25rem;
+  color: var(--color-secondary, #c9a961);
+  animation: spinLoader 1.2s infinite linear;
+}
+
+@keyframes spinLoader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ══════════════════════════════════════════
+   IMAGE NOT AVAILABLE — LUXURY FALLBACK UI
+══════════════════════════════════════════ */
+.image-not-available {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, #15241b 0%, #0a140e 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+  border: 1px solid rgba(201, 169, 97, 0.15);
+  box-sizing: border-box;
+}
+
+.fallback-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.fallback-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(201, 169, 97, 0.1);
+  border: 1px solid rgba(201, 169, 97, 0.3);
+  color: var(--color-secondary, #c9a961);
+  font-size: 1.35rem;
+  margin-bottom: 0.25rem;
+}
+
+.fallback-brand {
+  font-family: var(--font-accent, sans-serif);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-secondary, #c9a961);
+  opacity: 0.85;
+}
+
+.fallback-text {
+  font-family: var(--font-heading, serif);
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.04em;
+}
+
+/* ══════════════════════════════════════════
+   LOADED IMAGE TRANSITIONS
+══════════════════════════════════════════ */
 .lazy-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: opacity 0.5s ease, transform 0.3s ease;
+  transition: opacity 0.4s ease-in-out, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+  transform: translateZ(0);
 }
 
 .lazy-image.loading {
@@ -37,5 +148,5 @@
 }
 
 .lazy-image-container:hover .lazy-image.loaded {
-  transform: scale(1.05);
+  transform: scale(1.04) translateZ(0);
 }

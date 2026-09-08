@@ -1,72 +1,86 @@
-import { useState, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { FaImage, FaSpinner } from 'react-icons/fa';
+import { optimizeImageUrl } from '../../../utils/imageOptimizer';
 import './LazyImage.css';
 
 function LazyImage({ 
   src, 
   alt, 
   className = '', 
-  placeholderSrc = null,
-  aspectRatio = '16/9'
+  aspectRatio,
+  width = 800,
+  quality = 75,
+  style = {},
+  objectFit = 'cover'
 }) {
-  const [imageSrc, setImageSrc] = useState(placeholderSrc || null);
-  const [imageLoaded, setImageLoaded] = useState(false);
-  const [isInView, setIsInView] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+  const [hasError, setHasError] = useState(!src);
+  const imgRef = useRef(null);
+
+  const optimizedSrc = src ? optimizeImageUrl(src, { width, quality }) : '';
 
   useEffect(() => {
-    // Intersection Observer for lazy loading
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsInView(true);
-            observer.disconnect();
-          }
-        });
-      },
-      {
-        rootMargin: '50px',
-      }
-    );
-
-    const imageElement = document.getElementById(`lazy-${src}`);
-    if (imageElement) {
-      observer.observe(imageElement);
-    }
-
-    return () => {
-      if (imageElement) {
-        observer.unobserve(imageElement);
-      }
-    };
+    setHasError(!src);
+    setLoaded(false);
   }, [src]);
 
   useEffect(() => {
-    if (isInView && src) {
-      const img = new Image();
-      img.src = src;
-      img.onload = () => {
-        setImageSrc(src);
-        setImageLoaded(true);
-      };
+    if (imgRef.current && imgRef.current.complete) {
+      if (imgRef.current.naturalWidth === 0) {
+        setHasError(true);
+      } else {
+        setLoaded(true);
+        setHasError(false);
+      }
     }
-  }, [isInView, src]);
+  }, [optimizedSrc]);
 
   return (
     <div 
-      id={`lazy-${src}`}
-      className={`lazy-image-container ${className}`}
-      style={{ aspectRatio }}
+      className={`lazy-image-container ${className} ${hasError ? 'has-error' : ''}`}
+      style={{ 
+        ...(aspectRatio ? { aspectRatio } : {}),
+        ...style 
+      }}
     >
-      {!imageLoaded && (
-        <div className="lazy-image-skeleton skeleton-loader" />
+      {/* Loading Skeleton & Spinner */}
+      {!loaded && !hasError && (
+        <div className="lazy-image-skeleton skeleton-loader">
+          <div className="lazy-image-spinner">
+            <FaSpinner className="spinner-icon" />
+          </div>
+        </div>
       )}
-      {imageSrc && (
+
+      {/* Error / Fallback UI */}
+      {hasError ? (
+        <div className="image-not-available" role="img" aria-label={alt || 'Image not available'}>
+          <div className="fallback-content">
+            <div className="fallback-icon-wrap">
+              <FaImage className="fallback-icon" />
+            </div>
+            <span className="fallback-brand">AANGAN DECOR</span>
+            <span className="fallback-text">Image Not Available</span>
+          </div>
+        </div>
+      ) : (
         <img
-          src={imageSrc}
-          alt={alt}
-          className={`lazy-image ${imageLoaded ? 'loaded' : 'loading'}`}
+          ref={imgRef}
+          src={optimizedSrc}
+          alt={alt || ''}
+          className={`lazy-image ${loaded ? 'loaded' : 'loading'}`}
           loading="lazy"
+          decoding="async"
+          onLoad={() => {
+            setLoaded(true);
+            setHasError(false);
+          }}
+          onError={() => {
+            setHasError(true);
+            setLoaded(true);
+          }}
+          style={{ objectFit }}
         />
       )}
     </div>
@@ -74,11 +88,14 @@ function LazyImage({
 }
 
 LazyImage.propTypes = {
-  src: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
+  src: PropTypes.string,
+  alt: PropTypes.string,
   className: PropTypes.string,
-  placeholderSrc: PropTypes.string,
   aspectRatio: PropTypes.string,
+  width: PropTypes.number,
+  quality: PropTypes.number,
+  style: PropTypes.object,
+  objectFit: PropTypes.string
 };
 
 export default LazyImage;

@@ -416,6 +416,87 @@
 }
 
 /* ============================================
+   PREMIUM NEW ANIMATIONS
+   ============================================ */
+
+@keyframes textReveal {
+  0% { clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%); transform: translateY(20px); opacity: 0; }
+  100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); transform: translateY(0); opacity: 1; }
+}
+
+@keyframes borderGlow {
+  0% { border-color: rgba(201, 169, 97, 0.2); box-shadow: 0 0 10px rgba(201, 169, 97, 0.1); }
+  50% { border-color: rgba(201, 169, 97, 0.8); box-shadow: 0 0 25px rgba(201, 169, 97, 0.4); }
+  100% { border-color: rgba(201, 169, 97, 0.2); box-shadow: 0 0 10px rgba(201, 169, 97, 0.1); }
+}
+
+@keyframes orbFloat {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes shineSweep {
+  0% { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(200%) skewX(-15deg); }
+}
+
+@keyframes counterUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes staggerSlide {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Premium Utilities */
+.animate-text-reveal {
+  animation: textReveal 1s cubic-bezier(0.2, 1, 0.3, 1) forwards;
+}
+
+.animate-border-glow {
+  animation: borderGlow 3s ease-in-out infinite;
+}
+
+.animate-orb-float {
+  animation: orbFloat 15s ease-in-out infinite;
+}
+
+.shine-sweep-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-sweep-hover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: skewX(-15deg);
+  transition: all 0.75s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.shine-sweep-hover:hover::after {
+  animation: shineSweep 0.8s ease-out forwards;
+}
+
+.magnetic-pull {
+  transition: transform 0.3s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.magnetic-pull:hover {
+  transform: scale(1.05);
+}
+
+/* ============================================
    RESPONSIVE ANIMATIONS
    ============================================ */
 

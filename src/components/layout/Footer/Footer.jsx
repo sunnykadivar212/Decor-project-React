@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebook, FaInstagram, FaWhatsapp, FaLinkedin, FaArrowRight } from 'react-icons/fa';
+import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebook, FaInstagram, FaWhatsapp, FaLinkedin, FaArrowRight, FaDownload } from 'react-icons/fa';
 import logoDark from '../../../assets/logo-dark.svg';
+import { DOWNLOAD_RESOURCES } from '../../../constants/downloads';
 import './Footer.css';
 
 const quickLinks = [
@@ -82,6 +83,34 @@ function Footer() {
                     </Link>
                   </li>
                 ))}
+              </ul>
+
+              <h4 className="footer-col-heading" style={{ marginTop: '1.75rem' }}>Downloads</h4>
+              <ul className="footer-links footer-download-links">
+                <li>
+                  <a
+                    href={DOWNLOAD_RESOURCES.companyProfile.url}
+                    download={DOWNLOAD_RESOURCES.companyProfile.downloadName}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Download Company Profile (PDF)"
+                  >
+                    <FaDownload aria-hidden="true" />
+                    <span>Company Profile</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={DOWNLOAD_RESOURCES.designPortfolio.url}
+                    download={DOWNLOAD_RESOURCES.designPortfolio.downloadName}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Download Design Portfolio (PDF)"
+                  >
+                    <FaDownload aria-hidden="true" />
+                    <span>Design Portfolio</span>
+                  </a>
+                </li>
               </ul>
             </div>
 
