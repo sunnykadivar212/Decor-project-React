@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import { WEB3FORMS_ACCESS_KEY } from '../../config/config';
+import { FORMSPREE_ENDPOINT } from '../../config/config';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaWhatsapp, FaPaperPlane } from 'react-icons/fa';
 import PageHero from '../../components/common/PageHero/PageHero';
 import ScrollReveal from '../../components/common/ScrollReveal/ScrollReveal';
 import GradientButton from '../../components/common/GradientButton/GradientButton';
 import './Contact.css';
-import Newsletter from '../../components/features/Newsletter/Newsletter';
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -30,35 +29,33 @@ function Contact() {
     setIsLoading(true);
     
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
           ...formData,
-          from_name: 'Aangan Decor Contact Form'
+          _subject: `New Inquiry from ${formData.name || 'Website Visitor'}: ${formData.subject}`
         })
       });
 
-      const result = await response.json();
-      
-      if (result.success) {
+      if (response.ok) {
         setIsSuccess(true);
         setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
         
         // Reset success state after 5 seconds
         setTimeout(() => setIsSuccess(false), 5000);
       } else {
-        alert('Submission failed. Please try again.');
+        const result = await response.json();
+        const errorMessage = result.errors ? result.errors.map(err => err.message).join(', ') : 'Submission failed. Please try again.';
+        alert(errorMessage);
       }
     } catch (error) {
       console.error('Error submitting form:', error);
       alert('Error submitting form. Please check your connection.');
     } finally {
-      setIsLoading(true); // Keep loading state until success transition is complete or just reset
       setIsLoading(false);
     }
   };
@@ -85,7 +82,7 @@ function Contact() {
     {
       icon: <FaMapMarkerAlt />,
       title: 'Location',
-      details: 'Umiya Circle, Sanala Rd, Patel Colony, Vaibhav Nagar Society, Sanala, Morbi, Gujarat 363641',
+      details: '3rd floor, Sky tower, Umiya circle, Sanala, Road, Morbi, Gujarat 363641',
       link: 'https://www.google.com/maps/place/AANGAN+DECOR/@22.8009269,70.8162366,17z/data=!4m14!1m7!3m6!1s0x39598d0074e4713b:0x2feeedf7a891372f!2sAANGAN+DECOR!8m2!3d22.8009269!4d70.8162366!16s%2Fg%2F11lymc8fjk!3m5!1s0x39598d0074e4713b:0x2feeedf7a891372f!8m2!3d22.8009269!4d70.8162366!16s%2Fg%2F11lymc8fjk?authuser=0&entry=ttu',
     },
   ];
@@ -216,11 +213,12 @@ function Contact() {
                     <GradientButton 
                       type="submit" 
                       variant="primary" 
-                      size="large"
+                      size="medium"
                       loading={isLoading}
+                      className="contact-submit-btn"
                     >
-                      <FaPaperPlane />
-                      {isLoading ? 'Sending...' : 'Send Message'}
+                      {!isLoading && <FaPaperPlane />}
+                      <span>{isLoading ? 'Sending...' : 'Send Message'}</span>
                     </GradientButton>
                   </form>
                 )}
@@ -255,8 +253,6 @@ function Contact() {
           </ScrollReveal>
         </div>
       </section>
-
-      <Newsletter />
     </div>
   );
 }

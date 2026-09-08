@@ -1,9 +1,10 @@
-// Force update
 import { motion } from 'framer-motion';
-import { FaKey, FaClipboardCheck, FaUsers, FaClock, FaCheckCircle, FaTools, FaPaintBrush, FaHardHat, FaChartLine, FaHandshake, FaArrowRight } from 'react-icons/fa';
+import { FaKey, FaClipboardCheck, FaUsers, FaClock, FaCheckCircle, FaTools, FaPaintBrush, FaHardHat, FaChartLine, FaHandshake, FaArrowRight, FaDownload } from 'react-icons/fa';
 import ScrollReveal from '../../components/common/ScrollReveal/ScrollReveal';
 import AnimatedCard from '../../components/common/AnimatedCard/AnimatedCard';
 import GradientButton from '../../components/common/GradientButton/GradientButton';
+import { optimizeImageUrl } from '../../utils/imageOptimizer';
+import { DOWNLOAD_RESOURCES } from '../../constants/downloads';
 import './TurnkeyProjects.css';
 
 function TurnkeyProjects() {
@@ -15,7 +16,7 @@ function TurnkeyProjects() {
       subtitle: 'Luxury Living Spaces',
       description: 'We craft bespoke homes that reflect your personality. From penthouse interiors to sprawling villas, our residential turnkey solutions cover every detail.',
       tags: ['Villas', 'Apartments', 'Penthouses'],
-      image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800', // Placeholder
+      image: optimizeImageUrl('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0', { width: 800 }),
       size: 'large' // Spans 2 cols
     },
     {
@@ -25,7 +26,7 @@ function TurnkeyProjects() {
       subtitle: 'Modern Workspaces',
       description: 'Productivity meets aesthetics. We design offices and retail spaces that inspire innovation and impress clients.',
       tags: ['Offices', 'Retail', 'Coworking'],
-      image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800',
+      image: optimizeImageUrl('https://images.unsplash.com/photo-1497366216548-37526070297c', { width: 800 }),
       size: 'medium'
     },
     {
@@ -35,7 +36,7 @@ function TurnkeyProjects() {
       subtitle: 'Public & Edu Spaces',
       description: 'Functional, durable, and inspiring designs for educational and healthcare institutions.',
       tags: ['Schools', 'Hospitals', 'Libraries'],
-      image: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&q=80&w=800', // Placeholder
+      image: optimizeImageUrl('https://images.unsplash.com/photo-1580582932707-520aed937b7b', { width: 800 }),
       size: 'medium'
     },
   ];
@@ -177,10 +178,22 @@ function TurnkeyProjects() {
         <div className="container cta-container">
            <h2>Ready to Build?</h2>
            <p>Let's discuss your upcoming project. Our experts are ready to guide you.</p>
-           <div className="cta-btn-group">
+           <div className="cta-btn-group" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
               <GradientButton size="large" onClick={() => window.location.href='/contact'}>
                  Book Consultation <FaArrowRight style={{marginLeft: '10px'}}/>
               </GradientButton>
+              <a
+                  href={DOWNLOAD_RESOURCES.designPortfolio.url}
+                  download={DOWNLOAD_RESOURCES.designPortfolio.downloadName}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ textDecoration: 'none' }}
+                  title="Download Design Portfolio PDF"
+               >
+                  <GradientButton size="large" variant="outline">
+                     <FaDownload style={{marginRight: '8px'}}/> Download Portfolio
+                  </GradientButton>
+               </a>
            </div>
         </div>
       </section>

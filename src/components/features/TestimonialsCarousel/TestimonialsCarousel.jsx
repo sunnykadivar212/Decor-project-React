@@ -8,7 +8,7 @@ const testimonials = [
     id: 1,
     name: 'Rajesh Kumar',
     role: 'Luxury Homeowner',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1583864697784-a0efc8379f70?w=200&auto=format&fit=crop&q=80',
     rating: 5,
     text: 'Aangan transformed our residential sanctuary with absolute perfection! Their architectural materials and attention to detail exceeded all our expectations.',
     location: 'Ahmedabad',
@@ -17,7 +17,7 @@ const testimonials = [
     id: 2,
     name: 'Priya Sharma',
     role: 'Principal Interior Architect',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&auto=format&fit=crop&q=80',
     rating: 5,
     text: 'Collaborating with Aangan on high-end luxury villas is always seamless. Their premium laminates, veneers, and custom decor pieces elevate every space.',
     location: 'Surat',
@@ -26,7 +26,7 @@ const testimonials = [
     id: 3,
     name: 'Amit Patel',
     role: 'Corporate Estate Director',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&auto=format&fit=crop&q=80',
     rating: 5,
     text: 'Flawless execution and world-class material sourcing. They delivered our corporate headquarters ahead of schedule with flawless finish.',
     location: 'Rajkot',
@@ -35,7 +35,7 @@ const testimonials = [
     id: 4,
     name: 'Sneha Desai',
     role: 'Lead Architect',
-    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=200&auto=format&fit=crop&q=80',
     rating: 5,
     text: 'The artisanal craftsmanship and material integrity from Aangan is second to none. My top choice for all bespoke architectural projects.',
     location: 'Vadodara',
@@ -90,11 +90,11 @@ function TestimonialsCarousel() {
           <p>Trusted by homeowners, top architects, and corporate leaders across India</p>
 
           <div className="testimonials-trust-bar">
-            <span className="trust-item">⭐ <strong>4.9/5</strong> Rating</span>
+            <span className="trust-item">⭐ <strong>2+</strong> Years Experience</span>
             <span className="trust-divider">•</span>
-            <span className="trust-item">🏆 <strong>5000+</strong> Spaces Transformed</span>
+            <span className="trust-item">🏆 <strong>1200+</strong> Projects</span>
             <span className="trust-divider">•</span>
-            <span className="trust-item">✔️ <strong>100%</strong> Verified Reviews</span>
+            <span className="trust-item">✔️ <strong>98%</strong> Client Satisfaction</span>
           </div>
         </div>
 

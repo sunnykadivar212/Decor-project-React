@@ -122,7 +122,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.85rem 0;
+  padding: 1.2rem 0;
   gap: var(--spacing-lg);
 }
 
@@ -130,9 +130,10 @@
    LOGO
 ══════════════════════════════════════════ */
 .logo {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   flex-shrink: 0;
+  padding: 4px 0;
   transition: transform 0.3s ease;
 }
 
@@ -141,7 +142,7 @@
 }
 
 .logo-image {
-  height: 64px;
+  height: 48px;
   width: auto;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4)) brightness(1.1);
   transition: transform 0.3s ease, filter 0.4s ease;
@@ -169,7 +170,7 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: rgba(255, 255, 255, 0.92);
-  padding: 0.5rem 0.95rem;
+  padding: 0.55rem 0.95rem;
   border-radius: 50px;
   transition: all 0.25s ease;
   position: relative;
@@ -207,7 +208,7 @@
 }
 
 /* ══════════════════════════════════════════
-   HEADER ACTIONS
+   HEADER ACTIONS (DESKTOP)
 ══════════════════════════════════════════ */
 .header-actions {
   display: flex;
@@ -218,20 +219,24 @@
 
 /* WhatsApp pill */
 .header-whatsapp {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
+  height: 42px;
   background: linear-gradient(135deg, #25D366, #1cb955);
   color: white;
-  padding: 0.55rem 1.15rem;
+  padding: 0 1.25rem;
   border-radius: var(--radius-full);
   font-family: var(--font-accent);
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   transition: all 0.25s ease;
   white-space: nowrap;
   box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+  box-sizing: border-box;
+  text-decoration: none;
 }
 
 .header-whatsapp:hover {
@@ -248,20 +253,27 @@
   background: #ffffff;
   box-shadow: 0 0 6px #ffffff;
   animation: pulse 2s ease-in-out infinite;
+  flex-shrink: 0;
 }
 
 .header-whatsapp svg {
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
+  flex-shrink: 0;
 }
 
 /* Get Quote button */
 .header-cta {
-  padding: 0.55rem 1.4rem;
-  font-size: 0.78rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  height: 42px;
+  padding: 0 1.35rem;
+  font-size: 0.8rem;
   min-height: auto;
   border-radius: var(--radius-full);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.06em;
   font-weight: 700;
   background: var(--gradient-gold-shine);
   background-size: 200% auto;
@@ -269,6 +281,14 @@
   border: none;
   box-shadow: 0 4px 16px rgba(201, 169, 97, 0.35);
   transition: all 0.3s ease;
+  box-sizing: border-box;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.header-cta-icon {
+  font-size: 0.9rem;
+  flex-shrink: 0;
 }
 
 .header-cta:hover {
@@ -288,17 +308,28 @@
   display: none;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  background: var(--color-primary);
-  border: 1px solid var(--color-primary-light);
-  border-radius: var(--radius-md);
-  color: white;
-  font-size: 1.2rem;
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  background: rgba(13, 26, 18, 0.85);
+  border: 1px solid rgba(201, 169, 97, 0.35);
+  border-radius: 50%;
+  color: #c9a961;
+  font-size: 1.15rem;
   cursor: pointer;
   z-index: 1001;
-  box-shadow: 0 4px 14px rgba(26, 77, 46, 0.3);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
   transition: all 0.25s ease;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.menu-icon-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 .menu-button svg {
@@ -306,8 +337,8 @@
 }
 
 .menu-button.menu-button-light {
-  background: rgba(255, 255, 255, 0.22);
-  border-color: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.4);
   color: white;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -322,7 +353,7 @@
 }
 
 .menu-button.menu-button-light:hover {
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.3);
   border-color: white;
   color: white;
   transform: scale(1.06);
@@ -334,14 +365,22 @@
    FULL-SCREEN OVERLAY MENU
 ══════════════════════════════════════════ */
 .fullscreen-menu {
-  position: fixed;
-  inset: 0;
-  z-index: 2000;
-  background: var(--gradient-dark);
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  z-index: 99999 !important;
+  background: #08100b !important;
+  background: radial-gradient(circle at 85% 15%, #162a1c 0%, #08100b 65%) !important;
   color: white;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
 }
 
 .fullscreen-menu::before {
@@ -349,42 +388,43 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 15% 20%, rgba(79, 157, 105, 0.2) 0%, transparent 55%),
-    radial-gradient(circle at 85% 80%, rgba(201, 169, 97, 0.18) 0%, transparent 50%);
+    radial-gradient(circle at 15% 20%, rgba(79, 157, 105, 0.22) 0%, transparent 55%),
+    radial-gradient(circle at 85% 80%, rgba(201, 169, 97, 0.2) 0%, transparent 50%);
   pointer-events: none;
 }
 
 /* Mobile Overlay Top Header Bar */
 .mobile-overlay-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.25rem 2rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  position: relative;
-  z-index: 10;
-  background: rgba(13, 26, 18, 0.6);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 1.1rem 2rem !important;
+  border-bottom: 1px solid rgba(201, 169, 97, 0.2) !important;
+  position: relative !important;
+  z-index: 10 !important;
+  background: rgba(8, 16, 11, 0.95) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  flex-shrink: 0 !important;
 }
 
 .overlay-logo {
-  height: 52px;
+  height: 50px;
   width: auto;
-  filter: brightness(0) invert(1);
+  filter: brightness(1.1);
 }
 
 .overlay-close-btn {
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: white;
+  border: 1px solid rgba(201, 169, 97, 0.4);
+  color: #c9a961;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   cursor: pointer;
   transition: all 0.25s ease;
 }
@@ -397,12 +437,14 @@
 }
 
 .fullscreen-menu-wrapper {
-  display: flex;
-  flex: 1;
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  z-index: 2;
+  display: flex !important;
+  flex: 1 !important;
+  width: 100% !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  position: relative !important;
+  z-index: 2 !important;
+  min-height: 0 !important;
 }
 
 /* Left brand panel (Desktop wide) */
@@ -653,38 +695,109 @@
 @media (max-width: 1024px) {
   .desktop-nav { display: none; }
   .menu-button { display: flex; }
-  .header-actions { gap: 0.5rem; }
-  .header-whatsapp span { display: none; }
-  .header-whatsapp { padding: 0.45rem 0.65rem; border-radius: var(--radius-full); }
   .menu-left { display: none; }
   .menu-right { padding: 2.25rem 2.5rem 2.5rem; }
+  .header-content { padding: 1.1rem 0 !important; }
+  .logo-image { height: 42px !important; }
+  
+  /* 3 EQUAL SIZE ICON BUTTONS IN HEADER */
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  .header-btn-text,
+  .whatsapp-status-dot {
+    display: none !important;
+  }
+
+  /* WhatsApp Icon Button */
+  .header-whatsapp {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    min-height: 42px !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .header-whatsapp svg {
+    font-size: 1.25rem !important;
+  }
+
+  /* Get Quote Icon Button */
+  .header-cta {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    min-height: 42px !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: var(--gradient-gold-shine) !important;
+    color: var(--color-primary-dark) !important;
+    box-shadow: 0 4px 14px rgba(201, 169, 97, 0.35) !important;
+  }
+
+  .header-cta .header-cta-icon {
+    display: block !important;
+    font-size: 1.15rem !important;
+    margin: 0 !important;
+  }
+
+  /* Hamburger Menu Button */
+  .menu-button {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    min-height: 42px !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.15rem !important;
+  }
 }
 
 @media (max-width: 768px) {
   .header-top-bar { display: none; }
-  .header-content { padding: 0.65rem 0; }
-  .logo-image { height: 46px; }
+  .header-content { padding: 1.05rem 0 !important; }
+  .logo-image { height: 36px !important; }
   
-  /* Show Get Quote as a compact mobile gold pill button */
-  .header-cta {
-    display: inline-flex !important;
-    padding: 0.42rem 0.85rem;
-    font-size: 0.72rem;
-    letter-spacing: 0.05em;
-    border-radius: var(--radius-full);
-    box-shadow: 0 2px 10px rgba(201, 169, 97, 0.3);
+  .header-actions {
+    gap: 0.55rem;
+  }
+
+  .header-whatsapp,
+  .header-cta,
+  .menu-button {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+  }
+
+  .header-whatsapp svg {
+    font-size: 1.2rem !important;
+  }
+
+  .header-cta .header-cta-icon {
+    font-size: 1.1rem !important;
   }
 
   .menu-button {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    font-size: 1.05rem;
-    border-color: rgba(201, 169, 97, 0.35);
+    font-size: 1.1rem !important;
   }
 
   .mobile-overlay-header { padding: 1rem 1.5rem; }
-  .overlay-logo { height: 42px; }
+  .overlay-logo { height: 38px; }
   .menu-right { padding: 1.75rem 1.5rem 2rem; }
   .fullscreen-nav-link { font-size: 2.1rem; padding: 0.45rem 0.75rem; }
   .mobile-menu-actions { flex-direction: column; align-items: stretch; }
@@ -692,26 +805,36 @@
 }
 
 @media (max-width: 480px) {
-  .logo-image { height: 40px; }
-  .header-content { padding: 0.55rem 0; gap: 0.4rem; }
+  .logo-image { height: 32px !important; }
+  .header-content { padding: 0.95rem 0 !important; gap: 0.4rem; }
   
-  .header-cta {
-    padding: 0.38rem 0.75rem;
-    font-size: 0.68rem;
+  .header-actions {
+    gap: 0.45rem;
   }
 
-  .header-whatsapp {
-    padding: 0.38rem 0.55rem;
+  .header-whatsapp,
+  .header-cta,
+  .menu-button {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
+  }
+
+  .header-whatsapp svg {
+    font-size: 1.15rem !important;
+  }
+
+  .header-cta .header-cta-icon {
+    font-size: 1.05rem !important;
   }
 
   .menu-button {
-    width: 36px;
-    height: 36px;
-    font-size: 0.95rem;
+    font-size: 1.05rem !important;
   }
 
   .mobile-overlay-header { padding: 0.85rem 1.25rem; }
-  .overlay-logo { height: 38px; }
+  .overlay-logo { height: 34px; }
   .menu-right { padding: 1.25rem 1.25rem 1.75rem; }
   .fullscreen-nav-link { font-size: 1.75rem; gap: 0.75rem; padding: 0.4rem 0.6rem; }
   .menu-footer { margin-top: 1.25rem; padding-top: 1rem; }
@@ -719,9 +842,8 @@
 }
 
 @media (max-width: 360px) {
-  .logo-image { height: 34px; }
-  .header-cta { display: none !important; }
-  .overlay-logo { height: 32px; }
+  .logo-image { height: 28px !important; }
+  .overlay-logo { height: 28px; }
   .menu-right { padding: 1rem 1rem 1.25rem; }
   .fullscreen-nav-link { font-size: 1.5rem; gap: 0.5rem; }
 }

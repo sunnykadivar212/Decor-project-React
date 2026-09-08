@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FaStar, FaArrowRight, FaGem, FaDraftingCompass, FaMagic, FaWhatsapp } from 'react-icons/fa';
@@ -25,8 +25,18 @@ const CinematicInterior = () => {
 
     const [loadedPercent, setLoadedPercent] = useState(0);
     const [isReady, setIsReady] = useState(false);
+    const [containerHeight, setContainerHeight] = useState('450vh');
     const imagesRef = useRef([]);
     const frameIndexRef = useRef(0);
+
+    useEffect(() => {
+        const updateHeight = () => {
+            setContainerHeight(window.innerWidth <= 768 ? '180vh' : '450vh');
+        };
+        updateHeight();
+        window.addEventListener('resize', updateHeight);
+        return () => window.removeEventListener('resize', updateHeight);
+    }, []);
 
     const getFrameUrl = (index) => {
         const paddedIndex = (index + 1).toString().padStart(5, '0');
@@ -147,38 +157,48 @@ const CinematicInterior = () => {
             })
         });
 
-        // Sophisticated Apple/Awwwards Blur + Scale Timeline
+        // ── INTRO ANIMATION: Show Slide 1 immediately on load (NO blur) ──
+        if (textRef1.current) {
+            gsap.set(textRef1.current, { opacity: 0, y: 60, scale: 0.97 });
+            gsap.to(textRef1.current, {
+                opacity: 1, y: 0, scale: 1,
+                duration: 1.4,
+                delay: 0.3,
+                ease: 'power3.out',
+            });
+        }
+
+        // Set other slides hidden initially
+        [textRef2, textRef3, textRef4].forEach(ref => {
+            if (ref.current) {
+                gsap.set(ref.current, { opacity: 0, y: 50, scale: 0.97 });
+            }
+        });
+
+        // ── SCROLL TIMELINE: Crisp editorial transitions ──
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: containerRef.current,
                 start: "top top",
                 end: "bottom bottom",
-                scrub: 0.8
+                scrub: 0.6
             }
         });
 
-        // Set initial states
-        [textRef1, textRef2, textRef3, textRef4].forEach(ref => {
-            if (ref.current) {
-                gsap.set(ref.current, { opacity: 0, y: 40, scale: 0.96, filter: 'blur(8px)' });
-            }
-        });
-
-        // 0 - 20%: Overlay 1
-        tl.to(textRef1.current, { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', duration: 1, ease: 'power2.out' })
-          .to(textRef1.current, { opacity: 0, y: -40, scale: 1.04, filter: 'blur(10px)', duration: 1, ease: 'power2.in' }, "+=1.2");
+        // 0 - 20%: Slide 1 exits
+        tl.to(textRef1.current, { opacity: 0, y: -50, scale: 1.02, duration: 1, ease: 'power2.in' }, "+=0.8");
         
-        // 25 - 45%: Overlay 2
-        tl.to(textRef2.current, { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', duration: 1, ease: 'power2.out' })
-          .to(textRef2.current, { opacity: 0, y: -40, scale: 1.04, filter: 'blur(10px)', duration: 1, ease: 'power2.in' }, "+=1.2");
+        // 20 - 45%: Slide 2 enters & exits
+        tl.to(textRef2.current, { opacity: 1, y: 0, scale: 1, duration: 1, ease: 'power2.out' })
+          .to(textRef2.current, { opacity: 0, y: -50, scale: 1.02, duration: 1, ease: 'power2.in' }, "+=1.2");
 
-        // 50 - 70%: Overlay 3
-        tl.to(textRef3.current, { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', duration: 1, ease: 'power2.out' })
-          .to(textRef3.current, { opacity: 0, y: -40, scale: 1.04, filter: 'blur(10px)', duration: 1, ease: 'power2.in' }, "+=1.2");
+        // 45 - 70%: Slide 3 enters & exits
+        tl.to(textRef3.current, { opacity: 1, y: 0, scale: 1, duration: 1, ease: 'power2.out' })
+          .to(textRef3.current, { opacity: 0, y: -50, scale: 1.02, duration: 1, ease: 'power2.in' }, "+=1.2");
 
-        // 75 - 100%: Overlay 4
-        tl.to(textRef4.current, { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', duration: 1, ease: 'power2.out' })
-          .to(textRef4.current, { opacity: 0, y: -20, scale: 0.98, filter: 'blur(5px)', duration: 0.8 }, "+=1.5");
+        // 70 - 100%: Slide 4 enters & exits
+        tl.to(textRef4.current, { opacity: 1, y: 0, scale: 1, duration: 1, ease: 'power2.out' })
+          .to(textRef4.current, { opacity: 0, y: -25, scale: 0.99, duration: 0.8 }, "+=1.5");
 
         return () => {
             window.removeEventListener('resize', resizeCanvas);
@@ -188,7 +208,7 @@ const CinematicInterior = () => {
     }, [isReady]);
 
     return (
-        <section ref={containerRef} className="cinematic-container" style={{ height: animationConfig.scrollHeight }}>
+        <section ref={containerRef} className="cinematic-container" style={{ height: containerHeight }}>
             <div className="canvas-wrapper">
                 <canvas ref={canvasRef} />
                 
@@ -202,26 +222,20 @@ const CinematicInterior = () => {
                     </div>
                     <span>Scroll to explore</span>
                 </div>
-
-                {loadedPercent < 100 && (
-                    <div className="cinematic-loader">
-                        <div className="loader-text">Preparing Your Space • {loadedPercent}%</div>
-                        <div className="loader-bar-bg">
-                            <div className="loader-bar-fill" style={{ width: `${loadedPercent}%` }} />
-                        </div>
-                    </div>
-                )}
                 
                 <div className="cinematic-overlays">
-                    {/* Slide 1 */}
+                    {/* Slide 1 — Visible on load */}
                     <div className="overlay-text overlay-card" ref={textRef1}>
                         <div className="overlay-eyebrow">
+                            <span className="eyebrow-dot" />
                             <span>India's Premium Decor Solutions</span>
                         </div>
-                        <h2>Transform Your Space</h2>
+                        <h2>Transform Your<br />Space</h2>
+                        <div className="overlay-accent-line" />
                         <h3 className="overlay-subtitle">With Elegant Architectural Design</h3>
                         <p className="overlay-desc">
-                            "At Aangan, we don't just design interiors — we craft moods and build timeless architectural spaces."
+                            "At Aangan, we don't just design interiors — we craft moods
+                            and build timeless architectural spaces."
                         </p>
                         <div className="overlay-actions">
                             <a href="/interior" className="cinematic-btn primary">
@@ -238,11 +252,14 @@ const CinematicInterior = () => {
                     {/* Slide 2 */}
                     <div className="overlay-text overlay-card" ref={textRef2}>
                         <div className="overlay-eyebrow">
+                            <span className="eyebrow-dot" />
                             <span>Artisanal Excellence</span>
                         </div>
-                        <h2>Crafted With Precision</h2>
+                        <h2>Crafted With<br />Precision</h2>
+                        <div className="overlay-accent-line" />
                         <p className="overlay-desc">
-                            Every curve, panel, and material is curated with uncompromised attention to luxury detail.
+                            Every curve, panel, and material is curated with uncompromised
+                            attention to luxury detail.
                         </p>
                         <div className="overlay-chips">
                             <span className="chip"><FaDraftingCompass /> Bespoke Planning</span>
@@ -254,22 +271,28 @@ const CinematicInterior = () => {
                     {/* Slide 3 */}
                     <div className="overlay-text overlay-card overlay-center" ref={textRef3}>
                         <div className="overlay-eyebrow">
+                            <span className="eyebrow-dot" />
                             <span>Tailored Ambience</span>
                         </div>
-                        <h2>Designed For Your Lifestyle</h2>
+                        <h2>Designed For<br />Your Lifestyle</h2>
+                        <div className="overlay-accent-line" style={{ margin: '0 auto 1.5rem' }} />
                         <p className="overlay-desc">
-                            Harmonizing natural textures, intelligent lighting, and ergonomic luxury for everyday living.
+                            Harmonizing natural textures, intelligent lighting,
+                            and ergonomic luxury for everyday living.
                         </p>
                     </div>
                     
                     {/* Slide 4 */}
                     <div className="overlay-text overlay-card" ref={textRef4}>
                         <div className="overlay-eyebrow">
+                            <span className="eyebrow-dot" />
                             <span>Your Journey Begins</span>
                         </div>
-                        <h2>Bring Your Vision To Life</h2>
+                        <h2>Bring Your Vision<br />To Life</h2>
+                        <div className="overlay-accent-line" />
                         <p className="overlay-desc">
-                            Ready to reimagine your residential or commercial sanctuary? Speak with our master designers today.
+                            Ready to reimagine your residential or commercial sanctuary?
+                            Speak with our master designers today.
                         </p>
                         <div className="overlay-actions">
                             <a href="/contact" className="cinematic-btn primary">

@@ -172,6 +172,18 @@
   margin-top: var(--spacing-md);
 }
 
+.contact-submit-btn {
+  height: 50px !important;
+  min-height: 50px !important;
+  min-width: 195px !important;
+  padding: 0 1.8rem !important;
+  font-size: 0.88rem !important;
+  letter-spacing: 0.08em !important;
+  border-radius: 50px !important;
+  box-sizing: border-box !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease !important;
+}
+
 /* Success Message */
 .contact-success-message {
   padding: var(--spacing-4xl) var(--spacing-2xl);
