@@ -211,30 +211,7 @@ function About() {
               </div>
             </ScrollReveal>
 
-            {/* Design Portfolio Card */}
-            <ScrollReveal direction="right" delay={0.2}>
-              <div className="about-download-card glass-card">
-                <div className="download-card-badge gold">{DOWNLOAD_RESOURCES.designPortfolio.badge}</div>
-                <div className="download-card-icon-wrap">
-                  <FaFilePdf className="download-pdf-icon" />
-                </div>
-                <div className="download-card-body">
-                  <h3>{DOWNLOAD_RESOURCES.designPortfolio.title}</h3>
-                  <p>{DOWNLOAD_RESOURCES.designPortfolio.description}</p>
-                </div>
-                <a
-                  href={DOWNLOAD_RESOURCES.designPortfolio.url}
-                  download={DOWNLOAD_RESOURCES.designPortfolio.downloadName}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-gold download-action-btn"
-                  title="Download Design Portfolio"
-                >
-                  <FaDownload />
-                  <span>Download Portfolio</span>
-                </a>
-              </div>
-            </ScrollReveal>
+
           </div>
         </div>
       </section>

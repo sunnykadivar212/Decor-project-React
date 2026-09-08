@@ -99,18 +99,7 @@ function Footer() {
                     <span>Company Profile</span>
                   </a>
                 </li>
-                <li>
-                  <a
-                    href={DOWNLOAD_RESOURCES.designPortfolio.url}
-                    download={DOWNLOAD_RESOURCES.designPortfolio.downloadName}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="Download Design Portfolio (PDF)"
-                  >
-                    <FaDownload aria-hidden="true" />
-                    <span>Design Portfolio</span>
-                  </a>
-                </li>
+
               </ul>
             </div>
 

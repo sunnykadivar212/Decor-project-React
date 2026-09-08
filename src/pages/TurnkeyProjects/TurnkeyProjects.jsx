@@ -182,18 +182,7 @@ function TurnkeyProjects() {
               <GradientButton size="large" onClick={() => window.location.href='/contact'}>
                  Book Consultation <FaArrowRight style={{marginLeft: '10px'}}/>
               </GradientButton>
-              <a
-                  href={DOWNLOAD_RESOURCES.designPortfolio.url}
-                  download={DOWNLOAD_RESOURCES.designPortfolio.downloadName}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ textDecoration: 'none' }}
-                  title="Download Design Portfolio PDF"
-               >
-                  <GradientButton size="large" variant="outline">
-                     <FaDownload style={{marginRight: '8px'}}/> Download Portfolio
-                  </GradientButton>
-               </a>
+
            </div>
         </div>
       </section>
