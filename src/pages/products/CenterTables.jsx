@@ -35,7 +35,7 @@ function CenterTables() {
       image="https://res.cloudinary.com/dbuoua4q1/image/upload/v1786295196/bf111692bea12bca1e24d11699f91272_idn7yf.jpg"
       features={[
         "Unique centerpiece designs",
-        "High-quality glass, marble, and wood",
+        "High-quality glass, marble and wood",
         "Child-safe rounded edge options",
         "Built-in storage compartments available",
         "Artistic and functional silhouettes",

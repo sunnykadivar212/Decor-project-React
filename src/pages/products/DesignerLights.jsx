@@ -35,7 +35,7 @@ function DesignerLights() {
       image="https://res.cloudinary.com/dbuoua4q1/image/upload/v1786296189/images_20_irgokc.jpg"
       features={[
         "High-efficiency LED integration",
-        "Premium brass, chrome, and crystal finishes",
+        "Premium brass, chrome and crystal finishes",
         "Adjustable brightness and color temperature",
         "Architectural-grade wiring and safety",
         "Unique artisanal glass blowing",

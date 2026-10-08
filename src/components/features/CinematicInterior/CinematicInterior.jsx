@@ -242,7 +242,7 @@ const CinematicInterior = () => {
                                 Explore Collections
                                 <FaArrowRight aria-hidden="true" />
                             </a>
-                            <a href="http://wa.me/917069621777" target="_blank" rel="noopener noreferrer" className="cinematic-btn secondary">
+                            <a href="http://wa.me/917069621777?text=Hi!%20I%27m%20interested%20in%20Aangan%20Decor%20products." target="_blank" rel="noopener noreferrer" className="cinematic-btn secondary">
                                 <FaWhatsapp aria-hidden="true" />
                                 WhatsApp Us
                             </a>
@@ -258,7 +258,7 @@ const CinematicInterior = () => {
                         <h2>Crafted With<br />Precision</h2>
                         <div className="overlay-accent-line" />
                         <p className="overlay-desc">
-                            Every curve, panel, and material is curated with uncompromised
+                            Every curve, panel and material is curated with uncompromised
                             attention to luxury detail.
                         </p>
                         <div className="overlay-chips">

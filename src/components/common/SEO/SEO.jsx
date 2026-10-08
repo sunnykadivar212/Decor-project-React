@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 
 function SEO({ 
   title = 'Aangan Decor - Premium Interior & Decorative Solutions',
-  description = 'Transform your spaces with Aangan Decor\'s premium plywood, laminates, and decorative items. Quality materials and exceptional craftsmanship since 2009.',
+  description = 'Transform your spaces with Aangan Decor\'s premium plywood, laminates and decorative items. Quality materials and exceptional craftsmanship since 2015.',
   keywords = 'interior design, plywood, laminates, decorative items, mandala art, home decor, aangan decor',
   image = '/og-image.jpg',
   url = 'https://aangangroup.in',

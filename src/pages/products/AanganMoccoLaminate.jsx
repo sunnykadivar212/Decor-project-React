@@ -31,7 +31,7 @@ function AanganMoccoLaminate() {
   return (
     <ProductPage
       title="Aangan Mocco Laminate"
-      description="Where texture defines character. The Mocco collection features advanced embossed levels that replicate stone, fabric, and exotic woods with stunning realism."
+      description="Where texture defines character. The Mocco collection features advanced embossed levels that replicate stone, fabric and exotic woods with stunning realism."
       image="https://res.cloudinary.com/dbuoua4q1/image/upload/v1786286573/DG-08_nqur4o.jpg"
       features={[
         "Deep synchronized textures",

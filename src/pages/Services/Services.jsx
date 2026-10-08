@@ -30,7 +30,7 @@ function Services() {
     {
       icon: <FaPaintBrush />,
       title: 'Material Supply',
-      description: 'Premium quality plywood, laminates, acrylic, and decorative materials sourced from trusted manufacturers.',
+      description: 'Premium quality plywood, laminates, acrylic and decorative materials sourced from trusted manufacturers.',
       features: ['Wide Selection', 'Quality Assured', 'Competitive Pricing'],
     },
     {
@@ -155,7 +155,7 @@ function Services() {
                 <GradientButton 
                   variant="secondary" 
                   size="large"
-                  onClick={() => window.location.href = 'http://wa.me/917069630777'}
+                  onClick={() => window.location.href = 'http://wa.me/917069630777?text=Hi!%20I%27m%20interested%20in%20Aangan%20Decor%20products.'}
                 >
                   Contact Us Now
                 </GradientButton>

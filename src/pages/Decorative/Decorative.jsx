@@ -61,25 +61,14 @@ function Decorative() {
       category: "decor"
     },
     {
-      title: "Wall Art Vol 1",
+      title: "Wall Art",
       description: "Curated wall art pieces for modern spaces",
-      image: optimizeImageUrl(
-        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c",
-        { width: 700 }
-      ),
-      features: ["Modern Designs", "Gallery Quality", "Ready to Hang"],
-      link: "/decorative/aangan-vol-1",
-      category: "art"
-    },
-    {
-      title: "Wall Art Vol 2",
-      description: "Elegant decorative panels for walls and partitions",
       image: optimizeImageUrl(
         "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786287755/71vDD2QGl-L_wbkz2d.jpg",
         { width: 700 }
       ),
-      features: ["3D Effects", "Lightweight", "Easy to Install"],
-      link: "/decorative/aangan-vol-2",
+      features: ["Modern Designs", "Gallery Quality", "Ready to Hang"],
+      link: "/decorative/wall-art",
       category: "art"
     },
     {
@@ -184,7 +173,7 @@ function Decorative() {
       {/* Hero Section */}
       <PageHero
         title="Decorative Items"
-        subtitle="Elegant mandala art, decorative accents, and luxury furniture to personalize your space"
+        subtitle="Elegant mandala art, decorative accents and luxury furniture to personalize your space"
         breadcrumbs={[{ label: "Decorative Items" }]}
         variant="secondary"
         backgroundImage={optimizeImageUrl(
@@ -225,9 +214,9 @@ function Decorative() {
             <div className="category-header-info">
               <span className="category-eyebrow">Aangan Decorative Collection</span>
               <h2>Bespoke Artisanal Decor</h2>
-              <p>Explore handcrafted mandala wall art, statement wall clocks, luxury seating, and artistic accents.</p>
+              <p>Explore handcrafted mandala wall art, statement wall clocks, luxury seating and artistic accents.</p>
             </div>
-            <div className="category-header-action">
+            {/* <div className="category-header-action">
               <a
                 href="https://aangangroup.in/images/categories/aangan-decorative.pdf"
                 target="_blank"
@@ -238,7 +227,7 @@ function Decorative() {
                 <FaDownload className="btn-icon" />
                 <span>Download Decorative Catalog</span>
               </a>
-            </div>
+            </div> */}
           </div>
 
           <motion.div layout className="gallery-grid">
@@ -316,7 +305,7 @@ function Decorative() {
               </p>
               <div className="cta-actions">
                 <a
-                  href="http://wa.me/917069621777"
+                  href="http://wa.me/917069621777?text=Hi!%20I%27m%20interested%20in%20Aangan%20Decor%20products."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-primary"

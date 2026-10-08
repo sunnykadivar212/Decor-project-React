@@ -21,9 +21,9 @@ const products = [
 ];
 
 const socials = [
-  { href: 'https://www.facebook.com/AanganDecor', icon: <FaFacebook />, label: 'Facebook', color: '#1877F2' },
+  { href: 'https://www.facebook.com/p/Aangan-decor-61593430621152/', icon: <FaFacebook />, label: 'Facebook', color: '#1877F2' },
   { href: 'https://www.instagram.com/aangan__decor', icon: <FaInstagram />, label: 'Instagram', color: '#E1306C' },
-  { href: 'http://wa.me/917069630777', icon: <FaWhatsapp />, label: 'WhatsApp', color: '#25D366' },
+  { href: 'http://wa.me/917069630777?text=Hi!%20I%27m%20interested%20in%20Aangan%20Decor%20products.', icon: <FaWhatsapp />, label: 'WhatsApp', color: '#25D366' },
   { href: 'https://linkedin.com', icon: <FaLinkedin />, label: 'LinkedIn', color: '#0A66C2' },
 ];
 
@@ -51,6 +51,7 @@ function Footer() {
                 <div className="footer-group-list">
                   <span>Aangan Decor</span>
                   <span>Aangan Design Studio</span>
+                  <span>Aangan Plywood</span>
                 </div>
               </div>
 
@@ -149,7 +150,7 @@ function Footer() {
               </ul>
 
               <a
-                href="http://wa.me/917069621777"
+                href="http://wa.me/917069621777?text=Hi!%20I%27m%20interested%20in%20Aangan%20Decor%20products."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer-whatsapp-btn"

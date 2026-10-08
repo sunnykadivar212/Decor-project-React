@@ -32,7 +32,7 @@ export const SOCIAL_LINKS = {
 // Contact information
 export const CONTACT_INFO = {
   phone: '+91 70696 30777',
-  whatsapp: 'http://wa.me/917069630777',
+  whatsapp: 'http://wa.me/917069630777?text=Hi!%20I%27m%20interested%20in%20Aangan%20Decor%20products.',
   email: 'info@aangangroup.com',
   address: 'Aangan Decor, Your City, State',
 };

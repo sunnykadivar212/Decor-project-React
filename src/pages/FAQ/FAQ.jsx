@@ -15,7 +15,7 @@ function FAQ() {
       questions: [
         {
           q: 'What types of plywood do you offer?',
-          a: 'We offer premium quality plywood including commercial plywood, marine plywood, and decorative plywood in various thicknesses and finishes.'
+          a: 'We offer premium quality plywood including commercial plywood, marine plywood and decorative plywood in various thicknesses and finishes.'
         },
         {
           q: 'Are your laminates scratch-resistant?',
@@ -23,7 +23,7 @@ function FAQ() {
         },
         {
           q: 'Do you provide custom designs for decorative items?',
-          a: 'Absolutely! We offer custom design services for mandala art, decorative panels, and other decorative items to match your specific requirements.'
+          a: 'Absolutely! We offer custom design services for mandala art, decorative panels and other decorative items to match your specific requirements.'
         }
       ]
     },
@@ -53,7 +53,7 @@ function FAQ() {
         },
         {
           q: 'What payment methods do you accept?',
-          a: 'We accept cash, bank transfers, UPI, credit/debit cards, and cheques. For bulk orders, we also offer flexible payment terms.'
+          a: 'We accept cash, bank transfers, UPI, credit/debit cards and cheques. For bulk orders, we also offer flexible payment terms.'
         },
         {
           q: 'Do you offer bulk discounts?',
@@ -104,7 +104,7 @@ function FAQ() {
     <div className="faq-page page-transition">
       <SEO
         title="FAQ - Frequently Asked Questions"
-        description="Find answers to common questions about our products, services, delivery, and more at Aangan Decor."
+        description="Find answers to common questions about our products, services, delivery and more at Aangan Decor."
         keywords="faq, questions, help, support, aangan decor"
         url="https://aangangroup.in/faq"
       />

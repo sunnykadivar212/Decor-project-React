@@ -122,7 +122,7 @@ function Header() {
           {/* Actions */}
           <div className="header-actions">
             <a
-              href="http://wa.me/917069621777"
+              href="http://wa.me/917069621777?text=Hi!%20I%27m%20interested%20in%20Aangan%20Decor%20products."
               target="_blank"
               rel="noopener noreferrer"
               className="header-whatsapp"
@@ -249,7 +249,7 @@ function Header() {
                         Get Free Quote
                       </Link>
                       <a
-                        href="http://wa.me/917069621777"
+                        href="http://wa.me/917069621777?text=Hi!%20I%27m%20interested%20in%20Aangan%20Decor%20products."
                         target="_blank"
                         rel="noopener noreferrer"
                         className="mobile-wa-pill"
@@ -261,7 +261,7 @@ function Header() {
                     <div className="menu-socials">
                       <a href="https://www.instagram.com/aangan__decor" target="_blank" rel="noopener noreferrer" className="social-link">Instagram</a>
                       <a href="https://www.facebook.com/AanganDecor" target="_blank" rel="noopener noreferrer" className="social-link">Facebook</a>
-                      <a href="http://wa.me/917069621777" target="_blank" rel="noopener noreferrer" className="social-link">WhatsApp</a>
+                      <a href="http://wa.me/917069621777?text=Hi!%20I%27m%20interested%20in%20Aangan%20Decor%20products." target="_blank" rel="noopener noreferrer" className="social-link">WhatsApp</a>
                     </div>
                   </motion.div>
                 </div>

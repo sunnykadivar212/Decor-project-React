@@ -71,7 +71,7 @@ function Contact() {
       icon: <FaWhatsapp />,
       title: 'WhatsApp',
       details: '+91 70696 21777',
-      link: 'http://wa.me/917069621777',
+      link: 'http://wa.me/917069621777?text=Hi!%20I%27m%20interested%20in%20Aangan%20Decor%20products.',
     },
     {
       icon: <FaEnvelope />,

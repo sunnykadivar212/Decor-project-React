@@ -112,7 +112,7 @@ function ProductPage({ title, description, image, gallery, features, pdfLink, co
 
               <div className="editorial-actions">
                 <a
-                  href="http://wa.me/917069621777"
+                  href="http://wa.me/917069621777?text=Hi!%20I%27m%20interested%20in%20Aangan%20Decor%20products."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="editorial-btn primary"

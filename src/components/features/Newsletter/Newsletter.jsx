@@ -66,7 +66,7 @@ function Newsletter() {
           <div className="newsletter-header">
             <span className="newsletter-eyebrow">VIP Architectural Circle</span>
             <h2>Stay Updated with Aangan</h2>
-            <p>Join our inner circle for bespoke interior trends, luxury material releases, and private offers.</p>
+            <p>Join our inner circle for bespoke interior trends, luxury material releases and private offers.</p>
           </div>
 
           <div className="newsletter-benefits">

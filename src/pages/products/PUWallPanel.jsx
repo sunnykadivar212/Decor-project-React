@@ -32,15 +32,15 @@ function PUWallPanel() {
   return (
     <ProductPage
       title="PU Wall Panels"
-      description="PU (Polyurethane) Wall Panels are Decorative wall coverings made from high-density polyurethane. Ideal for both interior and exterior applications, they offer an easy-to-install, cost-effective alternative to real stone, with excellent resistance to moisture, weather, and impact."
-      image="https://res.cloudinary.com/dbuoua4q1/image/upload/v1786298593/images_53_rjsqgx.jpg"
+      description="PU (Polyurethane) Wall Panels are Decorative wall coverings made from high-density polyurethane. Ideal for both interior and exterior applications, they offer an easy-to-install, cost-effective alternative to real stone, with excellent resistance to moisture, weather and impact."
+      image="https://res.cloudinary.com/dbuoua4q1/image/upload/v1790606084/images_wgivjn.jpg"
       features={[
         "High-density premium Polyurethane composition",
-        "Realistic 3D stone, rock, and brick textures",
+        "Realistic 3D stone, rock and brick textures",
         "Super lightweight and easy to handle during installation",
-        "100% moisture, weather, water, and impact resistant",
+        "100% moisture, weather, water and impact resistant",
         "Quick installation with industrial adhesive or screws (No Mortar required)",
-        "Ideal for feature walls, TV backdrops, office lobbies, and outdoor facades"
+        "Ideal for feature walls, TV backdrops, office lobbies and outdoor facades"
       ]}
       pdfLink="/catalogs/Aangan_Group_Company_Profile.pdf"
       color="decorative"

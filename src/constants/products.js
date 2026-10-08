@@ -44,15 +44,6 @@ export const INTERIOR_PRODUCTS = [
       "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786285211/IMG_1418_gm2afb.jpg",
     features: ["Ventilation", "Privacy", "Modern Design"],
     link: "/louvers"
-  },
-  {
-    id: "a-fab",
-    title: "A-Fab Materials",
-    description: "Premium fabric-based decorative materials",
-    image:
-      "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786286983/71XeKDdmukL._AC_UF350_350_QL80__edp7ho.jpg",
-    features: ["Soft Touch", "Elegant Look", "Easy Installation"],
-    link: "/a-fab"
   }
 ];
 
@@ -86,30 +77,12 @@ export const DECORATIVE_PRODUCTS = [
   },
   {
     id: "wall-art",
-    title: "Wall Art Collection",
+    title: "Wall Art",
     description: "Curated wall art pieces for modern spaces",
     image:
       "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786287755/71vDD2QGl-L_wbkz2d.jpg",
     features: ["Modern Designs", "Gallery Quality", "Ready to Hang"],
-    link: "/aangan-vol-1"
-  },
-  {
-    id: "decorative-panels",
-    title: "Decorative Panels",
-    description: "Elegant decorative panels for walls and partitions",
-    image:
-      "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786288137/images_ovsped.jpg",
-    features: ["3D Effects", "Lightweight", "Easy to Install"],
-    link: "/aangan-vol-2"
-  },
-  {
-    id: "sculptures",
-    title: "Artistic Sculptures",
-    description: "Contemporary sculptures for sophisticated interiors",
-    image:
-      "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786285463/1000093066_hp4vwl.jpg",
-    features: ["Unique Pieces", "Premium Finish", "Statement Decor"],
-    link: "/aangan-vol-3"
+    link: "/wall-art"
   }
 ];
 
@@ -162,12 +135,5 @@ export const SHOP_CATEGORIES = [
     image:
       "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786285379/1000093023_l7moih.jpg",
     link: "/plants"
-  },
-  {
-    title: "A-Fab",
-    description: "Premium fabric-based materials",
-    image:
-      "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786289539/A-fab_qh2tkp.jpg",
-    link: "/a-fab"
   }
 ];

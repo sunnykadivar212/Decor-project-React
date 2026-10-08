@@ -34,7 +34,7 @@ function TurnkeyProjects() {
       icon: <FaChartLine />,
       title: 'Institutional',
       subtitle: 'Public & Edu Spaces',
-      description: 'Functional, durable, and inspiring designs for educational and healthcare institutions.',
+      description: 'Functional, durable and inspiring designs for educational and healthcare institutions.',
       tags: ['Schools', 'Hospitals', 'Libraries'],
       image: optimizeImageUrl('https://images.unsplash.com/photo-1580582932707-520aed937b7b', { width: 800 }),
       size: 'medium'
@@ -42,7 +42,7 @@ function TurnkeyProjects() {
   ];
 
   const processSteps = [
-    { num: '01', title: 'Consultation', desc: 'We meet to understand your vision, budget, and timeline.' },
+    { num: '01', title: 'Consultation', desc: 'We meet to understand your vision, budget and timeline.' },
     { num: '02', title: 'Design & Plan', desc: 'Our architects create 3D visualizations and detailed blueprints.' },
     { num: '03', title: 'Procurement', desc: 'Sourcing premium materials from our trusted global network.' },
     { num: '04', title: 'Execution', desc: 'Our skilled craftsmen bring the design to life on-site.' },

@@ -99,7 +99,7 @@ function Hardware() {
               <h3>Need Hardware Consultation?</h3>
               <p>Our experts can help you choose the right hardware for your project</p>
               <a
-                href="http://wa.me/917069621777"
+                href="http://wa.me/917069621777?text=Hi!%20I%27m%20interested%20in%20Aangan%20Decor%20products."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-primary"

@@ -35,7 +35,7 @@ function Clocks() {
       image="https://res.cloudinary.com/dbuoua4q1/image/upload/v1786295361/images_8_td5bnk.jpg"
       features={[
         "Silent sweep quartz movement (No Ticking)",
-        "Handcrafted from wood, metal, and glass",
+        "Handcrafted from wood, metal and glass",
         "Built with high-precision timekeeping technology",
         "Unique artistic and minimal designs",
         "Easy to hang mounting hardware included",

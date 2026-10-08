@@ -19,7 +19,7 @@ const testimonials = [
     role: 'Principal Interior Architect',
     image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&auto=format&fit=crop&q=80',
     rating: 5,
-    text: 'Collaborating with Aangan on high-end luxury villas is always seamless. Their premium laminates, veneers, and custom decor pieces elevate every space.',
+    text: 'Collaborating with Aangan on high-end luxury villas is always seamless. Their premium laminates, veneers and custom decor pieces elevate every space.',
     location: 'Surat',
   },
   {
@@ -87,14 +87,14 @@ function TestimonialsCarousel() {
         <div className="section-header">
           <span className="section-eyebrow">Client Stories</span>
           <h2>What Our Clients Say</h2>
-          <p>Trusted by homeowners, top architects, and corporate leaders across India</p>
+          <p>Trusted by homeowners, top architects and corporate leaders across India</p>
 
           <div className="testimonials-trust-bar">
             <span className="trust-item">⭐ <strong>2+</strong> Years Experience</span>
             <span className="trust-divider">•</span>
-            <span className="trust-item">🏆 <strong>1200+</strong> Projects</span>
+            <span className="trust-item">🏆 <strong>250+</strong> Projects</span>
             <span className="trust-divider">•</span>
-            <span className="trust-item">✔️ <strong>98%</strong> Client Satisfaction</span>
+            <span className="trust-item">✔️ <strong>97%</strong> Client Satisfaction</span>
           </div>
         </div>
 

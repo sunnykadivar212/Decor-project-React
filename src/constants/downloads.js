@@ -9,7 +9,7 @@ export const DOWNLOAD_RESOURCES = {
     url: '/catalogs/Aangan_Group_Company_Profile.pdf',
     size: '1.4 MB',
     format: 'PDF',
-    description: 'Comprehensive overview of Aangan Group, heritage, product verticals, and manufacturing excellence.',
+    description: 'Comprehensive overview of Aangan Group, heritage, product verticals and manufacturing excellence.',
     badge: 'Official Profile'
   },
   // designPortfolio: {
@@ -21,7 +21,7 @@ export const DOWNLOAD_RESOURCES = {
   //   url: '/catalogs/DESIGN%20PORTFOLIO%20-%20AANGAN.pdf',
   //   size: '255 MB',
   //   format: 'PDF',
-  //   description: 'Curated showcase of our bespoke residential, commercial, and luxury turnkey interior transformations.',
+  //   description: 'Curated showcase of our bespoke residential, commercial and luxury turnkey interior transformations.',
   //   badge: 'Featured Works'
   // }
 };

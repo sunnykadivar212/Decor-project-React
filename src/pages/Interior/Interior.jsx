@@ -68,19 +68,9 @@ function Interior() {
       link: "/louvers"
     },
     {
-      title: "A-Fab Materials",
-      description: "Premium fabric-based decorative materials",
-      image: optimizeImageUrl(
-        "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786289539/A-fab_qh2tkp.jpg",
-        { width: 700 }
-      ),
-      features: ["Soft Touch", "Elegant Look", "Easy Installation"],
-      link: "/interior/a-fab"
-    },
-    {
       title: "Aangan Veneers",
       description:
-        "Thin natural wood overlays for a rich, warm, and sophisticated wooden finish",
+        "Thin natural wood overlays for a rich, warm and sophisticated wooden finish",
       image: optimizeImageUrl(
         "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786298830/images_56_blqkx5.jpg",
         { width: 700 }
@@ -97,7 +87,7 @@ function Interior() {
       description:
         "High-density polyurethane panels offering a stunning stone-imitation facade",
       image: optimizeImageUrl(
-        "https://res.cloudinary.com/dbuoua4q1/image/upload/v1786298593/images_53_rjsqgx.jpg",
+        "https://res.cloudinary.com/dbuoua4q1/image/upload/v1790606084/images_wgivjn.jpg",
         { width: 700 }
       ),
       features: [
@@ -112,7 +102,7 @@ function Interior() {
       description:
         "Elegant PVC, WPC, or wooden trim profiles to conceal joints and refine edges",
       image: optimizeImageUrl(
-        "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6",
+        "https://res.cloudinary.com/dbuoua4q1/image/upload/v1790427498/images_2_ur4vft.jpg",
         { width: 700 }
       ),
       features: [
@@ -144,7 +134,7 @@ function Interior() {
       {/* Hero Section */}
       <PageHero
         title="Interior Items"
-        subtitle="Premium materials for stunning interiors - plywood, laminates, acrylic, and more"
+        subtitle="Premium materials for stunning interiors - plywood, laminates, acrylic and more"
         breadcrumbs={[{ label: "Interior Items" }]}
         variant="primary"
         backgroundImage={optimizeImageUrl(
@@ -160,9 +150,9 @@ function Interior() {
             <div className="category-header-info">
               <span className="category-eyebrow">Aangan Interior Collection</span>
               <h2>Premium Architectural Materials</h2>
-              <p>Explore our complete range of ISI-grade plywood, bespoke laminates, veneers, and decorative surfaces.</p>
+              <p>Explore our complete range of ISI-grade plywood, bespoke laminates, veneers and decorative surfaces.</p>
             </div>
-            <div className="category-header-action">
+            {/* <div className="category-header-action">
               <a
                 href="https://aangangroup.in/images/categories/aangan-plywood.pdf"
                 target="_blank"
@@ -173,7 +163,7 @@ function Interior() {
                 <FaDownload className="btn-icon" />
                 <span>Download Interior Catalog</span>
               </a>
-            </div>
+            </div> */}
           </div>
 
           <div className="gallery-grid">
@@ -244,7 +234,7 @@ function Interior() {
               </p>
               <div className="cta-actions">
                 <a
-                  href="http://wa.me/917069630777"
+                  href="http://wa.me/917069630777?text=Hi!%20I%27m%20interested%20in%20Aangan%20Decor%20products."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-primary"

@@ -31,7 +31,7 @@ function AanganPlywood() {
   return (
     <ProductPage
       title="Aangan Plywood"
-      description="Experience the strength of premium Gurjan and Hardwood plywood. Our products are termite-proof, borer-resistant, and built for a lifetime of durability."
+      description="Experience the strength of premium Gurjan and Hardwood plywood. Our products are termite-proof, borer-resistant and built for a lifetime of durability."
       image="https://res.cloudinary.com/dbuoua4q1/image/upload/v1786285322/IMG_1506_uojhq9.jpg"
       features={[
         "High-grade BWP and BWR plywood",

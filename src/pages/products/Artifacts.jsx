@@ -44,7 +44,7 @@ function Artifacts() {
       pdfLink="/catalogs/Aangan_Group_Company_Profile.pdf"
       color="decorative"
       options={artifactOptions}
-      heroImage="https://images.unsplash.com/photo-1581783898377-1c85bf937427?w=1600&q=80"
+      heroImage="https://res.cloudinary.com/dbuoua4q1/image/upload/v1790606522/images_6_da8ufo.jpg"
     />
   );
 }

@@ -59,7 +59,7 @@ function Terms() {
               <h2>Products and Services</h2>
               <h3>Product Information</h3>
               <p>
-                We strive to provide accurate product descriptions, specifications, and pricing. However, we do not warrant that product descriptions or other content is accurate, complete, or error-free. We reserve the right to correct any errors and update information at any time.
+                We strive to provide accurate product descriptions, specifications and pricing. However, we do not warrant that product descriptions or other content is accurate, complete, or error-free. We reserve the right to correct any errors and update information at any time.
               </p>
 
               <h3>Pricing</h3>
@@ -112,7 +112,7 @@ function Terms() {
             <div className="content-section">
               <h2>Intellectual Property</h2>
               <p>
-                All content on this website, including text, graphics, logos, images, and software, is the property of Aangan Decor or its content suppliers and is protected by intellectual property laws. You may not use, reproduce, or distribute any content without our written permission.
+                All content on this website, including text, graphics, logos, images and software, is the property of Aangan Decor or its content suppliers and is protected by intellectual property laws. You may not use, reproduce, or distribute any content without our written permission.
               </p>
             </div>
 

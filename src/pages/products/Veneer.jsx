@@ -37,8 +37,8 @@ function Veneer() {
         "100% natural wood decorative surface",
         "Rich, unique grain patterns sourced from premium timbers",
         "Eco-friendly and highly sustainable wood panels",
-        "Premium resistance to cracking, warping, and splitting",
-        "Adds luxury, depth, and warmth to any residential or commercial interior",
+        "Premium resistance to cracking, warping and splitting",
+        "Adds luxury, depth and warmth to any residential or commercial interior",
         "Excellent response to wood polishing and staining finishes"
       ]}
       pdfLink="/catalogs/Aangan_Group_Company_Profile.pdf"

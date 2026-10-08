@@ -27,7 +27,6 @@ const Hardware           = lazy(() => import('../pages/categories/Hardware'));
 const AanganPlywood       = lazy(() => import('../pages/products/AanganPlywood'));
 const AanganPlainLaminate = lazy(() => import('../pages/products/AanganPlainLaminate'));
 const AanganMoccoLaminate = lazy(() => import('../pages/products/AanganMoccoLaminate'));
-const AFab                = lazy(() => import('../pages/products/AFab'));
 const AanganAcrylic       = lazy(() => import('../pages/products/AanganAcrylic'));
 const Veneer              = lazy(() => import('../pages/products/Veneer'));
 const PUWallPanel         = lazy(() => import('../pages/products/PUWallPanel'));
@@ -38,10 +37,7 @@ const FalseCeiling        = lazy(() => import('../pages/products/FalseCeiling'))
 const Plants          = lazy(() => import('../pages/products/Plants'));
 const AanganDecorative = lazy(() => import('../pages/products/AanganDecorative'));
 const MandalaArt      = lazy(() => import('../pages/products/MandalaArt'));
-const AanganVol1      = lazy(() => import('../pages/products/AanganVol1'));
-const AanganVol2      = lazy(() => import('../pages/products/AanganVol2'));
-const AanganVol3      = lazy(() => import('../pages/products/AanganVol3'));
-const AanganVol4      = lazy(() => import('../pages/products/AanganVol4'));
+const WallArt         = lazy(() => import('../pages/products/WallArt'));
 const Clocks          = lazy(() => import('../pages/products/Clocks'));
 const Artifacts       = lazy(() => import('../pages/products/Artifacts'));
 const DesignerMirrors = lazy(() => import('../pages/products/DesignerMirrors'));
@@ -101,7 +97,6 @@ function AppRoutes() {
         <Route path="/interior/aangan-plywood"        element={<AanganPlywood />} />
         <Route path="/interior/aangan-plain-laminate" element={<AanganPlainLaminate />} />
         <Route path="/interior/aangan-mocco-laminate" element={<AanganMoccoLaminate />} />
-        <Route path="/interior/a-fab"                 element={<AFab />} />
         <Route path="/interior/aangan-acrylic"        element={<AanganAcrylic />} />
         <Route path="/interior/veneer"                element={<Veneer />} />
         <Route path="/interior/pu-wall-panel"         element={<PUWallPanel />} />
@@ -112,10 +107,7 @@ function AppRoutes() {
         <Route path="/decorative/plants"           element={<Plants />} />
         <Route path="/decorative/aangan-decorative" element={<AanganDecorative />} />
         <Route path="/decorative/mandala-art"       element={<MandalaArt />} />
-        <Route path="/decorative/aangan-vol-1"      element={<AanganVol1 />} />
-        <Route path="/decorative/aangan-vol-2"      element={<AanganVol2 />} />
-        <Route path="/decorative/aangan-vol-3"      element={<AanganVol3 />} />
-        <Route path="/decorative/aangan-vol-4"      element={<AanganVol4 />} />
+        <Route path="/decorative/wall-art"          element={<WallArt />} />
         <Route path="/decorative/clocks"            element={<Clocks />} />
         <Route path="/decorative/artifacts"         element={<Artifacts />} />
         <Route path="/decorative/designer-mirrors"  element={<DesignerMirrors />} />
@@ -130,7 +122,6 @@ function AppRoutes() {
         <Route path="/aangan-plywood"        element={<AanganPlywood />} />
         <Route path="/aangan-plain-laminate" element={<AanganPlainLaminate />} />
         <Route path="/aangan-mocco-laminate" element={<AanganMoccoLaminate />} />
-        <Route path="/a-fab"                 element={<AFab />} />
         <Route path="/aangan-acrylic"        element={<AanganAcrylic />} />
         <Route path="/veneer"                element={<Veneer />} />
         <Route path="/pu-wall-panel"         element={<PUWallPanel />} />
@@ -139,10 +130,7 @@ function AppRoutes() {
         <Route path="/plants"                element={<Plants />} />
         <Route path="/aangan-decorative"     element={<AanganDecorative />} />
         <Route path="/mandala-art"           element={<MandalaArt />} />
-        <Route path="/aangan-vol-1"          element={<AanganVol1 />} />
-        <Route path="/aangan-vol-2"          element={<AanganVol2 />} />
-        <Route path="/aangan-vol-3"          element={<AanganVol3 />} />
-        <Route path="/aangan-vol-4"          element={<AanganVol4 />} />
+        <Route path="/wall-art"              element={<WallArt />} />
         <Route path="/clocks"                element={<Clocks />} />
         <Route path="/artifacts"             element={<Artifacts />} />
         <Route path="/designer-mirrors"      element={<DesignerMirrors />} />

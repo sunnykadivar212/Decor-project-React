@@ -7,14 +7,14 @@ function Privacy() {
     <div className="privacy-page page-transition">
       <SEO
         title="Privacy Policy"
-        description="Read our privacy policy to understand how Aangan Decor collects, uses, and protects your personal information."
+        description="Read our privacy policy to understand how Aangan Decor collects, uses and protects your personal information."
         keywords="privacy policy, data protection, privacy, aangan decor"
         url="https://aangangroup.in/privacy-policy"
       />
 
       <PageHero
         title="Privacy Policy"
-        subtitle="How we collect, use, and protect your information"
+        subtitle="How we collect, use and protect your information"
         breadcrumbs={[
           { label: 'Home', path: '/' },
           { label: 'Privacy Policy', path: '/privacy-policy' }
@@ -29,7 +29,7 @@ function Privacy() {
             <div className="content-section">
               <h2>Introduction</h2>
               <p>
-                At Aangan Decor, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.
+                At Aangan Decor, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose and safeguard your information when you visit our website or use our services.
               </p>
             </div>
 
@@ -67,7 +67,7 @@ function Privacy() {
                 <li>To respond to your inquiries and provide customer support</li>
                 <li>To process and fulfill your orders or service requests</li>
                 <li>To send you newsletters and marketing communications (with your consent)</li>
-                <li>To improve our website, products, and services</li>
+                <li>To improve our website, products and services</li>
                 <li>To analyze website usage and optimize user experience</li>
                 <li>To comply with legal obligations and protect our rights</li>
               </ul>
@@ -86,14 +86,14 @@ function Privacy() {
             <div className="content-section">
               <h2>Data Security</h2>
               <p>
-                We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security.
+                We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet is 100% secure and we cannot guarantee absolute security.
               </p>
             </div>
 
             <div className="content-section">
               <h2>Cookies and Tracking Technologies</h2>
               <p>
-                We use cookies and similar tracking technologies to enhance your browsing experience, analyze site traffic, and understand user preferences. You can control cookie settings through your browser preferences.
+                We use cookies and similar tracking technologies to enhance your browsing experience, analyze site traffic and understand user preferences. You can control cookie settings through your browser preferences.
               </p>
             </div>
 

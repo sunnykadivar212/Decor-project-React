@@ -38,7 +38,7 @@ function DesignerChairs() {
         "Hand-finished premium upholstery",
         "Solid wood and brushed metal frame options",
         "Unique artistic silhouettes",
-        "Available in fabric, velvet, and top-grain leather",
+        "Available in fabric, velvet and top-grain leather",
         "Perfect for residential and commercial spaces"
       ]}
       pdfLink="/catalogs/Aangan_Group_Company_Profile.pdf"

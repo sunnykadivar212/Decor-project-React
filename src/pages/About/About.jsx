@@ -10,9 +10,9 @@ import './About.css';
 function About() {
   const stats = [
     { icon: <FaAward />, number: '2+', label: 'Years Experience' },
-    { icon: <FaCheckCircle />, number: '1200+', label: 'Projects Completed' },
-    { icon: <FaUsers />, number: '500+', label: 'Happy Clients' },
-    { icon: <FaHeart />, number: '98%', label: 'Client Satisfaction' },
+    { icon: <FaCheckCircle />, number: '250+', label: 'Projects Completed' },
+    { icon: <FaUsers />, number: '240+', label: 'Happy Clients' },
+    { icon: <FaHeart />, number: '97%', label: 'Client Satisfaction' },
   ];
 
   const values = [
@@ -39,7 +39,7 @@ function About() {
       {/* Hero Section */}
       <PageHero
         title="About Aangan Decor"
-        subtitle="Transforming spaces with premium materials and exceptional craftsmanship since 2009"
+        subtitle="Transforming spaces with premium materials and exceptional craftsmanship since 2015"
         breadcrumbs={[{ label: 'About' }]}
         variant="primary"
         backgroundImage={optimizeImageUrl("https://images.unsplash.com/photo-1497366216548-37526070297c", { width: 1400 })}
@@ -68,11 +68,11 @@ function About() {
                 <p>
                   What started as a small venture has grown into a trusted name in the industry, 
                   serving hundreds of satisfied clients across the region. Our commitment to quality, 
-                  innovation, and customer satisfaction has been the cornerstone of our success.
+                  innovation and customer satisfaction has been the cornerstone of our success.
                 </p>
                 <p>
                   Today, we specialize in two main categories: Interior Items including premium plywood 
-                  and laminates, and Decorative Items featuring unique mandala art and elegant accents. 
+                  and laminates and Decorative Items featuring unique mandala art and elegant accents. 
                   Each product is carefully selected to meet the highest standards of quality and design.
                 </p>
               </div>
@@ -96,10 +96,12 @@ function About() {
               <div className="glass-card" style={{ padding: '2rem' }}>
                 <h3 style={{ color: '#D4A574', marginBottom: '1rem' }}>Our Mission</h3>
                 <p>
-                  To create timeless designs that blend functionality with aesthetics, 
-                  delivering seamless execution and superior quality in every project. 
-                  We craft interiors that don't just look beautiful — they feel right, 
-                  transforming spaces into experiences.
+                  Our mission is to offer exceptional products and
+                  a remarkable shopping experience that meets
+                  the needs and desires of our customers. We are
+                  committed to offering the best quality, value,
+                  and service, ensuring every customer feels
+                  valued and satisfied with every interaction.
                 </p>
               </div>
             </ScrollReveal>
@@ -108,10 +110,10 @@ function About() {
               <div className="glass-card" style={{ padding: '2rem' }}>
                 <h3 style={{ color: '#D4A574', marginBottom: '1rem' }}>Our Vision</h3>
                 <p>
-                  To be recognized as a leader in interior design and decor, where quality 
-                  is not just a standard — it's a promise. Through attention to detail, 
-                  skilled craftsmanship, and carefully curated materials, we build interiors 
-                  that last in design, durability, and delight.
+                  Our vision is to provide superior product quality,
+                  timely deliveries and competitive pricing
+                  ensuring maximum value and satisfaction
+                  for our customers.
                 </p>
               </div>
             </ScrollReveal>

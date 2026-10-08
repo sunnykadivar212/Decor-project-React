@@ -24,7 +24,7 @@ const categories = [
   {
     title: "Interior Items",
     description:
-      "Premium plywood, laminates, acrylic, veneer, PU wall panels, and materials for stunning interiors",
+      "Premium plywood, laminates, acrylic, veneer, PU wall panels and materials for stunning interiors",
     image: optimizeImageUrl(
       "https://images.unsplash.com/photo-1615873968403-89e068629265",
       { width: 800 }
@@ -35,7 +35,7 @@ const categories = [
   {
     title: "Decorative Items",
     description:
-      "Elegant mandala art, designer mirrors, clocks, artifacts, curtains, and unique handcrafted pieces",
+      "Elegant mandala art, designer mirrors, clocks, artifacts, curtains and unique handcrafted pieces",
     image: optimizeImageUrl(
       "https://images.unsplash.com/photo-1513694203232-719a280e022f",
       { width: 800 }
@@ -70,9 +70,9 @@ const features = [
 
 const stats = [
   { value: "2+", label: "Years Experience" },
-  { value: "1200+", label: "Projects Completed" },
+  { value: "250+", label: "Projects Completed" },
   { value: "200+", label: "Premium Products" },
-  { value: "98%", label: "Client Satisfaction" }
+  { value: "97%", label: "Client Satisfaction" }
 ];
 
 function Home() {
@@ -172,7 +172,7 @@ function Home() {
                 <h2>Ready to Elevate Your Living Space?</h2>
                 <p>
                   Consult with our senior interior specialists for personalized material selections, 
-                  bespoke decor guidance, and end-to-end turnkey execution.
+                  bespoke decor guidance and end-to-end turnkey execution.
                 </p>
 
                 <div className="cta-perks">
@@ -204,7 +204,7 @@ function Home() {
                     </GradientButton>
                   </a>
                   <a 
-                    href="http://wa.me/917069621777" 
+                    href="http://wa.me/917069621777?text=Hi!%20I%27m%20interested%20in%20Aangan%20Decor%20products." 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="cta-whatsapp-btn"
